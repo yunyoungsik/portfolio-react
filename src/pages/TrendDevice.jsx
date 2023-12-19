@@ -65,11 +65,11 @@ const TrendDevice = () => {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        let sections = gsap.utils.toArray("#wrap .parallax__item");
-        let center = gsap.utils.toArray("#wrap .centerSlider");
-        let page = gsap.utils.toArray("#wrap .pageIndex");
-        let title = gsap.utils.toArray("#wrap .title");
-        let desc = gsap.utils.toArray("#wrap .desc");
+        let sections = gsap.utils.toArray(".bgSliderWrap .parallax__item");
+        let center = gsap.utils.toArray(".centerSliderWrap .centerSlider");
+        let page = gsap.utils.toArray(".current .pageIndex");
+        let title = gsap.utils.toArray(".titleWrap .title");
+        let desc = gsap.utils.toArray(".descWrap .desc");
 
         let animation = gsap.timeline({
             scrollTrigger: {
@@ -106,7 +106,7 @@ const TrendDevice = () => {
             ease: "Power1.easeInOut",
             scrollTrigger: { scrub: 0.3 }
         });
-    })
+    }, [])
 
     // close 애니메이션
     useEffect(() => {

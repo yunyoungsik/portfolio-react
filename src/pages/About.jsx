@@ -3,97 +3,97 @@ import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 
 const About = () => {
-    // useEffect(() => {
-    //     // 글자 쪼개기
-    //     document.querySelectorAll(".split").forEach(text => {
-    //         let newText = "";
+    useEffect(() => {
+         // 글자 쪼개기
+         document.querySelectorAll(".split").forEach(text => {
+            let newText = "";
 
-    //         for (let i = 0; i < text.innerText.length; i++) {
-    //             newText += "<span aria-hidden='true'>";
+            for (let i = 0; i < text.innerText.length; i++) {
+                newText += "<span aria-hidden='true'>";
 
-    //             if (text.innerText[i] === " ") {
-    //                 newText += "&nbsp";
-    //             } else {
-    //                 newText += text.innerText[i];
-    //             }
+                if (text.innerText[i] === " ") {
+                    newText += "&nbsp";
+                } else {
+                    newText += text.innerText[i];
+                }
 
-    //             newText += "</span>";
-    //         }
-    //         text.innerHTML = newText;
-    //         text.setAttribute("aria-label", text.innerText);
-    //     });
+                newText += "</span>";
+            }
+            text.innerHTML = newText;
+            text.setAttribute("aria-label", text.innerText);
+        });
 
-    //     const email = document.querySelector(".emailLink");
+        const email = document.querySelector(".emailLink");
 
-    //     email.addEventListener("mouseover", function () {
-    //         const splitTexts = document.querySelectorAll(".split");
-    //         const windowWidth = window.innerWidth;
+        // hover
+        email.addEventListener("mouseover", function () {
+            const splitTexts = document.querySelectorAll(".split");
+            const windowWidth = window.innerWidth;
 
-    //         splitTexts.forEach((text) => {
-    //             const spanTimeline = gsap.timeline({ paused: true });
+            splitTexts.forEach((text) => {
+                const spanTimeline = gsap.timeline({ paused: true });
 
-    //             gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
-    //                 let yPos = 0;
-    //                 let animOpacity = 1;
+                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                    let yPos = 0;
+                    let animOpacity = 1;
 
-    //                 // Check window width to apply different animation properties
-    //                 if (windowWidth <= 768) { // Example threshold, change as needed
-    //                     yPos = -50;
-    //                     animOpacity = 0.5;
-    //                 } else {
-    //                     yPos = -75;
-    //                     animOpacity = 1;
-    //                 }
+                    if (windowWidth <= 80) {
+                        yPos = -50;
+                        animOpacity = 0.5;
+                    } else {
+                        yPos = -75;
+                        animOpacity = 1;
+                    }
 
-    //                 spanTimeline.fromTo(
-    //                     span,
-    //                     {
-    //                         y: 0,
-    //                         opacity: 1,
-    //                         display: "inline-block"
-    //                     },
-    //                     {
-    //                         y: yPos,
-    //                         opacity: animOpacity,
-    //                         ease: "Power1.easeInOut"
-    //                     },
-    //                     index * 0.02
-    //                 );
-    //             });
-    //             spanTimeline.play();
-    //         });
+                    spanTimeline.fromTo(
+                        span,
+                        {
+                            y: 0,
+                            opacity: 1,
+                            display: "inline-block"
+                        },
+                        {
+                            y: yPos,
+                            opacity: animOpacity,
+                            ease: "Power1.easeInOut"
+                        },
+                        index * 0.02
+                    );
+                });
+                spanTimeline.play();
+            });
 
-    //         gsap.fromTo(".svg > .svg1", { opacity: 1, scale: 1 }, { opacity: 1, scale: 0, transformOrigin: "100% 0%", ease: "Power1.easeInOut" });
-    //         gsap.fromTo(".svg > .svg2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, transformOrigin: "0% 100%", ease: "Power1.easeInOut" });
-    //     });
+            gsap.fromTo(".svg > .svg1", { opacity: 1, scale: 1 }, { opacity: 1, scale: 0, transformOrigin: "100% 0%", ease: "Power1.easeInOut" });
+            gsap.fromTo(".svg > .svg2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, transformOrigin: "0% 100%", ease: "Power1.easeInOut" });
+        });
 
+        // out
+        email.addEventListener("mouseout", function () {
+            document.querySelectorAll(".split").forEach((text) => {
+                const spanTimeline = gsap.timeline({ paused: true });
 
-    //     email.addEventListener("mouseout", function () {
-    //         document.querySelectorAll(".split").forEach((text) => {
-    //             const spanTimeline = gsap.timeline({ paused: true });
-
-    //             gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
-    //                 spanTimeline.fromTo(
-    //                     span,
-    //                     {
-    //                         y: -75,
-    //                         opacity: 1,
-    //                         display: "inline-block"
-    //                     },
-    //                     {
-    //                         y: 0,
-    //                         opacity: 1,
-    //                         ease: "Power1.easeInOut",
-    //                     },
-    //                     index * 0.01
-    //                 );
-    //                 spanTimeline.play();
-    //             });
-    //         });
-    //         gsap.fromTo(".svg > .svg2", { opacity: 1, scale: 1 }, { opacity: 0, scale: 0, transformOrigin: "0% 100%", ease: "Power1.easeInOut" })
-    //         gsap.fromTo(".svg > .svg1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, transformOrigin: "100% 0%", ease: "Power1.easeInOut" })
-    //     })
-    // })
+                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                    spanTimeline.fromTo(
+                        span,
+                        {
+                            y: -75,
+                            opacity: 1,
+                            display: "inline-block"
+                        },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            ease: "Power1.easeInOut",
+                        },
+                        index * 0.01
+                    );
+                    spanTimeline.play();
+                });
+            });
+            gsap.fromTo(".svg > .svg2", { opacity: 1, scale: 1 }, { opacity: 0, scale: 0, transformOrigin: "0% 100%", ease: "Power1.easeInOut" })
+            gsap.fromTo(".svg > .svg1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, transformOrigin: "100% 0%", ease: "Power1.easeInOut" })
+        })
+    }, [])
 
     return (
         <div id='about'>
@@ -180,7 +180,6 @@ const About = () => {
                                         </div>
                                     </div>
                                     <div className="svg">
-
                                         <svg className="svg1" width="45" height="45" viewBox="0 0 45 45" fill="none"
                                             xmlns="http://www.w3.org/2000/svg" data-v-50e346e1="">
                                             <path
@@ -193,7 +192,6 @@ const About = () => {
                                                 d="M2.66949 45L0 42.3305L38.5169 3.81356H3.05085V0H45V41.9492H41.1864V6.48305L2.66949 45Z"
                                                 fill="currentColor" data-v-50e346e1=""></path>
                                         </svg>
-
                                     </div>
                                 </Link>
                             </div>

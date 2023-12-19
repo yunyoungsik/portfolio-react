@@ -22,7 +22,6 @@
 
 /* 애니메이션 셋팅 */
 .close.sub,
-.about.sub,
 .scrollBar,
 .current.sub {
     opacity: 0;
