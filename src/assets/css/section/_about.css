@@ -1,0 +1,428 @@
+#about {
+    width: 100%;
+    background-color: var(--black);
+    position: relative;
+}
+
+/* header */
+#about #header {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    padding: 30px 40px 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+#about #header .logo,
+#about #header .aboutClose {
+    color: var(--white);
+    font-family: var(--font-gmarket);
+    font-size: 18px;
+}
+
+#about #header .aboutClose a {
+    display: block;
+    position: relative;
+}
+
+/* main */
+#main {
+    box-sizing: border-box;
+}
+
+/* underline */
+.underline:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--white);
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.underline:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+/* aboutSliderWrap */
+.aboutSliderWrap {
+    width: 100%;
+    background-color: var(--black);
+}
+
+.aboutSlider {
+    width: 100%;
+    height: 100vh;
+}
+
+/* aboutCenter */
+.aboutCenter {
+    position: fixed;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    color: var(--white);
+    z-index: 1;
+
+}
+
+.aboutCenter h2 {
+    font-size: 72px;
+    font-family: var(--font-noto);
+}
+
+.aboutCenter p {
+    font-family: var(--font-gmarket);
+    font-size: 12px;
+    text-align: right;
+    transform: translateX(25%);
+}
+
+/* aboutDesc */
+.aboutDesc {
+    padding: 35px 40px 45px;
+    width: 100%;
+    height: 100vh;
+    text-align: right;
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.aboutDesc {
+    font-size: 1rem;
+
+}
+
+
+
+/* aboutText */
+.aboutText {
+    padding: 35px 40px 45px;
+    width: 100%;
+    height: 100vh;
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.aboutService {
+    padding-right: 80px;
+    margin-bottom: 10%;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: right;
+}
+
+.aboutService__inner {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutSkill {
+    display: flex;
+}
+
+.aboutService__inner .markup {
+    margin-right: 90px;
+}
+
+.aboutService__inner .aboutTitle,
+.aboutService__inner .markup h2,
+.aboutService__inner .markup p,
+.aboutService__inner .tool h2,
+.aboutService__inner .tool p {
+    font-size: 16px;
+    font-family: var(--font-gmarket);
+}
+
+.aboutService__inner .markup h2,
+.aboutService__inner .tool h2 {
+    margin-bottom: 10px;
+}
+
+.aboutService__inner .markup p,
+.aboutService__inner .tool p {
+    color: var(--black500);
+    line-height: 1.1;
+    opacity: 0.5;
+}
+
+
+.aboutContact {
+    width: 100%;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.aboutContact__social {
+    margin-bottom: 40px;
+}
+
+.aboutContact__social,
+.aboutContact__email {
+    display: flex;
+}
+
+.aboutContact__social>div,
+.aboutContact__email>div {
+    width: 33.333%;
+}
+
+.aboutContact__social>.title,
+.aboutContact__social>.title2,
+.aboutContact__email>.title,
+.aboutContact__email>.title2 {
+    font-size: 16px;
+    font-family: var(--font-gmarket);
+}
+
+.social>span,
+.email>span {
+    margin-bottom: 5px;
+}
+
+.social,
+.email {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-family: var(--font-gmarket);
+}
+
+.social a:hover,
+.email a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.aboutImg {
+    width: 130px;
+    height: 350px;
+    overflow: hidden;
+    background-image: url(../../img/about-contact.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+/* .aboutImg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.aboutImg>img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.aboutEmail {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.aboutEmail>.emailLink {
+    font-family: var(--font-gmarket);
+    font-size: 50px;
+    font-weight: 500;
+    position: relative;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    z-index: 9999;
+}
+
+.aboutEmail>.emailLink>.text {
+    margin-right: 10vw;
+    height: 75px;
+    overflow: hidden;
+}
+
+.svg {
+    width: 45px;
+    height: 45px;
+    position: relative;
+}
+
+.svg>svg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.svg>.svg2 {
+    opacity: 0;
+    scale: 0;
+}
+
+.aboutContact__bottom {
+    height: 450px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: relative;
+}
+
+/* 반응형 */
+@media(max-width:800px) {
+    #about #header {
+        padding: 15px 20px 0;
+    }
+}
+
+@media(max-width: 800px) {
+    .aboutSlider {
+        height: 25vh;
+    }
+
+    .aboutCenter {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        transform: translate(0%);
+        background-color: var(--black);
+        z-index: 0;
+    }
+
+    .aboutCenter p {
+        position: absolute;
+        right: 50%;
+        bottom: -20%;
+        transform: translateX(50%);
+    }
+}
+
+@media(max-width: 800px) {
+    .aboutDesc {
+        height: 50vh;
+        padding: 15px 20px 25px;
+    }
+
+    .aboutDesc p {
+        margin-top: 10vh;
+        font-size: 0.9rem;
+    }
+}
+
+@media(max-width: 800px) {
+    .aboutText {
+        height: auto;
+        padding: 15px 20px 25px;
+    }
+
+    .aboutService {
+        height: auto;
+        padding: 0;
+        justify-content: left;
+    }
+
+    .aboutService__inner {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .aboutSkill {
+        flex-direction: column;
+    }
+
+    .aboutService__inner .aboutTitle {
+        margin-bottom: 1.5rem;
+    }
+
+    .aboutService__inner .markup {
+        margin: 0 0 1rem;
+    }
+
+    .aboutService__inner .markup h2,
+    .aboutService__inner .tool h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    .aboutService__inner .markup p,
+    .aboutService__inner .tool p {
+        line-height: 1.5;
+    }
+
+    .aboutService__inner .aboutTitle,
+    .aboutService__inner .markup h2,
+    .aboutService__inner .markup p,
+    .aboutService__inner .tool h2,
+    .aboutService__inner .tool p {
+        font-size: 0.9rem;
+    }
+
+    /* //.aboutService */
+    .aboutContact__social {
+        flex-wrap: wrap;
+        margin-bottom: 1.8rem;
+    }
+
+    .aboutContact__social>.title {
+        width: 100%;
+        margin-bottom: 10vh;
+    }
+
+    .social,
+    .email {
+        font-size: 0.9rem;
+    }
+
+    .aboutContact__email>.title {
+        display: none;
+    }
+
+    .aboutContact__social>.title,
+    .aboutContact__social>.title2,
+    .aboutContact__email>.title,
+    .aboutContact__email>.title2 {
+        font-size: 0.9rem;
+    }
+
+    .aboutContact__bottom {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 10vh;
+
+    }
+
+    .aboutImg {
+        height: 260px;
+        position: static;
+        transform: translate(0%);
+    }
+
+    .aboutEmail {
+        margin-top: 20vh;
+    }
+
+    .aboutEmail>.emailLink {
+        font-size: 2.5rem;
+    }
+
+    .aboutEmail>.emailLink>.text {
+        height: 49px;
+    }
+
+    .svg>svg {
+        width: 2.5rem;
+    }
+}
