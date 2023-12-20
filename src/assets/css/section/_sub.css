@@ -1,25 +1,3 @@
-/* 배경 어둡게 */
-/* .subFilter::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-} */
-/* .darkOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--black);
-    opacity: 0;
-    z-index: 9999;
-    display: none;
-} */
-
 /* 애니메이션 셋팅 */
 .close.sub,
 .scrollBar,
@@ -77,10 +55,6 @@
     transform: translateX(-100%);
 }
 
-.bgsliderWrap.sub {
-    width: 500%;
-}
-
 .subPage {
     position: fixed;
     bottom: 45px;
@@ -101,7 +75,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 35px 40px 45px;
     color: var(--white);
     display: flex;
     align-items: center;
@@ -143,17 +116,17 @@
 }
 
 /* section */
-.section {
+/* .section {
     width: 25%;
     height: 100%;
     font-size: 12vw;
     text-align: center;
     font-family: var(--font-gmarket);
     border-right: 1px solid rgba(255, 255, 255, 0.15);
-}
+} */
 
 /* info */
-.info {
+/* .info {
     font-size: 1rem;
     font-family: var(--font-gmarket);
     width: 25%;
@@ -188,10 +161,10 @@
 .info a svg {
     width: 0.8rem;
     height: 0.8rem;
-}
+} */
 
 /* desc */
-.sub__center .desc {
+/* .sub__center .desc {
     width: 80%;
     height: 100%;
     font-family: var(--font-arita);
@@ -199,7 +172,6 @@
     border-right: 1px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: flex-end;
-    /* justify-content: flex-end; */
     padding-bottom: 12vh;
 }
 
@@ -217,10 +189,10 @@
 
 .sub__center .desc .desc__inner p {
     margin-bottom: 2vh;
-}
+} */
 
 /* trouble */
-.sub__center .trouble {
+/* .sub__center .trouble {
     width: 60%;
     height: 100%;
     display: flex;
@@ -252,10 +224,10 @@
 
 .sub__center .trouble .trouble__inner .language-js {
     font-size: 0.8rem;
-}
+} */
 
 /* subNext */
-.sub__center .subNext {
+/* .sub__center .subNext {
     width: 40%;
     height: 100%;
     display: flex;
@@ -282,7 +254,196 @@
 .sub__center .subNext .subNext__inner h2 a svg {
     width: 2vw;
     fill: var(--white);
+} */
+
+/* subBgSlider */
+.subBgSlider {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1659469378420-e68c6ee21a28?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    overflow-y: hidden;
+    overflow-x: auto;
 }
+
+/* ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+} */
+
+.subBgSliderWrap {
+    width: 500vw;
+    height: 100vh;
+    display: flex;
+}
+
+.subBgSliderWrap section {
+    width: 100vw;
+    height: 100vh;
+    padding: 35px 40px 45px;
+}
+
+.subBgSliderWrap section.s1 {
+    background-color: transparent;
+}
+
+.subBgSliderWrap section.s3 {
+    width: 300vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(25px);
+    display: flex;
+}
+
+/* pageSection */
+.pageSection {
+    width: 25vw;
+    height: 100%;
+    font-size: 12vw;
+    color: var(--white);
+    text-align: center;
+    font-family: var(--font-gmarket);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* info */
+.info {
+    font-size: 1rem;
+    font-family: var(--font-gmarket);
+    width: 25vw;
+    height: 100%;
+    padding-bottom: 12vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.info__inner h2,
+.info__inner h3 {
+    font-size: 1rem;
+}
+
+.info__inner h2 {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.info__inner h3 {
+    color: var(--white);
+}
+
+.info__inner h2,
+.info__inner .coding,
+.info__inner .workTime {
+    margin-bottom: 40px;
+}
+
+.info__inner p {
+    color: var(--white);
+}
+
+.info a {
+    position: relative;
+    color: var(--white);
+}
+
+.info a i {
+    margin-right: 0.5vw;
+}
+
+.info a svg {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+/* desc */
+.section.s3 .desc {
+    width: 100vw;
+    height: 100%;
+    font-family: var(--font-arita);
+    font-size: 1.1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: flex-end;
+    padding: 0 10vw 12vh;
+    box-sizing: border-box;
+}
+
+.section.s3 .desc .desc__inner h2 {
+    font-family: var(--font-gmarket);
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 5vh;
+}
+
+.section.s3 .desc .desc__inner span {
+    display: block;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.section.s3 .desc .desc__inner p {
+    color: var(--white);
+    margin-bottom: 2vh;
+}
+
+/* trouble */
+.section.s3 .trouble {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 1rem;
+    padding-left: 10vw;
+    box-sizing: border-box;
+}
+
+.section.s3 .trouble .trouble__inner h2 {
+    font-family: var(--font-gmarket);
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 4vh;
+}
+
+.section.s3 .trouble .trouble__inner h3 {
+    font-family: var(--font-arita);
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.section.s3 .trouble .trouble__inner p {
+    font-family: var(--font-arita);
+    color: var(--white);
+    margin-bottom: 2vh;
+}
+
+/* subNext */
+.section.s3 .subNext {
+    width: 40vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 5vw;
+}
+
+.section.s3 .subNext .subNext__inner a {
+    position: relative;
+    color: var(--white);
+}
+
+.section.s3 .subNext .subNext__inner h2 {
+    font-family: var(--font-noto);
+    font-size: 4vw;
+}
+
+.section.s3 .subNext .subNext__inner h2 a {
+    width: 100%;
+}
+
+.section.s3 .subNext .subNext__inner h2 a svg {
+    width: 2vw;
+    fill: var(--white);
+}
+
 
 @media(max-width: 800px) {
     .close {
@@ -304,7 +465,10 @@
         font-size: 32px;
     }
 
-    .sub__center {
+    /* .sub__center {
+        padding: 15px 20px 25px;
+    } */
+    .subBgSliderWrap section {
         padding: 15px 20px 25px;
     }
 

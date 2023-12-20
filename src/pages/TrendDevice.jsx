@@ -3,8 +3,23 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
+import Highlight from 'react-highlight'
+import 'highlight.js/styles/atom-one-dark.css';
 
 const TrendDevice = () => {
+    // hightlight
+    const codeSnippet = `
+    if (selectedPhone) {
+        const link = document.createElement('a');
+        link.href = '\u0024{ selectedPhone.pLink }';
+        link.className = 'btn__style3';
+        link.innerText = '바로가기';
+        link.target = '_black';
+        const linkContainer = document.querySelector('.pLink1');
+        linkContainer.innerHTML = '';
+        linkContainer.appendChild(link);
+    }
+`;
     gsap.registerPlugin(ScrollTrigger);
 
     // 서브 인트로애니메이션
@@ -32,9 +47,10 @@ const TrendDevice = () => {
         const subAni = gsap.timeline();
 
         subAni.to([".close.sub", ".about.sub"], { opacity: 1, duration: 1.5, ease: "Power1.easeInOut" })
+        subAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(25px)', duration: 3, ease: "Power1.easeInOut" })
         subAni.fromTo(".transitionOverlay", { opacity: 0.8, zIndex: 1 }, { display: "inline-block", opacity: 0.8, duration: 1.5, ease: "Power1.easeInOut" }, "<")
         subAni.fromTo(".sub__center .subTitle", { y: 72 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
-        subAni.fromTo(".bgSliderWrap.sub .split", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
+        subAni.fromTo(".subBgSlider .split", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
 
         document.querySelectorAll(".split").forEach((text) => {
             const spanTimeline = gsap.timeline({ paused: true });
@@ -80,52 +96,6 @@ const TrendDevice = () => {
 
         requestAnimationFrame(raf)
     }, [])
-
-    // 슬라이더
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        let sections = gsap.utils.toArray(".bgSliderWrap .parallax__item");
-        let center = gsap.utils.toArray(".centerSliderWrap .centerSlider");
-        let page = gsap.utils.toArray(".current .pageIndex");
-        let title = gsap.utils.toArray(".titleWrap .title");
-        let desc = gsap.utils.toArray(".descWrap .desc");
-
-        let animation = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#parallax__cont",
-                pin: true,
-                scrub: 1,
-                snap: 1 / (sections.length - 1),
-                end: "+=5500",
-            }
-        });
-
-        ScrollTrigger.matchMedia({
-            "(min-width: 801px)": function () {
-                animation.to(sections, { xPercent: -100 * (sections.length - 1), ease: "none" }, 0)
-                    .to(center, { y: -1080 * (center.length - 1), ease: "none" }, 0)
-                    .to(desc, { y: -24 * (desc.length - 1), ease: "none" }, 0)
-                    .to(page, { y: -24 * (page.length - 1), ease: "none" }, 0)
-                    .to(title, { y: -72 * (title.length - 1), ease: "none" }, 0);
-            },
-            "(max-width: 800px)": function () {
-                animation.to(sections, { xPercent: -100 * (sections.length - 1), ease: "none" }, 0)
-                    .to(center, { y: -1080 * (center.length - 1), ease: "none" }, 0)
-                    .to(desc, { y: -22.39 * (desc.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0)
-                    .to(page, { y: -22.39 * (page.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0)
-                    .to(title, { y: -43 * (title.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0);
-            }
-        });
-        return () => {
-            // ScrollTrigger 해제
-            ScrollTrigger.getAll().forEach(trigger => {
-                trigger.kill();
-            });
-            // GSAP 애니메이션 중지 또는 제거
-            animation.kill();
-        };
-    }, []);
 
     // navBar
     useEffect(() => {
@@ -179,43 +149,19 @@ const TrendDevice = () => {
             );
             ScrollTrigger.matchMedia({
                 "(min-width: 801px)": function () {
-                    closeAni.fromTo(".bgSliderWrap.sub .slider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
+                    closeAni.fromTo(".subBgSliderWrap", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
                 },
                 "(max-width: 800px)": function () {
 
                 }
             })
-            closeAni.to(".transitionOverlay", { opacity: 0, duration: 3, ease: "Power1.easeInOut" })
-
-            // const close = gsap.to("#subMainSlider",
-            //     {
-            //         translateX: 0,
-            //         duration: 1,
-            //         backgroundColor: "white",
-            //         ease: "Power1.easeInOut",
-            //         display: "block",
-            //     },
-            // );
-            // ScrollTrigger.matchMedia({
-            //     "(min-width: 801px)": function () {
-            //         gsap.fromTo(".bgSliderWrap.sub .slider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
-            //     },
-            //     "(max-width: 800px)": function () {
-
-            //     }
-            // })
-            // gsap.to(".transitionOverlay", { opacity: 0, duration: 3, ease: "Power1.easeInOut" })
-
-            // close.play();
-
-            // setTimeout(() => {
-            //     window.location.href = "/";
-            // }, (close.duration() + 1) * 1000);
+            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 3, ease: "Power1.easeInOut" })
+            closeAni.to(".transitionOverlay", { opacity: 0, duration: 3, ease: "Power1.easeInOut" }, "<")
         });
     }, [])
 
     return (
-        <main id='main'>
+        <main id='main' className='main sub'>
             <Link to="/" className="close sub">
                 <svg width="16" height="16" viewBox="0 0 24 24" data-v-c5fc2e64="">
                     <path fill="currentColor"
@@ -293,15 +239,15 @@ const TrendDevice = () => {
                 </div>
             </div>
 
-            <div className="bgSlider" id="parallax__cont">
-                <div className="bgSliderWrap sub">
-                    <div className="slider s1 parallax__item sub">
+            <div className="subBgSlider">
+                <div className="subBgSliderWrap">
+                    <section className='section s1'>
                         <div className="sub__center">
                             <div className="text">
                                 <div className="titleWrap">
-                                    <div className="subTitle split">
+                                    <h5 className="subTitle split">
                                         Trend Device
-                                    </div>
+                                    </h5>
                                 </div>
                                 <div className="subDesc split">
                                     Trend Device는 직관적이고 사용하기 편리한 인터페이스를 제공하여 사용자가 원하는 휴대폰 모델을 선택하고, 선택한 모델들을 한눈에 비교할 수 있도록 합니다.<br />
@@ -310,136 +256,115 @@ const TrendDevice = () => {
                             </div>
                         </div>
                         <div className="transitionOverlay"></div>
-                    </div>
-                    <div className="slider s1 parallax__item sub"></div>
-                    <div className="slider s1 parallax__item sub">
-                        <div className="sub__center">
-                            <div className="section">
-                                #1
-                            </div>
-                            <div className="info">
-                                <div className="info__inner">
-                                    <h2>Website</h2>
-                                    <div className="coding">
-                                        <h3>(coding)</h3>
-                                        <p>PHP, Javascript</p>
-                                    </div>
-                                    <div className="workTime">
-                                        <h3>(workTime)</h3>
-                                        <p>2 Weeks</p>
-                                    </div>
-                                    <div className="link">
-                                        <div className="link1">
-                                            <Link to="http://trenddevice2023.dothome.co.kr/TDsite/php/main/main.php" target="_blank"
-                                                className="underline">
-                                                <i>Link</i>
-                                                <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                    data-v-50e346e1="">
-                                                    <path
-                                                        d="M2.66949 45L0 42.3305L38.5169 3.81356H3.05085V0H45V41.9492H41.1864V6.48305L2.66949 45Z"
-                                                        fill="currentColor" data-v-50e346e1=""></path>
-                                                </svg>
-                                            </Link>
-                                        </div>
-                                        <div className="link2">
-                                        </div>
-                                        <Link to="https://github.com/yunyoungsik/Trend-Device" target="_blank" className="underline">
-                                            <i>Github</i>
+                    </section>
+                    <section className='section s2'>
+                    </section>
+                    <section className='section s3'>
+                        <div className="pageSection">
+                            #1
+                        </div>
+                        <div className="info">
+                            <div className="info__inner">
+                                <h2>Website</h2>
+                                <div className="coding">
+                                    <h3>(coding)</h3>
+                                    <p>PHP, Javascript</p>
+                                </div>
+                                <div className="workTime">
+                                    <h3>(workTime)</h3>
+                                    <p>2 Weeks</p>
+                                </div>
+                                <div className="link">
+                                    <div className="link1">
+                                        <Link to="http://trenddevice2023.dothome.co.kr/TDsite/php/main/main.php" target="_blank"
+                                            className="underline">
+                                            <i>Link</i>
                                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
                                                 data-v-50e346e1="">
-                                                <path d="M2.66949 45L0 42.3305L38.5169 3.81356H3.05085V0H45V41.9492H41.1864V6.48305L2.66949 45Z"
+                                                <path
+                                                    d="M2.66949 45L0 42.3305L38.5169 3.81356H3.05085V0H45V41.9492H41.1864V6.48305L2.66949 45Z"
                                                     fill="currentColor" data-v-50e346e1=""></path>
                                             </svg>
                                         </Link>
                                     </div>
+                                    <div className="link2">
+                                    </div>
+                                    <Link to="https://github.com/yunyoungsik/Trend-Device" target="_blank" className="underline">
+                                        <i>Github</i>
+                                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                            data-v-50e346e1="">
+                                            <path d="M2.66949 45L0 42.3305L38.5169 3.81356H3.05085V0H45V41.9492H41.1864V6.48305L2.66949 45Z"
+                                                fill="currentColor" data-v-50e346e1=""></path>
+                                        </svg>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="transitionOverlay"></div>
-                    </div>
-                    <div className="slider s1 parallax__item sub">
-                        <div className="sub__center">
-                            <div className="desc">
-                                <div className="desc__inner">
-                                    <h2>Description</h2>
-                                    <span>메인</span>
-                                    <p>
-                                        슬라이드는 Javascript를 사용하여 슬라이드 기능을 구현하고 GSAP와 Scroll Triger를 사용하여 각 섹션에 이미지와 어울리는 움직임을 표현하려고 했습니다.
-                                    </p>
-                                    <span>상품페이지</span>
-                                    <p>
-                                        PHP로 작성된 반복문(foreach)을 사용하여 $categoryResult 배열의 각 요소를 순회하며 핸드폰 정보를 리스트로 생성합니다.<br />
-                                        $categoryResult 배열에 있는 각 요소($phone)를 하나씩 가져와서 반복하고 각 반복 요소마다 태그를 생성하여 리스트 아이템을 만듭니다.<br />
-                                        태그를 이용하여 핸드폰 정보 페이지로 연결되는 링크를 생성하고 이미지($phone['pImgFile'])와 해당 제품의 이름($phone['phoneTitle'])을 이미지
-                                        태그()의 src와 alt 속성에 표시합니다.<br />
-                                        foreach 루프를 사용하여 $categoryResult 배열에 있는 각 요소($phone)를 하나씩 가져와서 반복합니다.<br />
-                                        핸드폰의 제목, 간단한 설명, 그리고 가격등 을 안에 가져와 태그로 표시합니다.
-                                    </p>
-                                    <span>비교하기</span>
-                                    <p>
-                                        드롭다운 메뉴에서 변경 사항이 감지되면 이벤트를 트리거합니다.<br />
-                                        이벤트는 선택된 옵션의 값(this.value)을 기반으로 데이터를 필터링하고,해당 데이터에서 선택된 값을 기준으로 정보를 가져와 화면에 표시하는 역할을 합니다.<br />
-                                        이벤트는 선택된 옵션의 값(this.value)을 기반으로 데이터를 필터링하고, 해당 데이터에서 선택된 값을 기준으로 정보를 가져와 화면에 표시합니다.
-                                    </p>
-                                </div>
+                        <div className="desc">
+                            <div className="desc__inner">
+                                <h2>Description</h2>
+                                <span>메인</span>
+                                <p>
+                                    슬라이드는 Javascript를 사용하여 슬라이드 기능을 구현하고 GSAP와 Scroll Triger를 사용하여 각 섹션에 이미지와 어울리는 움직임을 표현하려고 했습니다.
+                                </p>
+                                <span>상품페이지</span>
+                                <p>
+                                    PHP로 작성된 반복문(foreach)을 사용하여 $categoryResult 배열의 각 요소를 순회하며 핸드폰 정보를 리스트로 생성합니다.<br />
+                                    $categoryResult 배열에 있는 각 요소($phone)를 하나씩 가져와서 반복하고 각 반복 요소마다 태그를 생성하여 리스트 아이템을 만듭니다.<br />
+                                    태그를 이용하여 핸드폰 정보 페이지로 연결되는 링크를 생성하고 이미지($phone['pImgFile'])와 해당 제품의 이름($phone['phoneTitle'])을 이미지
+                                    태그()의 src와 alt 속성에 표시합니다.<br />
+                                    foreach 루프를 사용하여 $categoryResult 배열에 있는 각 요소($phone)를 하나씩 가져와서 반복합니다.<br />
+                                    핸드폰의 제목, 간단한 설명, 그리고 가격등 을 안에 가져와 태그로 표시합니다.
+                                </p>
+                                <span>비교하기</span>
+                                <p>
+                                    드롭다운 메뉴에서 변경 사항이 감지되면 이벤트를 트리거합니다.<br />
+                                    이벤트는 선택된 옵션의 값(this.value)을 기반으로 데이터를 필터링하고,해당 데이터에서 선택된 값을 기준으로 정보를 가져와 화면에 표시하는 역할을 합니다.<br />
+                                    이벤트는 선택된 옵션의 값(this.value)을 기반으로 데이터를 필터링하고, 해당 데이터에서 선택된 값을 기준으로 정보를 가져와 화면에 표시합니다.
+                                </p>
                             </div>
                         </div>
-                        <div className="transitionOverlay"></div>
-                    </div>
-                    <div className="slider s1 parallax__item sub">
-                        <div className="sub__center">
-                            <div className="trouble">
-                                <div className="trouble__inner">
-                                    <h2>Trouble Shooting</h2>
-                                    <h3>문제</h3>
-                                    <p>비교 페이지에 처음 접속했을 때 'a'와 'img' 요소에 초기값이 없어서 문제가 발생했습니다.</p>
-                                    <h3>해결</h3>
-                                    <p>
-                                        처음 접속 시에는 초기값이 없는 상태에서 비교 페이지에 들어가면서 'a'와 'img' 요소에 데이터를
-                                        추가해야 했습니다.
-                                    </p>
-                                    <pre><code className="language-js">
-                                        {/* if (selectedPhone) {
-  const link = document.createElement('a');
-                                        link.href = `${selectedPhone.pLink}`;
-                                        link.className = 'btn__style3';
-                                        link.innerText = '바로가기';
-                                        link.target = '_black';
-                                        const linkContainer = document.querySelector('.pLink1');
-                                        linkContainer.innerHTML = '';
-                                        linkContainer.appendChild(link);
-  } */}
-                                    </code></pre>
-                                    <p>
-                                        · 조건부 렌더링으로 에러 방지<br />
-                                        문제 원인은 데이터가 로드되기 전에 해당 정보를 사용하려는 것에서 시작됐습니다.<br />
-                                        이를 해결하기 위해 코드에서 &lbrace;channelDetail &&&rbrace;를 사용하여 조건부 렌더링을 수행했습니다.<br />
-                                        &lbrace;channelDetail &&&rbrace;를 통해 channelDetail이 존재하는지 여부를 확인하고, 존재할 때만 코드를 실행함으로써 에러를 방지했습니다.<br />
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="subNext">
-                                <div className="subNext__inner">
-                                    <span>
-                                        <Link to="/movie" className="underline">(next)</Link>
-                                    </span>
-                                    <h2>
-                                        <Link to="/movie" className="underline">
-                                            <span>Movie</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
-                                                <path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z"
-                                                    data-name="Right" />
-                                            </svg>
-                                        </Link>
-                                    </h2>
-                                    <span>
-                                        <Link to="/" className="underline">(prev)</Link>
-                                    </span>
-                                </div>
+                        <div className="trouble">
+                            <div className="trouble__inner">
+                                <h2>Trouble Shooting</h2>
+                                <h3>문제</h3>
+                                <p>비교 페이지에 처음 접속했을 때 'a'와 'img' 요소에 초기값이 없어서 문제가 발생했습니다.</p>
+                                <h3>해결</h3>
+                                <p>
+                                    처음 접속 시에는 초기값이 없는 상태에서 비교 페이지에 들어가면서 'a'와 'img' 요소에 데이터를
+                                    추가해야 했습니다.
+                                </p>
+                                <Highlight className="javascript">
+                                    {codeSnippet}
+                                </Highlight>
+                                <p>
+                                    · 조건부 렌더링으로 에러 방지<br />
+                                    문제 원인은 데이터가 로드되기 전에 해당 정보를 사용하려는 것에서 시작됐습니다.<br />
+                                    이를 해결하기 위해 코드에서 &lbrace;channelDetail &&&rbrace;를 사용하여 조건부 렌더링을 수행했습니다.<br />
+                                    &lbrace;channelDetail &&&rbrace;를 통해 channelDetail이 존재하는지 여부를 확인하고, 존재할 때만 코드를 실행함으로써 에러를 방지했습니다.<br />
+                                </p>
                             </div>
                         </div>
-                        <div className="transitionOverlay"></div>
-                    </div>
+                        <div className="subNext">
+                            <div className="subNext__inner">
+                                <span>
+                                    <Link to="/movie" className="underline">(next)</Link>
+                                </span>
+                                <h2>
+                                    <Link to="/movie" className="underline">
+                                        <span>Movie</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+                                            <path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z"
+                                                data-name="Right" />
+                                        </svg>
+                                    </Link>
+                                </h2>
+                                <span>
+                                    <Link to="/" className="underline">(prev)</Link>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </main>

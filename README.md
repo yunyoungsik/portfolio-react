@@ -5,7 +5,8 @@ npx create-react-app .
 npm install react-router-dom   
 npm install @gsap/react   
 npm install gsap   
-npm i @studio-freight/lenis   
+npm i @studio-freight/lenis  
+npm install react-highlight --save    
 
 ## 트러블슈팅
 문제 : Home, sub 페이지에서 About페이지로 넘어가도 Scroll 효과가 남아있음
