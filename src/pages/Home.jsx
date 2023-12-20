@@ -1,9 +1,48 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
 
 const Home = () => {
+    // 마우스
+    useEffect(() => {
+
+        const mouseCursor = document.querySelector(".mouse__cursor");
+
+        window.addEventListener("mousemove", (e) => {
+            gsap.to(mouseCursor, { duration: 1, left: e.screenX + 0, top: e.screenY + 0 });
+        });
+
+        document.querySelectorAll(".mouse__text").forEach(span => {
+            span.addEventListener("mouseenter", () => {
+                mouseCursor.classList.add("active");
+            });
+            span.addEventListener("mouseleave", () => {
+                mouseCursor.classList.remove("active");
+            });
+        })
+    })
+
+    // lenis
+    useEffect(() => {
+        const lenis = new Lenis({
+            duration: 1,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        })
+
+        lenis.on('scroll', (e) => {
+            // console.log(e)
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    }, [])
+
     // 슬라이드
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -40,6 +79,15 @@ const Home = () => {
                     .to(title, { y: -43 * (title.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0);
             }
         });
+
+        return () => {
+            // ScrollTrigger 해제
+            ScrollTrigger.getAll().forEach(trigger => {
+                trigger.kill();
+            });
+            // GSAP 애니메이션 중지 또는 제거
+            animation.kill();
+        };
     })
 
     // 화면전환
@@ -80,9 +128,9 @@ const Home = () => {
                         } else if (subLink.classList.contains("mv")) {
                             window.location.href = "./movie";
                         } else if (subLink.classList.contains("ki")) {
-                            window.location.href = ".kicoff";
+                            window.location.href = "/kicoff";
                         } else if (subLink.classList.contains("bl")) {
-                            window.location.href = ".blog";
+                            window.location.href = "/blog";
                         }
                     }
                 });
@@ -216,7 +264,7 @@ const Home = () => {
                                     <Link to="#" className="ki subLink split">Kickoff</Link>
                                 </h2>
                                 <h2 className="title">
-                                    <Link to="#" className="bl subLink split">Blog</Link>
+                                    <Link to="#" className="bl subLink split">BLOG</Link>
                                 </h2>
                             </div>
                         </div>
@@ -240,8 +288,8 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="center__img">
-                        <div className="centerSliderWrap mouse__text">
+                    <div className="center__img mouse__text">
+                        <div className="centerSliderWrap">
                             <div className="centerSlider s1 main">
                                 <Link to="#" className="td subLink"><img src="https://images.unsplash.com/photo-1659469378420-e68c6ee21a28?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 01" /></Link>
                             </div>

@@ -1,11 +1,32 @@
 import React, { useEffect } from 'react'
 import { gsap } from 'gsap';
+import Lenis from '@studio-freight/lenis'
 import { Link } from 'react-router-dom';
 
 const About = () => {
+    // lenis
     useEffect(() => {
-         // 글자 쪼개기
-         document.querySelectorAll(".split").forEach(text => {
+        const lenis = new Lenis({
+            duration: 1,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        })
+
+        lenis.on('scroll', (e) => {
+            // console.log(e)
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    }, [])
+
+    // hover
+    useEffect(() => {
+        // 글자 쪼개기
+        document.querySelectorAll(".split").forEach(text => {
             let newText = "";
 
             for (let i = 0; i < text.innerText.length; i++) {
@@ -35,14 +56,11 @@ const About = () => {
 
                 gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
                     let yPos = 0;
-                    let animOpacity = 1;
 
-                    if (windowWidth <= 80) {
+                    if (windowWidth <= 800) {
                         yPos = -50;
-                        animOpacity = 0.5;
                     } else {
                         yPos = -75;
-                        animOpacity = 1;
                     }
 
                     spanTimeline.fromTo(
@@ -54,7 +72,7 @@ const About = () => {
                         },
                         {
                             y: yPos,
-                            opacity: animOpacity,
+                            opacity: 1,
                             ease: "Power1.easeInOut"
                         },
                         index * 0.02

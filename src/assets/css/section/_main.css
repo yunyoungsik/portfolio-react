@@ -1,3 +1,9 @@
+/* 임시 */
+.mainSlider__center>.center__text>.descSlider {
+    display: none;
+}
+
+/* main */
 #main {
     width: 100%;
     height: 100vh;
@@ -39,7 +45,7 @@
 }
 
 .bgSliderWrap {
-    width: 600%;
+    width: 500%;
     height: 100vh;
     display: flex;
 }
@@ -125,10 +131,11 @@
 
 .mainSlider__center>.center__text {
     width: 100%;
+    z-index: 1001;
 }
 
 .mainSlider__center>.center__text>.titleSlider {
-    height: 72px;
+    height: 55px;
     overflow: hidden;
 }
 
@@ -176,6 +183,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
+    z-index: 1000;
 }
 
 .mainSlider__center>.center__img>.centerSliderWrap {
@@ -244,12 +252,6 @@
 
 .mainSlider__bottom>.scroll__arrow>div>svg {
     height: 12px;
-}
-
-@media(max-width: 1450px) {
-    .mainSlider__center .center__text {
-        z-index: 1;
-    }
 }
 
 @media(max-width: 800px) {

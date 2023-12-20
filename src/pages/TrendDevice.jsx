@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
 
 const TrendDevice = () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -33,7 +34,6 @@ const TrendDevice = () => {
         subAni.to([".close.sub", ".about.sub"], { opacity: 1, duration: 1.5, ease: "Power1.easeInOut" })
         subAni.fromTo(".transitionOverlay", { opacity: 0.8, zIndex: 1 }, { display: "inline-block", opacity: 0.8, duration: 1.5, ease: "Power1.easeInOut" }, "<")
         subAni.fromTo(".sub__center .subTitle", { y: 72 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
-        subAni.fromTo(".sub__center .subTitle", { y: 72 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
         subAni.fromTo(".bgSliderWrap.sub .split", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
 
         document.querySelectorAll(".split").forEach((text) => {
@@ -59,6 +59,26 @@ const TrendDevice = () => {
             subAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
         });
         subAni.fromTo([".current.sub", ".scrollBar"], { y: 24 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" })
+    }, [])
+
+    // lenis X
+    useEffect(() => {
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'horizontal' // 방향을 가로로 설정
+        })
+
+        lenis.on('scrollX', (e) => {
+            // console.log(e.scrollX);
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
     }, [])
 
     // 슬라이더
@@ -97,6 +117,14 @@ const TrendDevice = () => {
                     .to(title, { y: -43 * (title.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0);
             }
         });
+        return () => {
+            // ScrollTrigger 해제
+            ScrollTrigger.getAll().forEach(trigger => {
+                trigger.kill();
+            });
+            // GSAP 애니메이션 중지 또는 제거
+            animation.kill();
+        };
     }, []);
 
     // navBar
@@ -113,7 +141,34 @@ const TrendDevice = () => {
         // close
         document.querySelector(".close").addEventListener("click", function (event) {
             event.preventDefault();
-            const close = gsap.to("#subMainSlider",
+
+            const closeAni = gsap.timeline();
+
+            closeAni.to([".close.sub", ".about.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" })
+            document.querySelectorAll(".split").forEach((text) => {
+                const spanTimeline = gsap.timeline({ paused: true });
+
+                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                    spanTimeline.fromTo(
+                        span,
+                        {
+                            y: 0,
+                            opacity: 1,
+                            display: "inline-block"
+                        },
+                        {
+                            y: 30,
+                            opacity: 0,
+                            ease: "Power1.easeInOut",
+                        },
+                        index * 0.01
+                    );
+                });
+
+                closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
+            });
+            closeAni.fromTo([".current.sub", ".scrollBar"], { y: 0 }, { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" })
+            closeAni.to("#subMainSlider",
                 {
                     translateX: 0,
                     duration: 1,
@@ -124,19 +179,38 @@ const TrendDevice = () => {
             );
             ScrollTrigger.matchMedia({
                 "(min-width: 801px)": function () {
-                    gsap.fromTo(".bgSliderWrap.sub .slider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
+                    closeAni.fromTo(".bgSliderWrap.sub .slider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
                 },
                 "(max-width: 800px)": function () {
 
                 }
             })
-            gsap.to(".transitionOverlay", { opacity: 0, duration: 3, ease: "Power1.easeInOut" })
+            closeAni.to(".transitionOverlay", { opacity: 0, duration: 3, ease: "Power1.easeInOut" })
 
-            close.play();
+            // const close = gsap.to("#subMainSlider",
+            //     {
+            //         translateX: 0,
+            //         duration: 1,
+            //         backgroundColor: "white",
+            //         ease: "Power1.easeInOut",
+            //         display: "block",
+            //     },
+            // );
+            // ScrollTrigger.matchMedia({
+            //     "(min-width: 801px)": function () {
+            //         gsap.fromTo(".bgSliderWrap.sub .slider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
+            //     },
+            //     "(max-width: 800px)": function () {
 
-            setTimeout(() => {
-                window.location.href = "/";
-            }, (close.duration() + 1) * 1000);
+            //     }
+            // })
+            // gsap.to(".transitionOverlay", { opacity: 0, duration: 3, ease: "Power1.easeInOut" })
+
+            // close.play();
+
+            // setTimeout(() => {
+            //     window.location.href = "/";
+            // }, (close.duration() + 1) * 1000);
         });
     }, [])
 
