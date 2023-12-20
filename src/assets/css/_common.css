@@ -109,6 +109,9 @@ body::-webkit-scrollbar-track {
     z-index: 1000;
     color: var(--white);
 }
+.close:hover {
+    color: var(--white);
+}
 
 .close:hover {
     color: var(--white);

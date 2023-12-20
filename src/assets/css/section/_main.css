@@ -183,7 +183,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .mainSlider__center>.center__img>.centerSliderWrap {

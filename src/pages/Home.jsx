@@ -229,7 +229,7 @@ const Home = () => {
                     );
                     pageTransition.to(".transitionOverlay", { display: "inline-block", duration: 1.5, ease: "Power1.easeInOut", opacity: 0.8 }, "<")
                 });
-            }, 1500);
+            }, 1000);
         });
     }, [])
 

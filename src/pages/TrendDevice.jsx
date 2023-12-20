@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from '@studio-freight/lenis';
 import Highlight from 'react-highlight'
 import 'highlight.js/styles/atom-one-dark.css';
 
@@ -20,8 +19,52 @@ const TrendDevice = () => {
         linkContainer.appendChild(link);
     }
 `;
-    gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
+// const sectionRef = useRef(null); // useRef로 참조할 요소
+//   const triggerRef = useRef(null);
+
+//    // horizontal 스크롤 애니메이션
+//    useEffect(() => {
+//     const pin = gsap.fromTo( // from, to, fromTo가 있다.
+//       sectionRef.current, // Gsap 애니메이션이 시작되는 요소 위치
+//       { translateX: 0 }, // from 부분(초기 시작)
+//       {
+//         translateX: -500, // to 부분
+//         ease: "none", // 쓸데없는 애니메이션 없애는 부분
+//         ScrollTrigger: { // 스크롤 애니메이션 발생하는 부분
+//           trigger: triggerRef.current, // 스크롤이 발생되는 요소 위치
+//           start: "top top", // "요소위치 시작위치"
+//           end: "bottom center", // "요소위치 끝위치"
+//           scrub: 0.7, // 되감기 기능, 또한 스크롤을 부드러운 애니메이션 추가.
+//           pin: ".project-section", // 가로스크롤시 페이지를 고정할 수 있는 기능
+//         },
+//       }
+//     );
+//     return () => {
+//       pin.kill(); // 모든 애니메이션 중단
+//     };
+//   }, []);
+
+// useEffect(() => {
+//     window.onload = function() {
+//         let sections = gsap.utils.toArray('.subBgSliderWrap section');
+
+//         sections.forEach((section, index) => {
+//             gsap.to(section, {
+//                 xPercent: -100 * index,
+//                 ease: "none",
+//                 scrollTrigger: {
+//                     trigger: section,
+//                     pin: true,
+//                     scrub: 1,
+//                     baseVerticalScroll: "auto"
+//                 }
+//             });
+//         });
+//     }
+// })
+    
     // 서브 인트로애니메이션
     useEffect(() => {
         // 글자 쪼개기
@@ -47,8 +90,8 @@ const TrendDevice = () => {
         const subAni = gsap.timeline();
 
         subAni.to([".close.sub", ".about.sub"], { opacity: 1, duration: 1.5, ease: "Power1.easeInOut" })
-        subAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(25px)', duration: 3, ease: "Power1.easeInOut" })
-        subAni.fromTo(".transitionOverlay", { opacity: 0.8, zIndex: 1 }, { display: "inline-block", opacity: 0.8, duration: 1.5, ease: "Power1.easeInOut" }, "<")
+        subAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(25px)', duration: 1.5, ease: "Power1.easeInOut" })
+        subAni.fromTo(".transitionOverlay", { opacity: 0.8, zIndex: 1 }, { display: "inline-block", opacity: 0.5, duration: 1.5, ease: "Power1.easeInOut" }, "<")
         subAni.fromTo(".sub__center .subTitle", { y: 72 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
         subAni.fromTo(".subBgSlider .split", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
 
@@ -77,25 +120,6 @@ const TrendDevice = () => {
         subAni.fromTo([".current.sub", ".scrollBar"], { y: 24 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" })
     }, [])
 
-    // lenis X
-    useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'horizontal' // 방향을 가로로 설정
-        })
-
-        lenis.on('scrollX', (e) => {
-            // console.log(e.scrollX);
-        })
-
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-
-        requestAnimationFrame(raf)
-    }, [])
 
     // navBar
     useEffect(() => {
@@ -149,7 +173,7 @@ const TrendDevice = () => {
             );
             ScrollTrigger.matchMedia({
                 "(min-width: 801px)": function () {
-                    closeAni.fromTo(".subBgSliderWrap", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
+                    closeAni.fromTo(".subBgSlider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
                 },
                 "(max-width: 800px)": function () {
 
