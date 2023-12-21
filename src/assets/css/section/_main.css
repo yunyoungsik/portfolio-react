@@ -130,8 +130,7 @@
 }
 
 .mainSlider__center>.center__text {
-    width: 100%;
-    z-index: 1001;
+    z-index: 1;
 }
 
 .mainSlider__center>.center__text>.titleSlider {
@@ -183,7 +182,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    z-index: 1001;
 }
 
 .mainSlider__center>.center__img>.centerSliderWrap {

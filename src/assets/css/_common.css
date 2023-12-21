@@ -29,6 +29,11 @@ body::-webkit-scrollbar-track {
     /*스크롤바 뒷 배경 색상*/
 }
 
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 /* about */
 .about {
     font-family: var(--font-gmarket);
@@ -86,6 +91,18 @@ body::-webkit-scrollbar-track {
     display: none;
 }
 
+.subTransitionOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    z-index: 1;
+    opacity: 0;
+    display: none;
+}
+
 /* .transitionOverlay {
     position: absolute;
     top: 0;
@@ -109,6 +126,7 @@ body::-webkit-scrollbar-track {
     z-index: 1000;
     color: var(--white);
 }
+
 .close:hover {
     color: var(--white);
 }

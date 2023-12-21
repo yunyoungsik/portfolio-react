@@ -22,6 +22,12 @@
     font-size: 18px;
 }
 
+#about #header .aboutClose,
+#about #header .logo,
+#about #header .logo span {
+    opacity: 0;
+}
+
 #about #header .aboutClose a {
     display: block;
     position: relative;

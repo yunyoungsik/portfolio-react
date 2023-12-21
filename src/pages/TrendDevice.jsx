@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
 import Highlight from 'react-highlight'
 import 'highlight.js/styles/atom-one-dark.css';
 
@@ -9,37 +10,89 @@ const TrendDevice = () => {
     // hightlight
     const codeSnippet = `
     if (selectedPhone) {
-        const link = document.createElement('a');
-        link.href = '\u0024{ selectedPhone.pLink }';
-        link.className = 'btn__style3';
-        link.innerText = '바로가기';
-        link.target = '_black';
-        const linkContainer = document.querySelector('.pLink1');
-        linkContainer.innerHTML = '';
-        linkContainer.appendChild(link);
+      const link = document.createElement('a');
+      link.href = '\u0024{ selectedPhone.pLink }';
+      link.className = 'btn__style3';
+      link.innerText = '바로가기';
+      link.target = '_black';
+      const linkContainer = document.querySelector('.pLink1');
+      linkContainer.innerHTML = '';
+      linkContainer.appendChild(link);
     }
 `;
-gsap.registerPlugin(ScrollTrigger);
+    // Lenis 설정
+    useEffect(() => {
+        const lenis = new Lenis({
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        })
 
-// useEffect(() => {
-//     window.onload = function() {
-//         let sections = gsap.utils.toArray('.subBgSliderWrap section');
+        lenis.on('scroll', (e) => {
+            // console.log(e)
+        })
 
-//         sections.forEach((section, index) => {
-//             gsap.to(section, {
-//                 xPercent: -100 * index,
-//                 ease: "none",
-//                 scrollTrigger: {
-//                     trigger: section,
-//                     pin: true,
-//                     scrub: 1,
-//                     baseVerticalScroll: "auto"
-//                 }
-//             });
-//         });
-//     }
-// })
-    
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    }, [])
+
+    // 가로 스크롤
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const horizontal2 = document.querySelector(".subBgSliderWrap");
+        const horSections1 = gsap.utils.toArray(".section.s1");
+        const horSections2 = gsap.utils.toArray(".section.s2");
+        const horSections3 = gsap.utils.toArray(".section.s3");
+
+        // 각 섹션의 실제 총 너비를 계산
+        let totalWidth1 = 0;
+        horSections1.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            totalWidth1 += rect.width;
+        });
+
+        let totalWidth2 = 0;
+        horSections2.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            totalWidth2 += rect.width;
+        });
+
+        let totalWidth3 = 0;
+        horSections3.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            totalWidth3 += rect.width;
+        });
+        // console.log(totalWidth1 + totalWidth2 + totalWidth3)
+        // console.log(totalWidth1 + totalWidth2 + totalWidth3 - window.innerWidth)
+
+        // 첫 번째 섹션에 대한 가로 스크롤 애니메이션 정의
+        gsap.to(horizontal2, {
+            xPercent: -70,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".subBgSlider",
+                start: "top top",
+                end: () => "+=" + (totalWidth1 + totalWidth2 + totalWidth3 - window.innerWidth),
+                pin: true,
+                scrub: 1,
+                // snap: 1,
+                invalidateOnRefresh: true,
+                anticipatePin: 1,
+            },
+        });
+
+        // navBar
+        gsap.to("progress", {
+            value: 100,
+            ease: "Power1.easeInOut",
+            scrollTrigger: { scrub: 0.3 }
+        });
+    }, [])
+
     // 서브 인트로애니메이션
     useEffect(() => {
         // 글자 쪼개기
@@ -95,16 +148,6 @@ gsap.registerPlugin(ScrollTrigger);
         subAni.fromTo([".current.sub", ".scrollBar"], { y: 24 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" })
     }, [])
 
-
-    // navBar
-    useEffect(() => {
-        gsap.to("progress", {
-            value: 100,
-            ease: "Power1.easeInOut",
-            scrollTrigger: { scrub: 0.3 }
-        });
-    }, [])
-
     // close 애니메이션
     useEffect(() => {
         // close
@@ -113,7 +156,8 @@ gsap.registerPlugin(ScrollTrigger);
 
             const closeAni = gsap.timeline();
 
-            closeAni.to([".close.sub", ".about.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" })
+            closeAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
+            closeAni.to([".close.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" })
             document.querySelectorAll(".split").forEach((text) => {
                 const spanTimeline = gsap.timeline({ paused: true });
 
@@ -154,9 +198,33 @@ gsap.registerPlugin(ScrollTrigger);
 
                 }
             })
-            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 3, ease: "Power1.easeInOut" })
-            closeAni.to(".transitionOverlay", { opacity: 0, duration: 3, ease: "Power1.easeInOut" }, "<")
+            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 2, ease: "Power1.easeInOut" })
+            closeAni.to(".transitionOverlay", { opacity: 0, duration: 2, ease: "Power1.easeInOut" }, "<")
+            setTimeout(() => {
+                closeAni.eventCallback("onComplete", () => {
+                    window.location.href = "/";
+                });
+            }, 500);
         });
+    }, [])
+
+    // about
+    useEffect(() => {
+        const about = document.querySelector(".about");
+
+        about.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const aboutAni = gsap.timeline();
+
+            aboutAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
+            aboutAni.to(".subTransitionOverlay", { display: "block", zIndex: 9999, opacity: 1, duration: 2, ease: "Power1.easeInOut" })
+            setTimeout(() => {
+                aboutAni.eventCallback("onComplete", () => {
+                    window.location.href = "/about";
+                });
+            }, 500);
+        })
     }, [])
 
     return (
@@ -249,8 +317,10 @@ gsap.registerPlugin(ScrollTrigger);
                                     </h5>
                                 </div>
                                 <div className="subDesc split">
-                                    Trend Device는 직관적이고 사용하기 편리한 인터페이스를 제공하여 사용자가 원하는 휴대폰 모델을 선택하고, 선택한 모델들을 한눈에 비교할 수 있도록 합니다.<br />
-                                    각 휴대폰 모델에는 사진, 기술 사양, 가격 등의 정보가 제공되어 사용자가 원하는 정보를 쉽게 찾을 수 있습니다.
+                                    Trend Device는 직관적이고 사용하기 편리한 인터페이스를 제공하여<br />
+                                    사용자가 원하는 휴대폰 모델을 선택하고, 선택한 모델들을 한눈에 비교할 수 있도록 합니다.<br />
+                                    각 휴대폰 모델에는 사진, 기술 사양, 가격 등의 정보가 제공되어<br />
+                                    사용자가 원하는 정보를 쉽게 찾을 수 있습니다.
                                 </div>
                             </div>
                         </div>
@@ -264,6 +334,7 @@ gsap.registerPlugin(ScrollTrigger);
                         </div>
                         <div className="info">
                             <div className="info__inner">
+                                <h2 className='mPageSection'>#1</h2>
                                 <h2>Website</h2>
                                 <div className="coding">
                                     <h3>(coding)</h3>
@@ -304,22 +375,15 @@ gsap.registerPlugin(ScrollTrigger);
                                 <h2>Description</h2>
                                 <span>메인</span>
                                 <p>
-                                    슬라이드는 Javascript를 사용하여 슬라이드 기능을 구현하고 GSAP와 Scroll Triger를 사용하여 각 섹션에 이미지와 어울리는 움직임을 표현하려고 했습니다.
+                                    자바스크립트와 GSAP, Scroll Trigger를 사용하여 슬라이드 및 각 섹션에 이미지와 어울리는 움직임을 구현하고자 했습니다.
                                 </p>
                                 <span>상품페이지</span>
                                 <p>
-                                    PHP로 작성된 반복문(foreach)을 사용하여 $categoryResult 배열의 각 요소를 순회하며 핸드폰 정보를 리스트로 생성합니다.<br />
-                                    $categoryResult 배열에 있는 각 요소($phone)를 하나씩 가져와서 반복하고 각 반복 요소마다 태그를 생성하여 리스트 아이템을 만듭니다.<br />
-                                    태그를 이용하여 핸드폰 정보 페이지로 연결되는 링크를 생성하고 이미지($phone['pImgFile'])와 해당 제품의 이름($phone['phoneTitle'])을 이미지
-                                    태그()의 src와 alt 속성에 표시합니다.<br />
-                                    foreach 루프를 사용하여 $categoryResult 배열에 있는 각 요소($phone)를 하나씩 가져와서 반복합니다.<br />
-                                    핸드폰의 제목, 간단한 설명, 그리고 가격등 을 안에 가져와 태그로 표시합니다.
+                                    PHP의 foreach를 이용하여 핸드폰 정보를 리스트 형태로 생성합니다. 각 핸드폰 정보에 대한 태그를 생성하고, 이미지와 이름을 링크에 표시하여 핸드폰의 제목, 간단한 설명, 가격 등을 리스트로 보여줍니다.
                                 </p>
                                 <span>비교하기</span>
                                 <p>
-                                    드롭다운 메뉴에서 변경 사항이 감지되면 이벤트를 트리거합니다.<br />
-                                    이벤트는 선택된 옵션의 값(this.value)을 기반으로 데이터를 필터링하고,해당 데이터에서 선택된 값을 기준으로 정보를 가져와 화면에 표시하는 역할을 합니다.<br />
-                                    이벤트는 선택된 옵션의 값(this.value)을 기반으로 데이터를 필터링하고, 해당 데이터에서 선택된 값을 기준으로 정보를 가져와 화면에 표시합니다.
+                                    드롭다운 메뉴 변경 시, 선택된 값(this.value)을 기반으로 데이터 필터링하여 해당 정보를 화면에 표시합니다. 선택된 옵션 값에 따라 데이터를 필터링하고, 해당 정보를 화면에 표시하는 방식으로 작동합니다.
                                 </p>
                             </div>
                         </div>
@@ -327,20 +391,17 @@ gsap.registerPlugin(ScrollTrigger);
                             <div className="trouble__inner">
                                 <h2>Trouble Shooting</h2>
                                 <h3>문제</h3>
-                                <p>비교 페이지에 처음 접속했을 때 'a'와 'img' 요소에 초기값이 없어서 문제가 발생했습니다.</p>
+                                <p>비교 페이지에 접속했을 때 'a'와 'img' 요소에 초기값이 없는 문제</p>
                                 <h3>해결</h3>
                                 <p>
-                                    처음 접속 시에는 초기값이 없는 상태에서 비교 페이지에 들어가면서 'a'와 'img' 요소에 데이터를
-                                    추가해야 했습니다.
+                                    초기값이 없는 상태의 'a'와 'img' 요소를 조건부 렌더링으로 처리
                                 </p>
                                 <Highlight className="javascript">
                                     {codeSnippet}
                                 </Highlight>
                                 <p>
-                                    · 조건부 렌더링으로 에러 방지<br />
-                                    문제 원인은 데이터가 로드되기 전에 해당 정보를 사용하려는 것에서 시작됐습니다.<br />
-                                    이를 해결하기 위해 코드에서 &lbrace;channelDetail &&&rbrace;를 사용하여 조건부 렌더링을 수행했습니다.<br />
-                                    &lbrace;channelDetail &&&rbrace;를 통해 channelDetail이 존재하는지 여부를 확인하고, 존재할 때만 코드를 실행함으로써 에러를 방지했습니다.<br />
+                                    문제는 데이터 로딩 전에 정보를 사용하려고 했던 것이었습니다.<br />
+                                    조건부 렌더링을 사용하여 데이터 존재 여부를 확인하고, 데이터가 있는 경우에만 코드를 실행하여 에러를 방지했습니다.
                                 </p>
                             </div>
                         </div>
@@ -350,8 +411,10 @@ gsap.registerPlugin(ScrollTrigger);
                                     <Link to="/movie" className="underline">(next)</Link>
                                 </span>
                                 <h2>
-                                    <Link to="/movie" className="underline">
+                                    <Link to="/movie">
                                         <span>Movie</span>
+                                    </Link>
+                                    <Link to="/movie">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
                                             <path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z"
                                                 data-name="Right" />
@@ -366,6 +429,7 @@ gsap.registerPlugin(ScrollTrigger);
                     </section>
                 </div>
             </div>
+            <div className="subTransitionOverlay"></div>
         </main>
     )
 }

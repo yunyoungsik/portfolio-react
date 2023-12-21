@@ -7,7 +7,7 @@ const About = () => {
     // lenis
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1,
+            duration: 3,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
         })
 
@@ -22,6 +22,14 @@ const About = () => {
 
         requestAnimationFrame(raf)
     }, [])
+
+    //about intro
+    useEffect(() => {
+        const aboutIntro = gsap.timeline();
+
+        aboutIntro.to("#about #header .logo", { opacity: 1, duration: 2, ease: "power1.inOut", delay: 1 })
+        aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 2, ease: "power1.inOut" })
+    })
 
     // hover
     useEffect(() => {
@@ -117,7 +125,7 @@ const About = () => {
         <div id='about'>
             <header id="header">
                 <h1 className="logo">
-                    <Link to="/">YunYoungsik</Link>
+                    <Link to="/">Y<span>unYoungsik</span></Link>
                 </h1>
                 <div className="aboutClose">
                     <Link to="/" className="aboutClose underline">Close</Link>
