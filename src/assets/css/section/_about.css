@@ -28,6 +28,11 @@
     opacity: 0;
 }
 
+#about #header .logo {
+    height: 20px;
+    overflow: hidden;
+}
+
 #about #header .aboutClose a {
     display: block;
     position: relative;
@@ -82,6 +87,9 @@
 .aboutCenter h2 {
     font-size: 72px;
     font-family: var(--font-noto);
+    height: 100px;
+    overflow: hidden;
+    opacity: 0;
 }
 
 .aboutCenter p {
@@ -89,6 +97,7 @@
     font-size: 12px;
     text-align: right;
     transform: translateX(25%);
+    opacity: 0;
 }
 
 /* aboutDesc */

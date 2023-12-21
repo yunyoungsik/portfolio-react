@@ -71,7 +71,7 @@ const TrendDevice = () => {
 
         // 첫 번째 섹션에 대한 가로 스크롤 애니메이션 정의
         gsap.to(horizontal2, {
-            xPercent: -70,
+            xPercent: -75,
             ease: "none",
             scrollTrigger: {
                 trigger: ".subBgSlider",
@@ -117,9 +117,10 @@ const TrendDevice = () => {
         // sub intro
         const subAni = gsap.timeline();
 
-        subAni.to([".close.sub", ".about.sub"], { opacity: 1, duration: 1.5, ease: "Power1.easeInOut" })
-        subAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(25px)', duration: 1.5, ease: "Power1.easeInOut" })
+        
         subAni.fromTo(".transitionOverlay", { opacity: 0.8, zIndex: 1 }, { display: "inline-block", opacity: 0.5, duration: 1.5, ease: "Power1.easeInOut" }, "<")
+        subAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(75px)', duration: 1.5, ease: "Power1.easeInOut" }, "<")
+        subAni.to([".close.sub", ".about.sub"], { opacity: 1, duration: 1.5, ease: "Power1.easeInOut" },"<")
         subAni.fromTo(".sub__center .subTitle", { y: 72 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
         subAni.fromTo(".subBgSlider .split", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
 
@@ -217,8 +218,9 @@ const TrendDevice = () => {
 
             const aboutAni = gsap.timeline();
 
-            aboutAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
-            aboutAni.to(".subTransitionOverlay", { display: "block", zIndex: 9999, opacity: 1, duration: 2, ease: "Power1.easeInOut" })
+            aboutAni.to([".close.sub", ".about.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" },"<")
+            aboutAni.to([".current.sub", ".scrollBar"], { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" }, "<")
+            aboutAni.to(".subTransitionOverlay", { display: "block", opacity: 1, duration: 2, ease: "Power1.easeInOut" })
             setTimeout(() => {
                 aboutAni.eventCallback("onComplete", () => {
                     window.location.href = "/about";
@@ -428,8 +430,8 @@ const TrendDevice = () => {
                         </div>
                     </section>
                 </div>
+                <div className="subTransitionOverlay"></div>
             </div>
-            <div className="subTransitionOverlay"></div>
         </main>
     )
 }

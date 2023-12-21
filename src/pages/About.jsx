@@ -23,14 +23,6 @@ const About = () => {
         requestAnimationFrame(raf)
     }, [])
 
-    //about intro
-    useEffect(() => {
-        const aboutIntro = gsap.timeline();
-
-        aboutIntro.to("#about #header .logo", { opacity: 1, duration: 2, ease: "power1.inOut", delay: 1 })
-        aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 2, ease: "power1.inOut" })
-    })
-
     // hover
     useEffect(() => {
         // 글자 쪼개기
@@ -56,7 +48,7 @@ const About = () => {
 
         // hover
         email.addEventListener("mouseover", function () {
-            const splitTexts = document.querySelectorAll(".split");
+            const splitTexts = document.querySelectorAll(".split.text");
             const windowWidth = window.innerWidth;
 
             splitTexts.forEach((text) => {
@@ -95,7 +87,7 @@ const About = () => {
 
         // out
         email.addEventListener("mouseout", function () {
-            document.querySelectorAll(".split").forEach((text) => {
+            document.querySelectorAll(".split.text").forEach((text) => {
                 const spanTimeline = gsap.timeline({ paused: true });
 
                 gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
@@ -121,11 +113,129 @@ const About = () => {
         })
     }, [])
 
+    //about intro
+    useEffect(() => {
+        const aboutIntro = gsap.timeline();
+
+        aboutIntro.to("#about #header .logo", { opacity: 1, duration: 2, ease: "power1.inOut", delay: 1 })
+        aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 2, ease: "power1.inOut" })
+        aboutIntro.to(".aboutCenter h2 ", { opacity: 1}, "<")
+
+        document.querySelectorAll(".split.aboutLogo").forEach((text) => {
+            const spanTimeline = gsap.timeline({ paused: true });
+
+            gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                spanTimeline.fromTo(
+                    span,
+                    {
+                        y: 30,
+                        opacity: 0,
+                        display: "inline-block"
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        ease: "Power1.easeInOut",
+                    },
+                    index * 0.05
+                );
+            });
+
+            aboutIntro.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
+        });
+
+        document.querySelectorAll(".split.aboutTitle").forEach((text) => {
+            const spanTimeline = gsap.timeline({ paused: true });
+
+            gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                spanTimeline.fromTo(
+                    span,
+                    {
+                        y: 100,
+                        opacity: 0,
+                        display: "inline-block"
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        ease: "Power1.easeInOut",
+                    },
+                    index * 0.05
+                );
+            });
+
+            aboutIntro.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
+        });
+        aboutIntro.to(".aboutCenter p", {opacity: 1, duration:1, ease: "power1.inOut"})
+    })
+
+    // close
+    useEffect(() => {
+        document.querySelector(".aboutClose").addEventListener("click", function (event) {
+            event.preventDefault();
+            const closeAni = gsap.timeline();
+
+            closeAni.to(".aboutClose", { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" })
+            document.querySelectorAll(".split.aboutLogo").forEach((text) => {
+                const spanTimeline = gsap.timeline({ paused: true });
+    
+                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                    spanTimeline.fromTo(
+                        span,
+                        {
+                            y: 0,
+                            opacity: 1,
+                            display: "inline-block"
+                        },
+                        {
+                            y: 30,
+                            opacity: 0,
+                            ease: "Power1.easeInOut",
+                        },
+                        index * 0.05
+                    );
+                });
+    
+                closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
+            });
+        
+        document.querySelectorAll(".split.aboutTitle").forEach((text) => {
+            const spanTimeline = gsap.timeline({ paused: true });
+
+            gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                spanTimeline.fromTo(
+                    span,
+                    {
+                        y: 0,
+                        opacity: 1,
+                        display: "inline-block"
+                    },
+                    {
+                        y: 100,
+                        opacity: 0,
+                        ease: "Power1.easeInOut",
+                    },
+                    index * 0.05
+                );
+            });
+
+            closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
+        });
+        closeAni.to(["#about #header .logo", ".aboutCenter p"], { opacity: 0, duration: 2, ease: "power1.inOut"})
+        closeAni.to(".transitionOverlay.about", { display: "block", opacity: 1, duration: 2, ease: "Power1.easeInOut" }, "<")
+            setTimeout(() => {
+                closeAni.eventCallback("onComplete", () => {
+                    window.location.href = "/";
+                });
+            }, 500);
+        })  
+    })
+
     return (
         <div id='about'>
             <header id="header">
                 <h1 className="logo">
-                    <Link to="/">Y<span>unYoungsik</span></Link>
+                    <Link to="/">Y<span className='split aboutLogo'>unYoungsik</span></Link>
                 </h1>
                 <div className="aboutClose">
                     <Link to="/" className="aboutClose underline">Close</Link>
@@ -136,7 +246,9 @@ const About = () => {
                     <div className="aboutSlider"></div>
                     <div className="aboutCenter">
                         <p>(YunYoungsik)</p>
-                        <h2>About</h2>
+                        <h2>
+                            <span className='split aboutTitle'>About</span>
+                        </h2>
                     </div>
                     <div className="aboutDesc">
                         <p>
@@ -201,8 +313,8 @@ const About = () => {
                                 <Link to="mailto:yunyoungsik@kakao.com" className="emailLink underline">
                                     <div className="text">
                                         <div className="textWrap">
-                                            <p className="split">Say Hi</p>
-                                            <p className="split">Say Hi</p>
+                                            <p className="split text">Say Hi</p>
+                                            <p className="split text">Say Hi</p>
                                         </div>
                                     </div>
                                     <div className="svg">
@@ -225,6 +337,7 @@ const About = () => {
                     </div>
                 </div>
             </main>
+            <div className="transitionOverlay about"></div>
         </div>
     )
 }
