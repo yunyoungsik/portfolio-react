@@ -335,9 +335,9 @@ const About = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="transitionOverlay about"></div>
                 </div>
             </main>
-            <div className="transitionOverlay about"></div>
         </div>
     )
 }
