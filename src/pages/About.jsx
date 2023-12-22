@@ -117,9 +117,9 @@ const About = () => {
     useEffect(() => {
         const aboutIntro = gsap.timeline();
 
-        aboutIntro.to("#about #header .logo", { opacity: 1, duration: 2, ease: "power1.inOut", delay: 1 })
-        aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 2, ease: "power1.inOut" })
-        aboutIntro.to(".aboutCenter h2 ", { opacity: 1}, "<")
+        aboutIntro.to("#about #header .logo", { opacity: 1, duration: 1, ease: "power1.inOut", delay: 1 })
+        aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 1, ease: "power1.inOut" })
+        aboutIntro.to(".aboutCenter h2 ", { opacity: 1 }, "<")
 
         document.querySelectorAll(".split.aboutLogo").forEach((text) => {
             const spanTimeline = gsap.timeline({ paused: true });
@@ -137,7 +137,7 @@ const About = () => {
                         opacity: 1,
                         ease: "Power1.easeInOut",
                     },
-                    index * 0.05
+                    index * 0.03
                 );
             });
 
@@ -166,7 +166,7 @@ const About = () => {
 
             aboutIntro.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
         });
-        aboutIntro.to(".aboutCenter p", {opacity: 1, duration:1, ease: "power1.inOut"})
+        aboutIntro.to(".aboutCenter p", { opacity: 1, duration: 1, ease: "power1.inOut" })
     })
 
     // close
@@ -178,7 +178,7 @@ const About = () => {
             closeAni.to(".aboutClose", { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" })
             document.querySelectorAll(".split.aboutLogo").forEach((text) => {
                 const spanTimeline = gsap.timeline({ paused: true });
-    
+
                 gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
                     spanTimeline.fromTo(
                         span,
@@ -195,40 +195,40 @@ const About = () => {
                         index * 0.05
                     );
                 });
-    
+
                 closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
             });
-        
-        document.querySelectorAll(".split.aboutTitle").forEach((text) => {
-            const spanTimeline = gsap.timeline({ paused: true });
 
-            gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
-                spanTimeline.fromTo(
-                    span,
-                    {
-                        y: 0,
-                        opacity: 1,
-                        display: "inline-block"
-                    },
-                    {
-                        y: 100,
-                        opacity: 0,
-                        ease: "Power1.easeInOut",
-                    },
-                    index * 0.05
-                );
+            document.querySelectorAll(".split.aboutTitle").forEach((text) => {
+                const spanTimeline = gsap.timeline({ paused: true });
+
+                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                    spanTimeline.fromTo(
+                        span,
+                        {
+                            y: 0,
+                            opacity: 1,
+                            display: "inline-block"
+                        },
+                        {
+                            y: 100,
+                            opacity: 0,
+                            ease: "Power1.easeInOut",
+                        },
+                        index * 0.05
+                    );
+                });
+
+                closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
             });
-
-            closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
-        });
-        closeAni.to(["#about #header .logo", ".aboutCenter p"], { opacity: 0, duration: 2, ease: "power1.inOut"})
-        closeAni.to(".transitionOverlay.about", { display: "block", opacity: 1, duration: 2, ease: "Power1.easeInOut" }, "<")
+            closeAni.to(["#about #header .logo", ".aboutCenter p"], { opacity: 0, duration: 2, ease: "power1.inOut" })
+            closeAni.to(".aboutSlideWrap", { opacity: 0, duration: 2, ease: "Power1.easeInOut" }, "<")
             setTimeout(() => {
                 closeAni.eventCallback("onComplete", () => {
                     window.location.href = "/";
                 });
             }, 500);
-        })  
+        })
     })
 
     return (

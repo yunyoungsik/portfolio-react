@@ -117,10 +117,10 @@ const TrendDevice = () => {
         // sub intro
         const subAni = gsap.timeline();
 
-        
+
         subAni.fromTo(".transitionOverlay", { opacity: 0.8, zIndex: 1 }, { display: "inline-block", opacity: 0.5, duration: 1.5, ease: "Power1.easeInOut" }, "<")
         subAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(75px)', duration: 1.5, ease: "Power1.easeInOut" }, "<")
-        subAni.to([".close.sub", ".about.sub"], { opacity: 1, duration: 1.5, ease: "Power1.easeInOut" },"<")
+        subAni.to([".close.sub", ".about.sub"], { opacity: 1, duration: 1.5, ease: "Power1.easeInOut" }, "<")
         subAni.fromTo(".sub__center .subTitle", { y: 72 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
         subAni.fromTo(".subBgSlider .split", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power1.inOut" }, "<")
 
@@ -151,63 +151,65 @@ const TrendDevice = () => {
 
     // close 애니메이션
     useEffect(() => {
-        // close
-        document.querySelector(".close").addEventListener("click", function (event) {
-            event.preventDefault();
+        document.querySelectorAll(".goMain").forEach((element) => {
+            element.addEventListener("click", function (event) {
+                event.preventDefault();
 
-            const closeAni = gsap.timeline();
+                const closeAni = gsap.timeline();
 
-            closeAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
-            closeAni.to([".close.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" })
-            document.querySelectorAll(".split").forEach((text) => {
-                const spanTimeline = gsap.timeline({ paused: true });
+                closeAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
+                closeAni.to([".close.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" });
 
-                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
-                    spanTimeline.fromTo(
-                        span,
-                        {
-                            y: 0,
-                            opacity: 1,
-                            display: "inline-block"
-                        },
-                        {
-                            y: 30,
-                            opacity: 0,
-                            ease: "Power1.easeInOut",
-                        },
-                        index * 0.01
-                    );
+                document.querySelectorAll(".split").forEach((text) => {
+                    const spanTimeline = gsap.timeline({ paused: true });
+
+                    gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
+                        spanTimeline.fromTo(
+                            span,
+                            {
+                                y: 0,
+                                opacity: 1,
+                                display: "inline-block"
+                            },
+                            {
+                                y: 30,
+                                opacity: 0,
+                                ease: "Power1.easeInOut",
+                            },
+                            index * 0.01
+                        );
+                    });
+
+                    closeAni.add(() => spanTimeline.play(), "-=0.5");
                 });
+                closeAni.fromTo([".current.sub", ".scrollBar"], { y: 0 }, { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" })
+                closeAni.to("#subMainSlider",
+                    {
+                        translateX: 0,
+                        duration: 1,
+                        backgroundColor: "white",
+                        ease: "Power1.easeInOut",
+                        display: "block",
+                    },
+                );
+                ScrollTrigger.matchMedia({
+                    "(min-width: 801px)": function () {
+                        closeAni.fromTo(".subBgSlider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
+                    },
+                    "(max-width: 800px)": function () {
 
-                closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
+                    }
+                })
+                closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 2, ease: "Power1.easeInOut" })
+                closeAni.to(".transitionOverlay", { opacity: 0, duration: 2, ease: "Power1.easeInOut" }, "<")
+                setTimeout(() => {
+                    closeAni.eventCallback("onComplete", () => {
+                        window.location.href = "/";
+                    });
+                }, 500);
             });
-            closeAni.fromTo([".current.sub", ".scrollBar"], { y: 0 }, { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" })
-            closeAni.to("#subMainSlider",
-                {
-                    translateX: 0,
-                    duration: 1,
-                    backgroundColor: "white",
-                    ease: "Power1.easeInOut",
-                    display: "block",
-                },
-            );
-            ScrollTrigger.matchMedia({
-                "(min-width: 801px)": function () {
-                    closeAni.fromTo(".subBgSlider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
-                },
-                "(max-width: 800px)": function () {
-
-                }
-            })
-            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 2, ease: "Power1.easeInOut" })
-            closeAni.to(".transitionOverlay", { opacity: 0, duration: 2, ease: "Power1.easeInOut" }, "<")
-            setTimeout(() => {
-                closeAni.eventCallback("onComplete", () => {
-                    window.location.href = "/";
-                });
-            }, 500);
         });
-    }, [])
+    }, []);
 
     // about
     useEffect(() => {
@@ -218,9 +220,9 @@ const TrendDevice = () => {
 
             const aboutAni = gsap.timeline();
 
-            aboutAni.to([".close.sub", ".about.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" },"<")
+            aboutAni.to([".close.sub", ".about.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" }, "<")
             aboutAni.to([".current.sub", ".scrollBar"], { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" }, "<")
-            aboutAni.to(".subTransitionOverlay", { display: "block", opacity: 1, duration: 2, ease: "Power1.easeInOut" })
+            aboutAni.to(".subTransitionOverlay", { display: "block", opacity: 1, duration: 1.5, ease: "Power1.easeInOut" })
             setTimeout(() => {
                 aboutAni.eventCallback("onComplete", () => {
                     window.location.href = "/about";
@@ -231,7 +233,7 @@ const TrendDevice = () => {
 
     return (
         <main id='main' className='main sub'>
-            <Link to="/" className="close sub">
+            <Link to="/" className="close sub goMain">
                 <svg width="16" height="16" viewBox="0 0 24 24" data-v-c5fc2e64="">
                     <path fill="currentColor"
                         d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"
@@ -424,7 +426,7 @@ const TrendDevice = () => {
                                     </Link>
                                 </h2>
                                 <span>
-                                    <Link to="/" className="underline">(prev)</Link>
+                                    <Link to="/" className="goMain underline">(main)</Link>
                                 </span>
                             </div>
                         </div>

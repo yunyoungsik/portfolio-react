@@ -180,6 +180,8 @@
 
 .info__inner h2 {
     font-size: 14px;
+    font-family: var(--font-gmarket);
+    text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
 }
 
@@ -234,12 +236,16 @@
 .section.s3 .desc .desc__inner h2 {
     font-size: 14px;
     font-family: var(--font-gmarket);
+    text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
     margin-bottom: 5vh;
 }
 
 .section.s3 .desc .desc__inner span {
     color: var(--white);
+    font-size: 18px;
+    font-family: var(--font-arita);
+    font-weight: 200;
     display: block;
     text-decoration: underline;
     text-underline-position: under;
@@ -247,7 +253,9 @@
 
 .section.s3 .desc .desc__inner p {
     color: var(--white);
-    font-size: 20px;
+    font-size: 18px;
+    font-family: var(--font-arita);
+    font-weight: 200;
     margin-bottom: 2vh;
 }
 
@@ -270,6 +278,7 @@
 .section.s3 .trouble .trouble__inner h2 {
     font-family: var(--font-gmarket);
     font-size: 14px;
+    text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
     margin-bottom: 4vh;
 }
