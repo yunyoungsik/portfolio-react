@@ -1,0 +1,173 @@
+.comment {
+    position: fixed;
+    bottom: 45px;
+    right: 40px;
+    color: var(--white);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.comment:hover svg {
+    fill: var(--white);
+}
+
+.comment svg {
+    width: 32px;
+    transform: translateY(50%);
+    fill: rgba(255, 255, 255, 0.5);
+    border: 0;
+}
+
+.modal {
+    position: fixed;
+    bottom: 45px;
+    right: 40px;
+    width: 300px;
+    height: auto;
+    z-index: 9999;
+}
+
+.modal ul {}
+
+.modal ul li {
+    margin: 5px 0 0;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px 10px 0 10px;
+    box-sizing: border-box;
+}
+
+.modal ul li .reple__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal ul li .reple__header .author {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+}
+
+.modal ul li .reple__header .reple-Info {
+    display: flex;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal ul li .reple__header .reple-Info p {
+    padding: 0 5px;
+    line-height: 1;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+}
+
+.modal ul li .reple__header .reple-Info p:last-child {
+    padding-right: 0;
+}
+
+.modal ul li .reple__header .reple-Info p:first-child {
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+
+.modal ul li .cont {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    font-family: var(--font-mono);
+}
+
+/* 글쓰기 */
+.repleWrite {
+    margin-top: 1rem;
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+.repleWrite .repleWriteHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.repleWriteHeader .author,
+.repleWriteHeader .password {
+    display: flex;
+    background-color: var(--white);
+}
+
+.repleWriteHeader .author {
+    border-radius: 5px 0 0;
+}
+
+.repleWriteHeader .password {
+    border-radius: 0 5px 0 0;
+}
+
+.repleWriteHeader .author label,
+.repleWriteHeader .password label {
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+}
+
+.repleWriteHeader .author input,
+.repleWriteHeader .password input {
+    height: 40px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: var(--black);
+    font-family: var(--font-mono);
+    background-color: var(--black500);
+}
+
+.repleWriteHeader .password input {
+    border-radius: 0 5px 0 0;
+}
+
+.repleWriteHeader .author input {
+    width: 50px;
+}
+
+.repleWriteHeader .password input {
+    width: 150px;
+}
+
+
+.repleWrite #repleCont {
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    background-color: var(--white);
+}
+
+.repleWrite input:focus {
+    outline: 0;
+}
+
+.repleWrite button {
+    width: 50px;
+    height: 40px;
+    background-color: var(--white);
+    font-size: 1rem;
+    color: var(--black);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 0 5px 5px 0;
+}
