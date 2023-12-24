@@ -1,6 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react'
+import axios from 'axios';
 
 const CommentList = () => {
+    const [repleList, setRepleList] = useState([]);
+
+    useEffect(() => {
+        axios.post("/api/reple/list")
+            .then((response) => {
+                if (response.data.success) {
+                    setRepleList([...response.data.repleList]);
+                    console.log(repleList);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
     // const [repleList, setRepleList] = useState([]);
 
     // useEffect(() => {
@@ -29,7 +44,6 @@ const CommentList = () => {
         // let body = {
         //     uid: user.uid,
         //     reple: reple,
-        //     postId: props.reple.postId,
         //     repleId: props.reple._id
         // }
 
@@ -52,7 +66,6 @@ const CommentList = () => {
         // if (window.confirm("정말로 삭제하시겠습니까?")) {
         //     let body = {
         //         repleId: props.reple._id,
-        //         postId: props.reple.postId
         //     }
         //     axios.post("/api/reple/delete", body)
         //         .then((response) => {
@@ -71,7 +84,46 @@ const CommentList = () => {
     return (
         <>
             <ul>
-                <li className='reple'>
+                {repleList.map((reple, key) => {
+                    return (
+                        <li className='reple' key={key}>
+                            <div className="reple__header">
+                                <p className='author'>{reple.author}</p>
+                                <div className='reple-Info'>
+                                    <p className='modify' onClick={() => {
+                                        setEditFlag(true)
+                                        setModalFlag(false)
+                                    }}>수정</p>
+                                    <p className='delete' onClick={(e) => DeleteHandler(e)}>삭제</p>
+                                </div>
+                            </div>
+                            {editFlag ? (
+                                <div>
+                                    <form>
+                                        <input
+                                            style={{ border: "1px solid #000", padding: "10px 20px" }}
+                                            type='text'
+                                        // value={reple}
+                                        // onChange={(e) => { setReple(e.currentTarget.value) }}
+                                        />
+                                        <button
+                                            type='submit'
+                                            onClick={(e) => { SubmitHandler(e) }}
+                                        >수정</button>
+                                        /
+                                        <button onClick={(e) => {
+                                            e.preventDefault();
+                                            setEditFlag(false)
+                                        }}>취소</button>
+                                    </form>
+                                </div>
+                            ) : (
+                                <p className='cont'>{reple.content}</p>
+                            )}
+                        </li>
+                    )
+                })}
+                {/* <li className='reple'>
                     <div className="reple__header">
                         <p className='author'>작성자</p>
                         <div className='reple-Info'>
@@ -106,13 +158,8 @@ const CommentList = () => {
                         <p className='cont'>댓글 내용이 들어가요 댓글 내용이 들어가요 댓글 내용이 들어가요 댓글 내용이 들어가요</p>
                         // <p>{props.reple.reple}</p>
                     )}
-                </li>
+                </li> */}
             </ul>
-            {/* {repleList.map((reple, idx) => {
-                return (
-                    <RepleContent reple={reple} key={idx} />
-                )
-            })} */}
         </>
     )
 }

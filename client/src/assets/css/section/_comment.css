@@ -32,8 +32,9 @@
 .modal ul li {
     margin: 5px 0 0;
     padding: 5px;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: 10px 10px 0 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(25px);
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
@@ -65,6 +66,11 @@
     font-size: 12px;
     color: rgba(0, 0, 0, 0.5);
     font-family: var(--font-mono);
+    cursor: pointer;
+}
+.modal ul li .reple__header .reple-Info p:hover {
+    text-decoration: underline;
+    text-underline-position: under;
 }
 
 .modal ul li .reple__header .reple-Info p:last-child {
@@ -78,7 +84,8 @@
 
 
 .modal ul li .cont {
-    font-size: 1rem;
+    font-size: 14px;
+    line-height: 1.15;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.8);
     font-family: var(--font-mono);
@@ -87,8 +94,8 @@
 /* 글쓰기 */
 .repleWrite {
     margin-top: 1rem;
-    background-color: var(--white);
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
 }
 
 .repleWrite .repleWriteHeader {
@@ -101,15 +108,14 @@
 .repleWriteHeader .author,
 .repleWriteHeader .password {
     display: flex;
-    background-color: var(--white);
 }
 
 .repleWriteHeader .author {
-    border-radius: 5px 0 0;
+    border-radius: 10px 0 0;
 }
 
 .repleWriteHeader .password {
-    border-radius: 0 5px 0 0;
+    border-radius: 0 10px 0 0;
 }
 
 .repleWriteHeader .author label,
@@ -120,7 +126,8 @@
     display: inline-block;
     text-align: center;
     font-size: 12px;
-    color: rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    color: var(--black);
     font-family: var(--font-mono);
 }
 
@@ -132,11 +139,16 @@
     font-size: 12px;
     color: var(--black);
     font-family: var(--font-mono);
-    background-color: var(--black500);
+    background-color: transparent;
+}
+.repleWriteHeader .author input:focus,
+.repleWriteHeader .password input:focus,
+.repleWrite #repleCont:focus {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .repleWriteHeader .password input {
-    border-radius: 0 5px 0 0;
+    border-radius: 0 10px 0 0;
 }
 
 .repleWriteHeader .author input {
@@ -151,9 +163,10 @@
 .repleWrite #repleCont {
     width: 250px;
     height: 40px;
-    padding: 10px;
-    border-radius: 5px 0 0 5px;
-    background-color: var(--white);
+    padding: 5px;
+    border-radius: 10px 0 0 10px;
+    font-size: 14px;
+    background-color: transparent;
 }
 
 .repleWrite input:focus {
@@ -163,11 +176,15 @@
 .repleWrite button {
     width: 50px;
     height: 40px;
-    background-color: var(--white);
-    font-size: 1rem;
+    background-color: transparent;
+    font-size: 14px;
     color: var(--black);
     font-family: var(--font-mono);
     font-weight: 600;
     border-left: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.repleWrite button:focus {
+    background-color: rgba(0, 0, 0, 0.1);
 }

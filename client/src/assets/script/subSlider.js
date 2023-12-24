@@ -45,4 +45,13 @@ export function subSlider() {
             anticipatePin: 1,
         },
     });
+
+    return () => {
+        // ScrollTrigger 해제
+        ScrollTrigger.getAll().forEach(trigger => {
+            trigger.kill();
+        });
+        // GSAP 애니메이션 중지 또는 제거
+        gsap.kill();
+    };
 }
