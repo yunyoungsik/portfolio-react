@@ -31,5 +31,5 @@ export function subIntro() {
 
         subAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
     });
-    subAni.fromTo([".current.sub", ".scrollBar"], { y: 24 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" })
+    subAni.fromTo([".current.sub", ".scrollBar", ".comment"], { y: 24 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" })
 }

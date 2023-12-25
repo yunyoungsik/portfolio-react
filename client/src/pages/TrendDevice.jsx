@@ -17,17 +17,17 @@ import CommentArea from '../components/comment/CommentArea';
 const TrendDevice = () => {
     // hightlight
     const codeSnippet = `
-    if (selectedPhone) {
-      const link = document.createElement('a');
-      link.href = '\u0024{ selectedPhone.pLink }';
-      link.className = 'btn__style3';
-      link.innerText = '바로가기';
-      link.target = '_black';
-      const linkContainer = document.querySelector('.pLink1');
-      linkContainer.innerHTML = '';
-      linkContainer.appendChild(link);
-    }
-`;
+        if (selectedPhone) {
+        const link = document.createElement('a');
+        link.href = '\u0024{ selectedPhone.pLink }';
+        link.className = 'btn__style3';
+        link.innerText = '바로가기';
+        link.target = '_black';
+        const linkContainer = document.querySelector('.pLink1');
+        linkContainer.innerHTML = '';
+        linkContainer.appendChild(link);
+        }
+    `;
     // script
     useEffect(() => {
         smooth();

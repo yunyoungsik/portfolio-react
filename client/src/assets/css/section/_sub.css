@@ -245,7 +245,7 @@
     color: var(--white);
     font-size: 18px;
     font-family: var(--font-arita);
-    font-weight: 200;
+    font-weight: 400;
     display: block;
     text-decoration: underline;
     text-underline-position: under;
@@ -255,7 +255,7 @@
     color: var(--white);
     font-size: 18px;
     font-family: var(--font-arita);
-    font-weight: 200;
+    font-weight: 400;
     margin-bottom: 2vh;
 }
 

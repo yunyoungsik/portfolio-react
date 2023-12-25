@@ -1,10 +1,11 @@
 .comment {
     position: fixed;
-    bottom: 45px;
+    bottom: 50px;
     right: 40px;
     color: var(--white);
     z-index: 1000;
     cursor: pointer;
+    opacity: 0;
 }
 
 .comment:hover svg {
@@ -187,4 +188,50 @@
 
 .repleWrite button:focus {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modifyForm input {
+    margin: 5px 0;
+    padding: 5px;
+    width: 100%;
+    font-size: 14px;
+    font-family: var(--font-mono);
+}
+.modifyForm input:focus {
+    outline: 0;
+}
+.modifyForm .modifyForm__btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.modifyForm .modifyForm__btn button {
+    font-size: 12px;
+    padding: 2px 5px;
+    background-color: var(--white);
+}
+.modifyForm .modifyForm__btn button:first-child {
+    margin-right: 5px;
+}
+.deleteForm {
+    display: flex;
+}
+.deleteForm input {
+    padding: 5px;
+    margin-right: 5px;
+    width: 100px;
+    font-size: 14px;
+    font-family: var(--font-mono);
+}
+.deleteForm input:focus {
+    outline: none;
+}
+.deleteForm button {
+    font-size: 14px;
+    padding: 5px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+.deleteForm .delete {
+    margin-right: 2px;
 }

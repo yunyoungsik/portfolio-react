@@ -40,6 +40,8 @@ const CommentWrite = () => {
                             name='repleAuthor'
                             id='repleAuthor'
                             placeholder='작성자'
+                            autoComplete='off'
+                            required
                             value={author}
                             onChange={(e) => setAuthor(e.currentTarget.value)}
                         />
@@ -51,6 +53,8 @@ const CommentWrite = () => {
                             name='replePw'
                             id='replePw'
                             placeholder='비밀번호'
+                            autoComplete='off'
+                            required
                             value={password}
                             onChange={(e) => setPassword(e.currentTarget.value)}
                         />
@@ -63,6 +67,8 @@ const CommentWrite = () => {
                     type="text"
                     maxLength={100}
                     placeholder='댓글은 100글자까지 작성가능합니다.'
+                    autoComplete='off'
+                    required
                     value={content}
                     onChange={(e) => setContent(e.currentTarget.value)}
                 />
