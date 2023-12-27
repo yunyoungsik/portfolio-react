@@ -11,6 +11,7 @@ import { subSlider } from '../assets/script/subSlider';
 import { navBar } from '../assets/script/navBar';
 import { subClose } from '../assets/script/subClose';
 import { subAbout } from '../assets/script/subAbout';
+import { subNext2 } from '../assets/script/subNext2';
 
 import CommentArea from '../components/comment/CommentArea';
 
@@ -33,6 +34,7 @@ const YouTube = () => {
         navBar();
         subClose();
         subAbout();
+        subNext2();
     }, [])
 
     const [modalFlag, setModalFlag] = useState(false);
@@ -253,13 +255,13 @@ const YouTube = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="/movie" className="underline">(next)</Link>
+                                    <Link to="#" className="underline nextPage">(next)</Link>
                                 </span>
                                 <h2>
-                                    <Link to="/movie">
+                                    <Link to="#" className='nextPage'>
                                         <span>Movie</span>
                                     </Link>
-                                    <Link to="/movie">
+                                    <Link to="#" className='nextPage'>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
                                             <path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z"
                                                 data-name="Right" />

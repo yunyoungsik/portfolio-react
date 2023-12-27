@@ -11,6 +11,7 @@ import { subSlider } from '../assets/script/subSlider';
 import { navBar } from '../assets/script/navBar';
 import { subClose } from '../assets/script/subClose';
 import { subAbout } from '../assets/script/subAbout';
+import { subNext1 } from '../assets/script/subNext1';
 
 import CommentArea from '../components/comment/CommentArea';
 
@@ -30,13 +31,14 @@ const TrendDevice = () => {
     `;
     // script
     useEffect(() => {
-        subSmooth();
+        // subSmooth();
         splint();
         subIntro();
         subSlider();
         navBar();
         subClose();
         subAbout();
+        subNext1();
     }, [])
 
     const [modalFlag, setModalFlag] = useState(false);
@@ -59,6 +61,16 @@ const TrendDevice = () => {
             };
         }, [ref, handler]);
     }
+
+    useEffect(() => {
+        if (modalFlag) {
+            subSmooth(true);
+            document.body.style.overflow = 'hidden';
+        } else {
+            subSmooth(false);
+            document.body.style.overflow = 'unset';
+        }
+    }, [modalFlag]);
 
     return (
         <main id='main' className='main sub'>
@@ -253,13 +265,13 @@ const TrendDevice = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="/movie" className="underline">(next)</Link>
+                                    <Link to="#" className="underline nextPage">(next)</Link>
                                 </span>
                                 <h2>
-                                    <Link to="/movie">
-                                        <span>Movie</span>
+                                    <Link to="#" className='nextPage'>
+                                        <span>YouTube</span>
                                     </Link>
-                                    <Link to="/movie">
+                                    <Link to="#" className='nextPage'>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
                                             <path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z"
                                                 data-name="Right" />
