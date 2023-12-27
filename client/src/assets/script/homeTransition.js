@@ -17,7 +17,7 @@ export function homeTransition() {
                     } else if (subLink.classList.contains("mv")) {
                         window.location.href = "./movie";
                     } else if (subLink.classList.contains("ki")) {
-                        window.location.href = "/kicoff";
+                        window.location.href = "/kickoff";
                     } else if (subLink.classList.contains("bl")) {
                         window.location.href = "/blog";
                     }

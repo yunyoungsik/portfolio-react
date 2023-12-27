@@ -8,6 +8,8 @@ export function subClose() {
 
             const closeAni = gsap.timeline();
 
+            document.querySelector(".subBgSlider").classList.add("s1")
+
             closeAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
             closeAni.to([".close.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" });
 
@@ -33,7 +35,9 @@ export function subClose() {
 
                 closeAni.add(() => spanTimeline.play(), "-=0.5");
             });
-            closeAni.fromTo([".current.sub", ".scrollBar"], { y: 0 }, { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" })
+            closeAni.fromTo([".current.sub", ".scrollBar", ".comment"], { y: 0 }, { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" })
+
+            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 2, ease: "Power1.easeInOut" })
             closeAni.to("#subMainSlider",
                 {
                     translateX: 0,
@@ -51,7 +55,6 @@ export function subClose() {
 
                 }
             })
-            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 2, ease: "Power1.easeInOut" })
             closeAni.to(".transitionOverlay", { opacity: 0, duration: 2, ease: "Power1.easeInOut" }, "<")
             setTimeout(() => {
                 closeAni.eventCallback("onComplete", () => {

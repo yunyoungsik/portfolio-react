@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function homeSlider() {
     gsap.registerPlugin(ScrollTrigger);
@@ -31,9 +31,9 @@ export function homeSlider() {
         "(max-width: 800px)": function () {
             animation.to(sections, { xPercent: -100 * (sections.length - 1), ease: "none" }, 0)
                 .to(center, { y: -1080 * (center.length - 1), ease: "none" }, 0)
-                .to(desc, { y: -22.39 * (desc.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0)
-                .to(page, { y: -22.39 * (page.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0)
-                .to(title, { y: -43 * (title.length - 1), ease: "none", toggleActions: 'play none none reverse', }, 0);
+                .to(desc, { y: -22.39 * (desc.length - 1), ease: "none" }, 0)
+                .to(page, { y: -22.39 * (page.length - 1), ease: "none" }, 0)
+                .to(title, { y: -43 * (title.length - 1), ease: "none" }, 0);
         }
     });
 

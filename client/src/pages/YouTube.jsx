@@ -14,19 +14,15 @@ import { subAbout } from '../assets/script/subAbout';
 
 import CommentArea from '../components/comment/CommentArea';
 
-const TrendDevice = () => {
+const YouTube = () => {
     // hightlight
     const codeSnippet = `
-        if (selectedPhone) {
-        const link = document.createElement('a');
-        link.href = '\u0024{ selectedPhone.pLink }';
-        link.className = 'btn__style3';
-        link.innerText = '바로가기';
-        link.target = '_black';
-        const linkContainer = document.querySelector('.pLink1');
-        linkContainer.innerHTML = '';
-        linkContainer.appendChild(link);
-        }
+        const channelPageClass = loading ? 'isLoading' : 'isLoaded'
+            //기존코드
+        <section id='channelPage' className={channelPageClass}>
+        {channelDetail && (
+            //기존 코드
+        )}
     `;
     // script
     useEffect(() => {
@@ -72,7 +68,7 @@ const TrendDevice = () => {
             <Link to="/about" className="about sub underline">About</Link>
             <div className="subPage">
                 <span className="current sub">
-                    <span className="pageIndex 01">01</span>
+                    <span className="pageIndex 01">02</span>
                 </span>
             </div>
             <div className="scrollBar">
@@ -151,21 +147,20 @@ const TrendDevice = () => {
                 </div>
             </div>
 
-            <div className="subBgSlider s1">
+            <div className="subBgSlider s2">
                 <div className="subBgSliderWrap">
                     <section className='section s1'>
                         <div className="sub__center">
                             <div className="text">
                                 <div className="titleWrap">
                                     <h5 className="subTitle split">
-                                        Trend Device
+                                        YouTube
                                     </h5>
                                 </div>
                                 <div className="subDesc split">
-                                    Trend Device는 직관적이고 사용하기 편리한 인터페이스를 제공하여<br />
-                                    사용자가 원하는 휴대폰 모델을 선택하고, 선택한 모델들을 한눈에 비교할 수 있도록 합니다.<br />
-                                    각 휴대폰 모델에는 사진, 기술 사양, 가격 등의 정보가 제공되어<br />
-                                    사용자가 원하는 정보를 쉽게 찾을 수 있습니다.
+                                    React와 YouTube API를 활용한 사이트입니다.<br />
+                                    인기 유튜버들의 구독순 1위부터 30위까지 최신 영상을 제공하며, <br />
+                                    사용자는 쉽게 새로운 영상을 찾아 시청할 수 있는 편리한 환경을 경험할 수 있습니다.
                                 </div>
                             </div>
                         </div>
@@ -175,15 +170,15 @@ const TrendDevice = () => {
                     </section>
                     <section className='section s3'>
                         <div className="pageSection">
-                            #1
+                            #2
                         </div>
                         <div className="info">
                             <div className="info__inner">
-                                <h2 className='mPageSection'>#1</h2>
+                                <h2 className='mPageSection'>#2</h2>
                                 <h2>Website</h2>
                                 <div className="coding">
                                     <h3>(coding)</h3>
-                                    <p>PHP, Javascript</p>
+                                    <p>React, YouTube API</p>
                                 </div>
                                 <div className="workTime">
                                     <h3>(workTime)</h3>
@@ -191,7 +186,7 @@ const TrendDevice = () => {
                                 </div>
                                 <div className="link">
                                     <div className="link1">
-                                        <Link to="http://trenddevice2023.dothome.co.kr/TDsite/php/main/main.php" target="_blank"
+                                        <Link to="https://dasibogi-youtube.netlify.app/" target="_blank"
                                             className="underline">
                                             <i>Link</i>
                                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +199,7 @@ const TrendDevice = () => {
                                     </div>
                                     <div className="link2">
                                     </div>
-                                    <Link to="https://github.com/yunyoungsik/Trend-Device" target="_blank" className="underline">
+                                    <Link to="https://github.com/yunyoungsik/youtube-project" target="_blank" className="underline">
                                         <i>Github</i>
                                         <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
                                             data-v-50e346e1="">
@@ -218,17 +213,21 @@ const TrendDevice = () => {
                         <div className="desc">
                             <div className="desc__inner">
                                 <h2>Description</h2>
-                                <span>메인</span>
+                                <span>더보기</span>
                                 <p>
-                                    자바스크립트와 GSAP, Scroll Trigger를 사용하여 슬라이드 및 각 섹션에 이미지와 어울리는 움직임을 구현하고자 했습니다.
+                                    페이지 로딩 시 초기 비디오와 채널 정보를 가져와서 '더보기' 버튼을 클릭할 때마다 nextPageToken을 활용하여 추가 비디오를 가져와 이전 목록에 이어 붙입니다.<br />
+                                    사용자는 끊김 없이 계속해서 비디오를 탐색할 수 있습니다.
                                 </p>
-                                <span>상품페이지</span>
+                                <span>Search</span>
                                 <p>
-                                    PHP의 foreach를 이용하여 핸드폰 정보를 리스트 형태로 생성합니다. 각 핸드폰 정보에 대한 태그를 생성하고, 이미지와 이름을 링크에 표시하여 핸드폰의 제목, 간단한 설명, 가격 등을 리스트로 보여줍니다.
+                                    Search 컴포넌트는 사용자가 입력한 검색어를 추적하여 URL을 변경하고 검색 결과를 표시합니다.<br />
+                                    handleSearch 함수는 비어 있지 않은 검색어에 대해 URL을 변경하고 검색어 상태를 초기화하여 새로운 검색을 가능하게 합니다.
                                 </p>
-                                <span>비교하기</span>
+                                <span>SEO</span>
                                 <p>
-                                    드롭다운 메뉴 변경 시, 선택된 값(this.value)을 기반으로 데이터 필터링하여 해당 정보를 화면에 표시합니다. 선택된 옵션 값에 따라 데이터를 필터링하고, 해당 정보를 화면에 표시하는 방식으로 작동합니다.
+                                    Main.jsx에 적용된 HelmetProvider로 전체 앱을 감싸고, Helmet 컴포넌트를 사용하여 페이지의 제목, 기본 타이틀, 메타 태그(description) 등을 동적으로 조작합니다.<br />
+                                    또한, props.children을 사용하여 Main 컴포넌트로 전달된 다른 컴포넌트들을 표시합니다.<br />
+                                    이렇게 함으로써 각 페이지마다 다른 제목이나 메타데이터를 설정하고, &lt;head&gt; 요소를 동적으로 조작하여 SEO 및 페이지의 메타정보를 관리할 수 있습니다.<br />
                                 </p>
                             </div>
                         </div>
@@ -236,17 +235,18 @@ const TrendDevice = () => {
                             <div className="trouble__inner">
                                 <h2>Trouble Shooting</h2>
                                 <h3>문제</h3>
-                                <p>비교 페이지에 접속했을 때 'a'와 'img' 요소에 초기값이 없는 문제</p>
+                                <p>정보를 먼저 불러오는 경우 에러 발생</p>
                                 <h3>해결</h3>
                                 <p>
-                                    초기값이 없는 상태의 'a'와 'img' 요소를 조건부 렌더링으로 처리
+                                    조건부 렌더링으로 에러 방지
                                 </p>
                                 <Highlight className="javascript">
                                     {codeSnippet}
                                 </Highlight>
                                 <p>
-                                    문제는 데이터 로딩 전에 정보를 사용하려고 했던 것이었습니다.<br />
-                                    조건부 렌더링을 사용하여 데이터 존재 여부를 확인하고, 데이터가 있는 경우에만 코드를 실행하여 에러를 방지했습니다.
+                                    데이터 로드 전에 해당 정보를 사용하여 발생한 문제를 해결하기 위해 &#123;channelDetail &amp;&amp;&#125;를 사용하여 조건부 렌더링을 수행했습니다.<br />
+                                    이를 통해 코드는 channelDetail이 존재하는지 여부를 확인하고, 데이터가 로드된 후에만 해당 코드 블록을 실행하게 됩니다.<br />
+                                    이러한 방법을 통해 에러를 방지하고 안정적인 동작을 보장할 수 있습니다.
                                 </p>
                             </div>
                         </div>
@@ -279,4 +279,4 @@ const TrendDevice = () => {
     )
 }
 
-export default TrendDevice
+export default YouTube

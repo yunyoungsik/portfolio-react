@@ -9,6 +9,7 @@ npm i @studio-freight/lenis
 npm install react-highlight --save  
 npm install axios   
 npm install http-proxy-middleware --save   
+npm install moment   
 
 ## server
 npm init -y   

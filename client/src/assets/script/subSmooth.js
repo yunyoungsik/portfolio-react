@@ -1,8 +1,8 @@
 import Lenis from "@studio-freight/lenis"
 
-export function smooth() {
+export function subSmooth() {
     const lenis = new Lenis({
-        duration: 1.5,
+        duration: 3,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
     })
 

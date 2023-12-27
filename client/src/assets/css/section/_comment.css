@@ -28,7 +28,26 @@
     z-index: 9999;
 }
 
-.modal ul {}
+.modal ul {
+    height: 50vh;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.modal ul::-webkit-scrollbar {
+    width: 5px;
+    height: 100%;
+}
+
+.modal ul::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+}
+
+.modal ul::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+}
 
 .modal ul li {
     margin: 5px 0 0;
@@ -69,6 +88,7 @@
     font-family: var(--font-mono);
     cursor: pointer;
 }
+
 .modal ul li .reple__header .reple-Info p:hover {
     text-decoration: underline;
     text-underline-position: under;
@@ -92,9 +112,16 @@
     font-family: var(--font-mono);
 }
 
+.modal ul li .date {
+    margin-top: 3px;
+    font-size: 12px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.5);
+}
+
 /* 글쓰기 */
 .repleWrite {
-    margin-top: 1rem;
+    margin-top: 5px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 10px;
 }
@@ -142,6 +169,7 @@
     font-family: var(--font-mono);
     background-color: transparent;
 }
+
 .repleWriteHeader .author input:focus,
 .repleWriteHeader .password input:focus,
 .repleWrite #repleCont:focus {
@@ -153,11 +181,11 @@
 }
 
 .repleWriteHeader .author input {
-    width: 50px;
+    width: 80px;
 }
 
 .repleWriteHeader .password input {
-    width: 150px;
+    width: 120px;
 }
 
 
@@ -184,6 +212,7 @@
     font-weight: 600;
     border-left: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 0 10px 10px 0;
+    cursor: pointer;
 }
 
 .repleWrite button:focus {
@@ -194,44 +223,104 @@
     margin: 5px 0;
     padding: 5px;
     width: 100%;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
     font-size: 14px;
     font-family: var(--font-mono);
 }
+
 .modifyForm input:focus {
     outline: 0;
+    background-color: rgba(255, 255, 255, 1);
 }
+
 .modifyForm .modifyForm__btn {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
+
 .modifyForm .modifyForm__btn button {
     font-size: 12px;
-    padding: 2px 5px;
+    font-weight: 600;
+    padding: 0 10px;
+    height: 25px;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.modifyForm .modifyForm__btn button:hover {
+    color: var(--black);
     background-color: var(--white);
 }
+
 .modifyForm .modifyForm__btn button:first-child {
     margin-right: 5px;
 }
+
 .deleteForm {
     display: flex;
+    align-items: center;
 }
+
 .deleteForm input {
     padding: 5px;
     margin-right: 5px;
     width: 100px;
+    height: 21px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: var(--font-mono);
+    text-align: center;
+
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
     font-size: 14px;
     font-family: var(--font-mono);
 }
+
 .deleteForm input:focus {
+    background-color: rgba(255, 255, 255, 1);
     outline: none;
 }
+
 .deleteForm button {
-    font-size: 14px;
-    padding: 5px;
-    background-color: var(--white);
+    font-size: 12px;
+    padding: 0 5px;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     cursor: pointer;
+    box-sizing: border-box;
 }
+
+.deleteForm button:last-child {
+    padding-right: 0;
+}
+
+.deleteForm button:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
 .deleteForm .delete {
     margin-right: 2px;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+@media(max-width: 800px) {
+    .modal ul {
+        height: 70vh;
+    }
+
+    .modal ul::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .modal ul li {
+        background-color: var(--white);
+    }
 }

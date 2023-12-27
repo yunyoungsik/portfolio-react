@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Intro = () => {
     // 인트로 애니메이션
+    gsap.registerPlugin(ScrollTrigger);
+
     useEffect(() => {
         // center Text
         const ani = gsap.timeline();
@@ -13,8 +15,6 @@ const Intro = () => {
         ani.set(".intro__popup .mainSlider__center", { height: "100%" });
         ani.set(".intro__popup .center__img", { width: "100%", height: "100vh" });
         ani.set(".intro__popup .bgSliderWrap", { width: "100%" });
-
-        gsap.registerPlugin(ScrollTrigger);
 
         ScrollTrigger.matchMedia({
             "(min-width: 801px)": function () {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import { aboutClose } from '../assets/script/aboutClose';
-import { smooth } from '../assets/script/smooth';
+import { subSmooth } from '../assets/script/subSmooth';
 import { aboutIntro } from '../assets/script/aboutIntro';
 import { splint } from '../assets/script/splint';
 import { aboutHover } from '../assets/script/aboutHover';
@@ -11,7 +11,7 @@ const About = () => {
 
     // script
     useEffect(() => {
-        smooth();
+        subSmooth();
         splint();
         aboutClose();
         aboutIntro();
