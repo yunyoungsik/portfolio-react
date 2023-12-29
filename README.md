@@ -10,6 +10,7 @@ npm install react-highlight --save
 npm install axios   
 npm install http-proxy-middleware --save   
 npm install moment   
+npm install split-type   
 
 ## server
 npm init -y   
@@ -19,9 +20,9 @@ npm install path --save
 npm install mongoose --save   
    
 ## 트러블슈팅
-문제 : Home, sub 페이지에서 About페이지로 넘어가도 Scroll 효과가 남아있음
+[문제] Home, sub 페이지에서 About페이지로 넘어가도 Scroll 효과가 남아있음
    
-해결 : 해당 기능이 적용된 페이지에 서 ScrollTrigger과 gsap 애니메이션을 해제하고 넘어가도록 처리함   
+[해결] 해당 기능이 적용된 페이지에 서 ScrollTrigger과 gsap 애니메이션을 해제하고 넘어가도록 처리함   
 ```js
 return () => {
     // ScrollTrigger 해제
@@ -33,7 +34,7 @@ return () => {
 };
 ```
 
-2. 3. page not found - 404 Error
+2. page not found - 404 Error
 [문제]
 배포한 페이지에 접속하고 나서 첫 페이지까지는 잘 렌더링이 되었으나, 페이지를 이동 한 후 새로고침 시 page not found 404라는 창이 뜨는 문제가 발생했다.
    

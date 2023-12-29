@@ -6,7 +6,7 @@ export function aboutClose() {
             event.preventDefault();
             const closeAni = gsap.timeline();
 
-            closeAni.to(".aboutClose", { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" })
+            closeAni.to(".aboutClose", { opacity: 0, duration: 0.7, ease: "Power1.easeInOut" })
             document.querySelectorAll(".split.aboutLogo").forEach((text) => {
                 const spanTimeline = gsap.timeline({ paused: true });
 
@@ -52,11 +52,11 @@ export function aboutClose() {
 
                 closeAni.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
             });
-            closeAni.to(["#about #header .logo", ".aboutCenter p"], { opacity: 0, duration: 2, ease: "power1.inOut" })
-            closeAni.to(".aboutSlideWrap", { opacity: 0, duration: 2, ease: "Power1.easeInOut" }, "<")
+            closeAni.to(["#about #header .logo", ".aboutCenter p"], { opacity: 0, duration: 0.7, ease: "power1.inOut" })
+            closeAni.to(".aboutSlideWrap", { opacity: 0, duration: 0.7, ease: "Power1.easeInOut" }, "<")
             setTimeout(() => {
                 closeAni.eventCallback("onComplete", () => {
-                    window.location.href = "/";
+                    window.location.href = "/home";
                 });
             }, 500);
         });

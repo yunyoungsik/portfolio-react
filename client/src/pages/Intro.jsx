@@ -55,6 +55,7 @@ const Intro = () => {
                     .fromTo([".intro__popup .page", ".intro__popup .scroll__text"], { yPercent: 100, opacity: 0 }, { yPercent: -100, opacity: 1, ease: "power1.inOut" })
             }
         });
+
         // center Img
         const innerAnimation = gsap.timeline();
 
@@ -75,7 +76,7 @@ const Intro = () => {
 
         innerAnimation.eventCallback("onComplete", function () {
             setTimeout(function () {
-                window.location.href = "/";
+                window.location.href = "/home";
             }, 2000);
         });
     }, [])
@@ -83,11 +84,11 @@ const Intro = () => {
     return (
         <main id='main'>
             <div className="intro__popup">
-                <Link to="/" className="about underline">About</Link>
+                <Link to="/home" className="about underline">About</Link>
                 <div className="mainSlider">
                     <div className="mainSlider__top">
                         <h1 className="logo">
-                            <Link to="/">Y</Link>
+                            <Link to="/home">Y</Link>
                         </h1>
                         <div className="pause">
                             ||

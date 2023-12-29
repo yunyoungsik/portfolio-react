@@ -29,7 +29,7 @@ export function homeTransition() {
                     ".center__img",
                     {
                         opacity: 0,
-                        duration: 1,
+                        duration: 0.5,
                         ease: "Power1.easeInOut",
                         delay: 0,
                     },
@@ -66,7 +66,7 @@ export function homeTransition() {
                     ".descSlider",
                     {
                         opacity: 0,
-                        duration: 1,
+                        duration: 0.7,
                         ease: "expo.out",
                         delay: 0,
                     },
@@ -77,7 +77,7 @@ export function homeTransition() {
                     {
                         opacity: 0,
                         yPercent: -110,
-                        duration: 1,
+                        duration: 0.7,
                         ease: "expo.out",
                         delay: 0,
                     },
@@ -88,7 +88,7 @@ export function homeTransition() {
                     {
                         opacity: 0,
                         yPercent: 110,
-                        duration: 1,
+                        duration: 0.7,
                         ease: "expo.out",
                         delay: 0,
                     },
@@ -98,7 +98,7 @@ export function homeTransition() {
                     "#mainSlider",
                     {
                         xPercent: -100,
-                        duration: 1.3,
+                        duration: 1.5,
                         backgroundColor: "black",
                         ease: "power4.inOut",
                         display: "none",
@@ -110,13 +110,13 @@ export function homeTransition() {
                     ".bgSliderWrap > a > .slider",
                     {
                         scale: 1,
-                        duration: 0.8,
+                        duration: 0.7,
                         ease: "Power1.easeInOut",
                         delay: 0,
                     },
                     "<"
                 );
-                pageTransition.to(".transitionOverlay", { display: "inline-block", duration: 1.5, ease: "Power1.easeInOut", opacity: 0.8 }, "<")
+                pageTransition.to(".transitionOverlay", { display: "inline-block", duration: 1, ease: "Power1.easeInOut", opacity: 0.8 }, "<")
             });
         }, 1000);
     });

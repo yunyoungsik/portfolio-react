@@ -8,7 +8,7 @@ export function homeAbout() {
 
         const aboutAni = gsap.timeline();
 
-        aboutAni.to(".transitionOverlay.main", { display: "block", zIndex: 9999, opacity: 1, duration: 2, ease: "Power1.easeInOut" })
+        aboutAni.to(".transitionOverlay.main", { display: "block", zIndex: 9999, opacity: 1, duration: 1, ease: "Power1.easeInOut" })
         setTimeout(() => {
             aboutAni.eventCallback("onComplete", () => {
                 window.location.href = "/about";

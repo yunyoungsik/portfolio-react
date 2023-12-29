@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitType from 'split-type';
 
 export function subClose() {
     document.querySelectorAll(".goMain").forEach((element) => {
@@ -11,15 +12,19 @@ export function subClose() {
             document.querySelector(".subBgSlider").classList.add("s1")
 
             closeAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
-            closeAni.to([".close.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" });
+            closeAni.to([".close.sub"], { opacity: 0, duration: 0.5, ease: "Power1.easeInOut" });
+            closeAni.fromTo([".current.sub", ".scrollBar", ".comment"], { y: 0 }, { y: 24, opacity: 0, duration: 0.5, ease: "power1.inOut" }, "<")
 
-            document.querySelectorAll(".split").forEach((text) => {
-                const spanTimeline = gsap.timeline({ paused: true });
-
-                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
-                    spanTimeline.fromTo(
-                        span,
+            const targets = gsap.utils.toArray(".split");
+            targets.forEach((target) => {
+                let splitClient = new SplitType(target, { type: "lines, words, chars" });
+                // let lines = splitClient.lines;
+                // let words = splitClient.words;
+                let chars = splitClient.chars;
+                gsap.utils.toArray(chars).forEach((char, index) => {
+                    closeAni.fromTo(char,
                         {
+
                             y: 0,
                             opacity: 1,
                             display: "inline-block"
@@ -31,13 +36,10 @@ export function subClose() {
                         },
                         index * 0.01
                     );
-                });
+                })
+            })
 
-                closeAni.add(() => spanTimeline.play(), "-=0.5");
-            });
-            closeAni.fromTo([".current.sub", ".scrollBar", ".comment"], { y: 0 }, { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" })
-
-            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 2, ease: "Power1.easeInOut" })
+            closeAni.to(".subBgSliderWrap section", { backdropFilter: 'blur(0px)', duration: 0.5, ease: "Power1.easeInOut" })
             closeAni.to("#subMainSlider",
                 {
                     translateX: 0,
@@ -49,16 +51,16 @@ export function subClose() {
             );
             ScrollTrigger.matchMedia({
                 "(min-width: 801px)": function () {
-                    closeAni.fromTo(".subBgSlider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 1, ease: "Power1.easeInOut" }, "<")
+                    closeAni.fromTo(".subBgSlider", { backgroundSize: "100%" }, { backgroundSize: "150%", duration: 0.5, ease: "Power1.easeInOut" }, "<")
                 },
                 "(max-width: 800px)": function () {
 
                 }
             })
-            closeAni.to(".transitionOverlay", { opacity: 0, duration: 2, ease: "Power1.easeInOut" }, "<")
+            closeAni.to(".transitionOverlay", { opacity: 0, duration: 1, ease: "Power1.easeInOut" }, "<")
             setTimeout(() => {
                 closeAni.eventCallback("onComplete", () => {
-                    window.location.href = "/";
+                    window.location.href = "/home";
                 });
             }, 500);
         });

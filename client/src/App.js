@@ -11,12 +11,13 @@ import Kickoff from './pages/Kickoff'
 import About from './pages/About'
 
 const App = () => {
+
   return (
     <>
       {/* <Main> */}
       <Routes>
-        <Route path='/intro' element={<Intro />}></Route>
-        <Route path='/' element={<Home />}></Route>
+        <Route path='/' element={<Intro />}></Route>
+        <Route path='/Home' element={<Home />}></Route>
         <Route path='/td' element={<TrendDevice />}></Route>
         <Route path='/youtube' element={<YouTube />}></Route>
         <Route path='/movie' element={<Movie />}></Route>

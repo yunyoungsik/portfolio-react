@@ -1,6 +1,7 @@
 import gsap from "gsap";
+import SplitType from 'split-type';
 
-export function subNext1() {
+export function subNext() {
     const next = document.querySelectorAll(".nextPage");
 
     next.forEach(el => {
@@ -10,17 +11,29 @@ export function subNext1() {
             const subBgSlider = document.querySelector(".subBgSlider");
             subBgSlider.classList.add("next2");
 
+            // if (nextPage === 'td') {
+            // } else if (nextPage === 'youtube') {
+            //     subBgSlider.classList.add("next3");
+            // } else if (nextPage === 'movie') {
+            //     subBgSlider.classList.add("next4");
+            // } else if (nextPage === 'kickoff') {
+            //     subBgSlider.classList.add("next5");
+            // }
+
             const nextAni = gsap.timeline();
 
             nextAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
 
-            document.querySelectorAll(".split").forEach((text) => {
-                const spanTimeline = gsap.timeline({ paused: true });
-
-                gsap.utils.toArray(text.querySelectorAll("span")).forEach((span, index) => {
-                    spanTimeline.fromTo(
-                        span,
+            const targets = gsap.utils.toArray(".split");
+            targets.forEach((target) => {
+                let splitClient = new SplitType(target, { type: "lines, words, chars" });
+                // let lines = splitClient.lines;
+                // let words = splitClient.words;
+                let chars = splitClient.chars;
+                gsap.utils.toArray(chars).forEach((char, index) => {
+                    nextAni.fromTo(char,
                         {
+
                             y: 0,
                             opacity: 1,
                             display: "inline-block"
@@ -32,12 +45,14 @@ export function subNext1() {
                         },
                         index * 0.01
                     );
-                });
-                nextAni.add(() => spanTimeline.play(), "-=0.5");
-            });
-            nextAni.to([".close.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" });
+                })
+            })
+
             nextAni.fromTo([".current.sub", ".scrollBar", ".comment"], { y: 0 }, { y: 24, opacity: 0, duration: 1, ease: "power1.inOut" })
+            nextAni.to([".close.sub"], { opacity: 0, duration: 1.5, ease: "Power1.easeInOut" });
+            nextAni.to("transitionOverlay", { opacity: 0.8, duration: 1.5, ease: "Power1.easeInOut" })
             nextAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(0px)', duration: 1.5, ease: "Power1.easeInOut" }, "<")
+
 
             setTimeout(() => {
                 nextAni.eventCallback("onComplete", () => {

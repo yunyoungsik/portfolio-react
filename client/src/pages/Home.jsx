@@ -28,7 +28,7 @@ const Home = () => {
             <div className="mainSlider" id="mainSlider">
                 <div className="mainSlider__top">
                     <h1 className="logo">
-                        <Link to="/">Y</Link>
+                        <Link to="/home">Y</Link>
                     </h1>
                     <div className="pause">
                         ||

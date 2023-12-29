@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import { aboutClose } from '../assets/script/aboutClose';
-import { subSmooth } from '../assets/script/subSmooth';
+import { aboutSmooth } from '../assets/script/aboutSmooth';
 import { aboutIntro } from '../assets/script/aboutIntro';
 import { splint } from '../assets/script/splint';
 import { aboutHover } from '../assets/script/aboutHover';
@@ -11,7 +11,7 @@ const About = () => {
 
     // script
     useEffect(() => {
-        subSmooth();
+        aboutSmooth();
         splint();
         aboutClose();
         aboutIntro();
@@ -22,10 +22,10 @@ const About = () => {
         <div id='about'>
             <header id="header">
                 <h1 className="logo">
-                    <Link to="/" className='goMain'>Y<span className='split aboutLogo'>unYoungsik</span></Link>
+                    <Link to="/home" className='goMain'>Y<span className='split aboutLogo'>unYoungsik</span></Link>
                 </h1>
                 <div className="aboutClose goMain">
-                    <Link to="/" className="underline">Close</Link>
+                    <Link to="/home" className="underline">Close</Link>
                 </div>
             </header>
             <main id='main'>
@@ -79,7 +79,7 @@ const About = () => {
                                 </div>
                                 <div className="social">
                                     <span>Github</span>
-                                    <Link to="https://www.github.com/yunyoungsik">github.com/yunyoungsik</Link>
+                                    <Link to="https://www.github.com/yunyoungsik" target='_blank'>github.com/yunyoungsik</Link>
                                 </div>
                             </div>
                             <div className="aboutContact__email">

@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 import Highlight from 'react-highlight'
 import 'highlight.js/styles/atom-one-dark.css';
 
-import { subSmooth } from '../assets/script/subSmooth';
+import { smooth } from '../assets/script/smooth';
 import { splint } from '../assets/script/splint';
 import { subIntro } from '../assets/script/subIntro';
 import { subSlider } from '../assets/script/subSlider';
 import { navBar } from '../assets/script/navBar';
 import { subClose } from '../assets/script/subClose';
 import { subAbout } from '../assets/script/subAbout';
-import { subNext2 } from '../assets/script/subNext2';
+import { subNext } from '../assets/script/subNext';
 
 import CommentArea from '../components/comment/CommentArea';
 
@@ -27,14 +27,14 @@ const YouTube = () => {
     `;
     // script
     useEffect(() => {
-        subSmooth();
+        smooth();
         splint();
         subIntro();
         subSlider();
         navBar();
         subClose();
         subAbout();
-        subNext2();
+        subNext();
     }, [])
 
     const [modalFlag, setModalFlag] = useState(false);
@@ -60,7 +60,7 @@ const YouTube = () => {
 
     return (
         <main id='main' className='main sub'>
-            <Link to="/" className="close sub goMain">
+            <Link to="/home" className="close sub goMain">
                 <svg width="16" height="16" viewBox="0 0 24 24" data-v-c5fc2e64="">
                     <path fill="currentColor"
                         d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"
@@ -92,7 +92,7 @@ const YouTube = () => {
             <div className="mainSlider" id="subMainSlider">
                 <div className="mainSlider__top">
                     <h1 className="logo">
-                        <Link to="/">Y</Link>
+                        <Link to="/home">Y</Link>
                     </h1>
                     <div className="pause">
                         ||
@@ -118,7 +118,7 @@ const YouTube = () => {
                     <div className="center__img">
                         <div className="centerSliderWrap mouse__text">
                             <div className="centerSlider s1">
-                                <Link to="/"><img src="https://images.unsplash.com/photo-1659469378420-e68c6ee21a28?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 01" /></Link>
+                                <Link to="/home"><img src="https://images.unsplash.com/photo-1659469378420-e68c6ee21a28?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 01" /></Link>
                             </div>
                         </div>
                     </div>
@@ -269,7 +269,7 @@ const YouTube = () => {
                                     </Link>
                                 </h2>
                                 <span>
-                                    <Link to="/" className="goMain underline">(main)</Link>
+                                    <Link to="/home" className="goMain underline">(main)</Link>
                                 </span>
                             </div>
                         </div>

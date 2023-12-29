@@ -34,7 +34,7 @@ const CommentWrite = () => {
             <form className='repleWrite'>
                 <div className="repleWriteHeader">
                     <div className="author">
-                        <label htmlFor="repleAuthor">작성자</label>
+                        <label htmlFor="repleAuthor" className='blind'>작성자</label>
                         <input
                             type="text"
                             name='repleAuthor'
@@ -47,7 +47,7 @@ const CommentWrite = () => {
                         />
                     </div>
                     <div className="password">
-                        <label htmlFor="replePw">비밀번호</label>
+                        <label htmlFor="replePw" className='blind'>비밀번호</label>
                         <input
                             type="password"
                             name='replePw'
@@ -60,24 +60,26 @@ const CommentWrite = () => {
                         />
                     </div>
                 </div>
-                <label htmlFor="repleCont" className='blind'>내용</label>
-                <input
-                    name='repleCont'
-                    id='repleCont'
-                    type="text"
-                    maxLength={100}
-                    placeholder='댓글은 100글자까지 작성가능합니다.'
-                    autoComplete='off'
-                    required
-                    value={content}
-                    onChange={(e) => setContent(e.currentTarget.value)}
-                />
-                <button
-                    type='submit'
-                    onClick={(e) => onSubmit(e)}
-                >
-                    작성
-                </button>
+                <div className="repleWriteBottom">
+                    <label htmlFor="repleCont" className='blind'>내용</label>
+                    <input
+                        name='repleCont'
+                        id='repleCont'
+                        type="text"
+                        maxLength={100}
+                        placeholder='댓글은 100글자까지 작성가능합니다.'
+                        autoComplete='off'
+                        required
+                        value={content}
+                        onChange={(e) => setContent(e.currentTarget.value)}
+                    />
+                    <button
+                        type='submit'
+                        onClick={(e) => onSubmit(e)}
+                    >
+                        작성
+                    </button>
+                </div>
             </form>
         </>
     )

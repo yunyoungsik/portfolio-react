@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import Highlight from 'react-highlight'
 import 'highlight.js/styles/atom-one-dark.css';
 
-import { subSmooth } from '../assets/script/subSmooth';
+import { smooth } from '../assets/script/smooth';
 import { splint } from '../assets/script/splint';
 import { subIntro } from '../assets/script/subIntro';
 import { subSlider } from '../assets/script/subSlider';
 import { navBar } from '../assets/script/navBar';
 import { subClose } from '../assets/script/subClose';
 import { subAbout } from '../assets/script/subAbout';
+import { subNext } from '../assets/script/subNext';
+
 
 import CommentArea from '../components/comment/CommentArea';
 
@@ -26,13 +28,14 @@ const Kickoff = () => {
   `;
   // script
   useEffect(() => {
-    subSmooth();
+    smooth();
     splint();
     subIntro();
     subSlider();
     navBar();
     subClose();
     subAbout();
+    subNext();
   }, [])
 
   const [modalFlag, setModalFlag] = useState(false);
@@ -58,7 +61,7 @@ const Kickoff = () => {
 
   return (
     <main id='main' className='main sub'>
-      <Link to="/" className="close sub goMain">
+      <Link to="/home" className="close sub goMain">
         <svg width="16" height="16" viewBox="0 0 24 24" data-v-c5fc2e64="">
           <path fill="currentColor"
             d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6Z"
@@ -68,7 +71,7 @@ const Kickoff = () => {
       <Link to="/about" className="about sub underline">About</Link>
       <div className="subPage">
         <span className="current sub">
-          <span className="pageIndex 01">02</span>
+          <span className="pageIndex 01">04</span>
         </span>
       </div>
       <div className="scrollBar">
@@ -90,7 +93,7 @@ const Kickoff = () => {
       <div className="mainSlider" id="subMainSlider">
         <div className="mainSlider__top">
           <h1 className="logo">
-            <Link to="/">Y</Link>
+            <Link to="/home">Y</Link>
           </h1>
           <div className="pause">
             ||
@@ -116,7 +119,7 @@ const Kickoff = () => {
           <div className="center__img">
             <div className="centerSliderWrap mouse__text">
               <div className="centerSlider s1">
-                <Link to="/"><img src="https://images.unsplash.com/photo-1659469378420-e68c6ee21a28?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 01" /></Link>
+                <Link to="/home"><img src="https://images.unsplash.com/photo-1659469378420-e68c6ee21a28?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 01" /></Link>
               </div>
             </div>
           </div>
@@ -212,21 +215,17 @@ const Kickoff = () => {
             <div className="desc">
               <div className="desc__inner">
                 <h2>Description</h2>
-                <span>더보기</span>
+                <span>회원가입</span>
                 <p>
-                  페이지 로딩 시 초기 비디오와 채널 정보를 가져와서 '더보기' 버튼을 클릭할 때마다 nextPageToken을 활용하여 추가 비디오를 가져와 이전 목록에 이어 붙입니다.<br />
-                  사용자는 끊김 없이 계속해서 비디오를 탐색할 수 있습니다.
+                  Firebase를 이용해 사용자의 이메일과 비밀번호로 회원가입하고, MongoDB를 통해 사용자 데이터를 저장합니다.<br />
+                  Axios를 사용하여 서버로 데이터를 전송하며, React Router를 이용하여 페이지 간 이동을 합니다.<br />
+                  또한, 사용자가 입력한 정보의 유효성을 검사하고, 이메일 중복 검사를 수행하여 회원가입 과정을 관리합니다.
                 </p>
-                <span>Search</span>
+                <span>리그정보</span>
                 <p>
-                  Search 컴포넌트는 사용자가 입력한 검색어를 추적하여 URL을 변경하고 검색 결과를 표시합니다.<br />
-                  handleSearch 함수는 비어 있지 않은 검색어에 대해 URL을 변경하고 검색어 상태를 초기화하여 새로운 검색을 가능하게 합니다.
-                </p>
-                <span>SEO</span>
-                <p>
-                  Main.jsx에 적용된 HelmetProvider로 전체 앱을 감싸고, Helmet 컴포넌트를 사용하여 페이지의 제목, 기본 타이틀, 메타 태그(description) 등을 동적으로 조작합니다.<br />
-                  또한, props.children을 사용하여 Main 컴포넌트로 전달된 다른 컴포넌트들을 표시합니다.<br />
-                  이렇게 함으로써 각 페이지마다 다른 제목이나 메타데이터를 설정하고, &lt;head&gt; 요소를 동적으로 조작하여 SEO 및 페이지의 메타정보를 관리할 수 있습니다.<br />
+                  리그의 정보를 가져와 보여주는 기능을 구현하였습니다.<br />
+                  React Router를 통해 경로의 파라미터를 가져와 해당 리그의 정보를 API로 요청하여 가져옵니다.<br />
+                  리그 정보는 Football Data API에서 받아온 데이터를 사용하여 리그 이름, 팀 정보, 리그 로고 등을 화면에 표시합니다.
                 </p>
               </div>
             </div>
@@ -234,18 +233,16 @@ const Kickoff = () => {
               <div className="trouble__inner">
                 <h2>Trouble Shooting</h2>
                 <h3>문제</h3>
-                <p>정보를 먼저 불러오는 경우 에러 발생</p>
+                <p>트러블슈팅</p>
                 <h3>해결</h3>
                 <p>
-                  조건부 렌더링으로 에러 방지
+                  트러블슈팅
                 </p>
                 <Highlight className="javascript">
                   {codeSnippet}
                 </Highlight>
                 <p>
-                  데이터 로드 전에 해당 정보를 사용하여 발생한 문제를 해결하기 위해 &#123;channelDetail &amp;&amp;&#125;를 사용하여 조건부 렌더링을 수행했습니다.<br />
-                  이를 통해 코드는 channelDetail이 존재하는지 여부를 확인하고, 데이터가 로드된 후에만 해당 코드 블록을 실행하게 됩니다.<br />
-                  이러한 방법을 통해 에러를 방지하고 안정적인 동작을 보장할 수 있습니다.
+                  트러블슈팅
                 </p>
               </div>
             </div>
@@ -266,7 +263,7 @@ const Kickoff = () => {
                   </Link>
                 </h2>
                 <span>
-                  <Link to="/" className="goMain underline">(main)</Link>
+                  <Link to="/home" className="goMain underline">(main)</Link>
                 </span>
               </div>
             </div>

@@ -3,8 +3,8 @@ import gsap from "gsap";
 export function aboutIntro() {
     const aboutIntro = gsap.timeline();
 
-    aboutIntro.to("#about #header .logo", { opacity: 1, duration: 1, ease: "power1.inOut", delay: 1 })
-    aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 1, ease: "power1.inOut" })
+    aboutIntro.to("#about #header .logo", { opacity: 1, duration: 0.5, ease: "power1.inOut", delay: 1 })
+    aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 0.5, ease: "power1.inOut" })
     aboutIntro.to(".aboutCenter h2 ", { opacity: 1 }, "<")
 
     document.querySelectorAll(".split.aboutLogo").forEach((text) => {
@@ -52,5 +52,5 @@ export function aboutIntro() {
 
         aboutIntro.add(() => spanTimeline.play(), "-=0.5"); // subAni 타임라인에 추가
     });
-    aboutIntro.to(".aboutCenter p", { opacity: 1, duration: 1, ease: "power1.inOut" })
+    aboutIntro.to(".aboutCenter p", { opacity: 1, duration: 0.5, ease: "power1.inOut" })
 }

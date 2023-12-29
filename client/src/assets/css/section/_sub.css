@@ -102,7 +102,6 @@
 }
 
 .sub__center .subDesc {
-    width: 40%;
     font-size: 16px;
     line-height: 1.5;
     font-family: var(--font-arita);
@@ -162,7 +161,7 @@
 
 
 .subBgSliderWrap {
-    width: 450vw;
+    width: 500vw;
     height: 100vh;
     display: flex;
 }
@@ -179,7 +178,7 @@
 }
 
 .subBgSliderWrap section.s3 {
-    width: 250vw;
+    width: 300vw;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(75px);
     display: flex;
@@ -255,7 +254,7 @@
 
 /* desc */
 .section.s3 .desc {
-    width: 70vw;
+    width: 50vw;
     height: 100%;
     font-family: var(--font-arita);
     font-size: 1.1rem;
@@ -274,21 +273,22 @@
     margin-bottom: 5vh;
 }
 
-.section.s3 .desc .desc__inner span {
+.section.s3 .desc .desc__inner span,
+.section.s3 .desc .desc__inner p {
     color: var(--white);
-    font-size: 18px;
+    font-size: 1rem;
     font-family: var(--font-arita);
-    font-weight: 400;
+    font-weight: 500;
+}
+
+.section.s3 .desc .desc__inner span {
     display: block;
     text-decoration: underline;
     text-underline-position: under;
+    margin-bottom: 5px;
 }
 
 .section.s3 .desc .desc__inner p {
-    color: var(--white);
-    font-size: 18px;
-    font-family: var(--font-arita);
-    font-weight: 400;
     margin-bottom: 2vh;
 }
 
@@ -324,8 +324,8 @@
 .section.s3 .trouble .trouble__inner h3,
 .section.s3 .trouble .trouble__inner p {
     font-family: var(--font-arita);
-    font-size: 18px;
-    font-weight: 300;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--white);
 }
 
@@ -340,6 +340,201 @@
 .section.s3 .hljs {
     font-family: var(--font-d2);
     padding: 0;
+}
+
+/* comment */
+.section.s3 .comment {
+    width: 40vw;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 1rem;
+    padding: 0 5vw 12vh;
+    box-sizing: border-box;
+}
+
+.section.s3 .comment>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.section.s3 .comment>div>.repleList,
+.section.s3 .comment>div>.repleWrite {
+    width: 100%;
+}
+
+.section.s3 .comment>div>.repleList {
+    overflow-y: scroll;
+}
+
+.section.s3 .repleList li {
+    width: 100%;
+}
+
+.section.s3 .repleList li .modifyForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.section.s3 .repleList li .modifyForm input[name="modifyCont"],
+.section.s3 .repleList li .cont {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    font-family: var(--font-arita);
+    padding: 1rem;
+    border-radius: 10px;
+    line-height: 1.6;
+    margin: 5px 0;
+    border: 2px solid transparent;
+}
+
+.section.s3 .repleList li .modifyForm input[name="modifyCont"] {
+    outline: 0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.section.s3 .repleList li .modifyForm .modfiyBottom {
+    width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.section.s3 .repleList li .modifyForm .modfiyBottom input[name="modifyPass"] {
+    width: 100%;
+    padding: 5px;
+    color: var(--white);
+    font-size: 1rem;
+    border-radius: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: transparent
+}
+
+.section.s3 .repleList li .modifyForm .modfiyBottom input[name="modifyPass"]:focus {
+    outline: 0;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.section.s3 .repleList li .modifyForm .modfiyBottom .modifyForm__btn {
+    display: flex;
+    width: 30%;
+    position: absolute;
+    right: 0;
+}
+
+.section.s3 .repleList li .modifyForm .modfiyBottom .modifyForm__btn button {
+    width: 49.5%;
+    padding: 5px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 1rem;
+    font-family: var(--font-gmarket);
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.section.s3 .repleList li .modifyForm .modfiyBottom .modifyForm__btn button:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.section.s3 .repleList li .author {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--black500);
+    font-family: var(--font-gmarket);
+    font-weight: 300;
+    position: relative;
+}
+
+.section.s3 .repleList li .author .date {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.section.s3 .repleList li .author .edit {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.section.s3 .repleList li .author .modal {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+.section.s3 .repleList li .author .modal>p {
+    cursor: pointer;
+}
+
+.section.s3 .repleWriteHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.section.s3 .repleWriteHeader .author,
+.section.s3 .repleWriteHeader .password {
+    width: 49.5%;
+}
+
+.section.s3 .repleWriteBottom input,
+.section.s3 .repleWriteHeader .author input,
+.section.s3 .repleWriteHeader .password input {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: var(--white);
+    font-size: 1rem;
+    font-family: var(--font-gmarket);
+    font-weight: 300;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.section.s3 .repleWriteBottom input:focus,
+.section.s3 .repleWriteHeader .author input:focus,
+.section.s3 .repleWriteHeader .password input:focus {
+    outline: 0;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.section.s3 .repleWriteBottom {
+    position: relative;
+}
+
+.section.s3 .repleWriteBottom input {
+    padding-right: 40px;
+}
+
+.section.s3 .repleWriteBottom button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: transparent;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.15);
+    font-family: var(--font-gmarket);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.section.s3 .repleWriteBottom button:hover {
+    color: rgba(255, 255, 255, 0.5);
+
 }
 
 /* subNext */
