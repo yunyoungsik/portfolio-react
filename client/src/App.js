@@ -8,6 +8,7 @@ import TrendDevice from './pages/TrendDevice'
 import YouTube from './pages/YouTube'
 import Movie from './pages/Movie'
 import Kickoff from './pages/Kickoff'
+import Portfolio from './pages/Portfolio'
 import About from './pages/About'
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/youtube' element={<YouTube />}></Route>
         <Route path='/movie' element={<Movie />}></Route>
         <Route path='/kickoff' element={<Kickoff />}></Route>
+        <Route path='/portfolio' element={<Portfolio />}></Route>
         <Route path='/about' element={<About />}></Route>
       </Routes>
       {/* </Main> */}

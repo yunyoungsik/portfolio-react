@@ -1,62 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import Highlight from 'react-highlight'
-import 'highlight.js/styles/atom-one-dark.css';
+// import Highlight from 'react-highlight'
+// import 'highlight.js/styles/atom-one-dark.css';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { smooth } from '../assets/script/smooth';
-import { splint } from '../assets/script/splint';
 import { subIntro } from '../assets/script/subIntro';
 import { subSlider } from '../assets/script/subSlider';
 import { navBar } from '../assets/script/navBar';
 import { subClose } from '../assets/script/subClose';
 import { subAbout } from '../assets/script/subAbout';
-import { subNext } from '../assets/script/subNext';
+import { subNext3 } from '../assets/script/subNext3';
 
 import CommentArea from '../components/comment/CommentArea';
 
 const YouTube = () => {
+
     // hightlight
-    const codeSnippet = `
+    const codeSnippet = `if (selectedPhone) {
         const channelPageClass = loading ? 'isLoading' : 'isLoaded'
             //기존코드
         <section id='channelPage' className={channelPageClass}>
         {channelDetail && (
             //기존 코드
         )}
-    `;
+    }`;
     // script
     useEffect(() => {
         smooth();
-        splint();
         subIntro();
         subSlider();
         navBar();
         subClose();
         subAbout();
-        subNext();
+        subNext3();
     }, [])
-
-    const [modalFlag, setModalFlag] = useState(false);
-    const ref = useRef();
-    useOnClickOutside(ref, () => setModalFlag(false));
-
-    function useOnClickOutside(ref, handler) {
-        useEffect(() => {
-            const listener = (event) => {
-                if (!ref.current || ref.current.contains(event.target)) {
-                    return;
-                }
-                handler(event);
-            };
-            document.addEventListener("mousedown", listener);
-            document.addEventListener("touchstart", listener);
-            return () => {
-                document.removeEventListener("mousedown", listener);
-                document.removeEventListener("touchstart", listener);
-            };
-        }, [ref, handler]);
-    }
 
     return (
         <main id='main' className='main sub'>
@@ -76,18 +56,6 @@ const YouTube = () => {
             <div className="scrollBar">
                 <progress max="100" value="0"></progress>
             </div>
-
-            <div className='comment' onClick={() => setModalFlag(true)}>
-                <svg viewBox="0 -0.5 25 25" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M9.1631 5H15.8381C17.8757 5.01541 19.5151 6.67943 19.5001 8.717V13.23C19.5073 14.2087 19.1254 15.1501 18.4384 15.8472C17.7515 16.5442 16.8158 16.9399 15.8371 16.947H9.1631L5.5001 19V8.717C5.49291 7.73834 5.8748 6.79692 6.56175 6.09984C7.24871 5.40276 8.18444 5.00713 9.1631 5Z" />
-                    <path fillRule="evenodd" clipRule="evenodd" d="M7.50009 11C7.50009 10.4477 7.94781 10 8.50009 10C9.05238 10 9.50009 10.4477 9.50009 11C9.50009 11.5523 9.05238 12 8.50009 12C8.23488 12 7.98052 11.8946 7.79298 11.7071C7.60545 11.5196 7.50009 11.2652 7.50009 11Z" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" />
-                    <path fillRule="evenodd" clipRule="evenodd" d="M11.5001 11C11.5001 10.4477 11.9478 10 12.5001 10C13.0524 10 13.5001 10.4477 13.5001 11C13.5001 11.5523 13.0524 12 12.5001 12C11.9478 12 11.5001 11.5523 11.5001 11Z" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" />
-                    <path fillRule="evenodd" clipRule="evenodd" d="M15.5001 11C15.5001 10.4477 15.9478 10 16.5001 10C17.0524 10 17.5001 10.4477 17.5001 11C17.5001 11.5523 17.0524 12 16.5001 12C15.9478 12 15.5001 11.5523 15.5001 11Z" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            </div>
-            {modalFlag && (
-                <CommentArea className='modal' ref={ref} />
-            )}
 
             <div className="mainSlider" id="subMainSlider">
                 <div className="mainSlider__top">
@@ -188,8 +156,7 @@ const YouTube = () => {
                                 </div>
                                 <div className="link">
                                     <div className="link1">
-                                        <Link to="https://dasibogi-youtube.netlify.app/" target="_blank"
-                                            className="underline">
+                                        <Link to="https://dasibogi-youtube.netlify.app/" target="_blank" className="underline">
                                             <i>Link</i>
                                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
                                                 data-v-50e346e1="">
@@ -214,7 +181,7 @@ const YouTube = () => {
                         </div>
                         <div className="desc">
                             <div className="desc__inner">
-                                <h2>Description</h2>
+                            <h2>Description</h2>
                                 <span>더보기</span>
                                 <p>
                                     페이지 로딩 시 초기 비디오와 채널 정보를 가져와서 '더보기' 버튼을 클릭할 때마다 nextPageToken을 활용하여 추가 비디오를 가져와 이전 목록에 이어 붙입니다.<br />
@@ -242,15 +209,22 @@ const YouTube = () => {
                                 <p>
                                     조건부 렌더링으로 에러 방지
                                 </p>
-                                <Highlight className="javascript">
+                                <SyntaxHighlighter
+                                    language="javascript"
+                                    style={oneDark}
+                                    showLineNumbers
+                                >
                                     {codeSnippet}
-                                </Highlight>
+                                </SyntaxHighlighter>
                                 <p>
                                     데이터 로드 전에 해당 정보를 사용하여 발생한 문제를 해결하기 위해 &#123;channelDetail &amp;&amp;&#125;를 사용하여 조건부 렌더링을 수행했습니다.<br />
                                     이를 통해 코드는 channelDetail이 존재하는지 여부를 확인하고, 데이터가 로드된 후에만 해당 코드 블록을 실행하게 됩니다.<br />
                                     이러한 방법을 통해 에러를 방지하고 안정적인 동작을 보장할 수 있습니다.
                                 </p>
                             </div>
+                        </div>
+                        <div className='comment'>
+                            <CommentArea />
                         </div>
                         <div className="subNext">
                             <div className="subNext__inner">

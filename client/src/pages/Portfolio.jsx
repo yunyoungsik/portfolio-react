@@ -12,16 +12,20 @@ import { subSlider } from '../assets/script/subSlider';
 import { navBar } from '../assets/script/navBar';
 import { subClose } from '../assets/script/subClose';
 import { subAbout } from '../assets/script/subAbout';
-import { subNext5 } from '../assets/script/subNext5';
+import { subNext } from '../assets/script/subNext';
 
 import CommentArea from '../components/comment/CommentArea';
 
-const Kickoff = () => {
+const Portfolio = () => {
 
     // hightlight
-    const codeSnippet = `추가예정
-     추가예정
-     추가예정
+    const codeSnippet = `return () => {
+        // ScrollTrigger 해제
+        ScrollTrigger.getAll().forEach(trigger => {
+            trigger.kill();
+        });
+        // GSAP 애니메이션 중지 또는 제거
+        animation.kill();
     }`;
     // script
     useEffect(() => {
@@ -31,7 +35,7 @@ const Kickoff = () => {
         navBar();
         subClose();
         subAbout();
-        subNext5();
+        subNext();
     }, [])
 
     return (
@@ -46,7 +50,7 @@ const Kickoff = () => {
             <Link to="/about" className="about sub underline">About</Link>
             <div className="subPage">
                 <span className="current sub">
-                    <span className="pageIndex 01">04</span>
+                    <span className="pageIndex 01">05</span>
                 </span>
             </div>
             <div className="scrollBar">
@@ -113,19 +117,19 @@ const Kickoff = () => {
                 </div>
             </div>
 
-            <div className="subBgSlider s4">
+            <div className="subBgSlider s5">
                 <div className="subBgSliderWrap">
                     <section className='section s1'>
                         <div className="sub__center">
                           <div className="text">
                             <div className="titleWrap">
                               <h5 className="subTitle split">
-                                Kickoff
+                                Portfolio
                               </h5>
                             </div>
                             <div className="subDesc split">
-                              React와 축구 API를 이용하여 만든 축구 정보와 하이라이트를 제공하는 웹사이트입니다.<br />
-                              경기 결과, 일정, 리그 테이블 같은 정보를 API로 받아오며, 하이라이트 비디오도 제공합니다.
+                              React를 이용하여 만든 포트폴리오는 웹사이트입니다.<br />
+                              직접 제작한 웹사이트의 간단한 설명과 링크, 깃허브 링크를 제공하고 있습니다.
                             </div>
                           </div>
                         </div>
@@ -135,19 +139,19 @@ const Kickoff = () => {
                     </section>
                     <section className='section s3'>
                         <div className="pageSection">
-                            #4
+                            #5
                         </div>
                         <div className="info">
                             <div className="info__inner">
-                                <h2 className='mPageSection'>#4</h2>
+                                <h2 className='mPageSection'>#5</h2>
                                 <h2>Website</h2>
                                 <div className="coding">
                                     <h3>(coding)</h3>
-                                    <p>React, API</p>
+                                    <p>React</p>
                                 </div>
                                 <div className="workTime">
                                     <h3>(workTime)</h3>
-                                    <p>2 Weeks</p>
+                                    <p>3 Weeks</p>
                                 </div>
                                 <div className="link">
                                     <div className="link1">
@@ -163,7 +167,7 @@ const Kickoff = () => {
                                     </div>
                                     <div className="link2">
                                     </div>
-                                    <Link to="https://github.com/audgns722/kickoff" target="_blank" className="underline">
+                                    <Link to="https://github.com/yunyoungsik/portfolio-react" target="_blank" className="underline">
                                         <i>Github</i>
                                         <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
                                             data-v-50e346e1="">
@@ -177,17 +181,18 @@ const Kickoff = () => {
                         <div className="desc">
                             <div className="desc__inner">
                               <h2>Description</h2>
-                              <span>회원가입</span>
+                              <span>메인</span>
                               <p>
-                                Firebase를 이용해 사용자의 이메일과 비밀번호로 회원가입하고, MongoDB를 통해 사용자 데이터를 저장합니다.<br />
-                                Axios를 사용하여 서버로 데이터를 전송하며, React Router를 이용하여 페이지 간 이동을 합니다.<br />
-                                또한, 사용자가 입력한 정보의 유효성을 검사하고, 이메일 중복 검사를 수행하여 회원가입 과정을 관리합니다.
+                                메인
+                                메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse, homeSlider, homeTransition, homeAbout 함수들을 호출하고,<br/>
+                                Link 컴포넌트를 통해 페이지 내에는 다양한 컨텐츠들이 Link 컴포넌트를 통해 연결되어 있습니다.<br/>
+                                페이지의 스크롤 효과와 이미지들도 해당하는 클래스를 이용하여 구성되어 있어요.
                               </p>
-                              <span>리그정보</span>
+                              <span>서브</span>
                               <p>
-                                리그의 정보를 가져와 보여주는 기능을 구현하였습니다.<br />
-                                React Router를 통해 경로의 파라미터를 가져와 해당 리그의 정보를 API로 요청하여 가져옵니다.<br />
-                                리그 정보는 Football Data API에서 받아온 데이터를 사용하여 리그 이름, 팀 정보, 리그 로고 등을 화면에 표시합니다.
+                                서브페이지에서는 코드 하이라이팅을 위해 SyntaxHighlighter를 사용하였으며, 이 라이브러리는 코드를 강조하여 보기 좋게 표시해줍니다.<br/>
+                                그리고 GSAP를 활용하여 subIntro, subSlider 등의 함수들을 통해 애니메이션을 초기화하고 실행하고 있습니다.<br/>
+                                부드러운 스크롤을 위해 Lenis를 사용하는 smooth 함수도 구현되어 있고, CommentArea는 페이지에 댓글 기능을 추가하기 위한 컴포넌트입니다.
                               </p>
                             </div>
                         </div>
@@ -195,7 +200,7 @@ const Kickoff = () => {
                             <div className="trouble__inner">
                                 <h2>Trouble Shooting</h2>
                                 <h3>문제</h3>
-                                <p>추가예정</p>
+                                <p>Home, sub 페이지에서 About페이지로 넘어가도 Scroll 효과가 남아있음</p>
                                 <h3>해결</h3>
                                 <SyntaxHighlighter
                                     language="javascript"
@@ -205,7 +210,11 @@ const Kickoff = () => {
                                     {codeSnippet}
                                 </SyntaxHighlighter>
                                 <p>
-                                 추가예정
+                                    홈 및 서브페이지에서는 ScrollTrigger 및 GSAP 애니메이션이 적용되어 페이지 스크롤에 효과를 주고 있습니다.<br/>
+                                    하지만 About 페이지로 이동 시 해당 효과가 지속되는 문제가 발생하였습니다.<br/>
+                                    이를 해결하기 위해 useEffect 내부에서 ScrollTrigger와 GSAP 애니메이션을 제거하도록 처리했습니다.<br/>
+                                    이로써 About 페이지로 이동할 때 이전 페이지의 스크롤 효과가 중지되어 자연스러운 전환을 보장합니다.<br/>
+                                    위의 코드는 컴포넌트가 unmount될 때 실행되는 cleanup 함수로, ScrollTrigger와 GSAP 애니메이션을 중지시키는 역할을 수행합니다.
                                 </p>
                             </div>
                         </div>
@@ -215,13 +224,13 @@ const Kickoff = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="#" className="underline nextPage">(next)</Link>
+                                    <Link to="#" className="underline goMain">(next)</Link>
                                 </span>
                                 <h2>
-                                    <Link to="#" className='nextPage'>
-                                        <span>Portfolio</span>
+                                    <Link to="#" className='goMain'>
+                                        <span>Main</span>
                                     </Link>
-                                    <Link to="#" className='nextPage'>
+                                    <Link to="#" className='goMain'>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
                                             <path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z"
                                                 data-name="Right" />
@@ -241,4 +250,4 @@ const Kickoff = () => {
     )
 }
 
-export default Kickoff
+export default Portfolio

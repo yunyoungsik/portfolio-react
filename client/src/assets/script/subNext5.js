@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import SplitType from 'split-type';
 
-export function subNext() {
+export function subNext5() {
     const next = document.querySelectorAll(".nextPage");
 
     next.forEach(el => {
@@ -9,7 +9,7 @@ export function subNext() {
             event.preventDefault();
 
             const subBgSlider = document.querySelector(".subBgSlider");
-            subBgSlider.classList.add("next2");
+            subBgSlider.classList.add("next5");
 
             const nextAni = gsap.timeline();
 
@@ -47,7 +47,7 @@ export function subNext() {
 
             setTimeout(() => {
                 nextAni.eventCallback("onComplete", () => {
-                    window.location.href = "/youtube";
+                    window.location.href = "/portfolio";
                 });
             }, 3000);
         });

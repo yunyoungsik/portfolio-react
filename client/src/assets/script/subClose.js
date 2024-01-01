@@ -13,7 +13,7 @@ export function subClose() {
 
             closeAni.to(".subBgSliderWrap", { xPercent: 0, duration: 1, ease: "Power1.easeInOut" });
             closeAni.to([".close.sub"], { opacity: 0, duration: 0.5, ease: "Power1.easeInOut" });
-            closeAni.fromTo([".current.sub", ".scrollBar", ".comment"], { y: 0 }, { y: 24, opacity: 0, duration: 0.5, ease: "power1.inOut" }, "<")
+            closeAni.fromTo([".current.sub", ".scrollBar"], { y: 0 }, { y: 24, opacity: 0, duration: 0.5, ease: "power1.inOut" }, "<")
 
             const targets = gsap.utils.toArray(".split");
             targets.forEach((target) => {

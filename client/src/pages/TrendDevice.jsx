@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import Highlight from 'react-highlight'
-import 'highlight.js/styles/atom-one-dark.css';
+// import Highlight from 'react-highlight'
+// import 'highlight.js/styles/atom-one-dark.css';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { smooth } from '../assets/script/smooth';
 import { subIntro } from '../assets/script/subIntro';
@@ -17,8 +19,7 @@ import CommentArea from '../components/comment/CommentArea';
 const TrendDevice = () => {
 
     // hightlight
-    const codeSnippet = `
-        if (selectedPhone) {
+    const codeSnippet = `if (selectedPhone) {
         const link = document.createElement('a');
         link.href = '\u0024{ selectedPhone.pLink }';
         link.className = 'btn__style3';
@@ -27,12 +28,10 @@ const TrendDevice = () => {
         const linkContainer = document.querySelector('.pLink1');
         linkContainer.innerHTML = '';
         linkContainer.appendChild(link);
-        }
-    `;
+    }`;
     // script
     useEffect(() => {
         smooth();
-        // splint();
         subIntro();
         subSlider();
         navBar();
@@ -136,10 +135,6 @@ const TrendDevice = () => {
                                     각 휴대폰 모델에는 사진, 기술 사양, 가격 등의 정보가 제공되어<br />
                                     사용자가 원하는 정보를 쉽게 찾을 수 있습니다.
                                 </div>
-                                {/* <div className="subDesc split">Trend Device는 직관적이고 사용하기 편리한 인터페이스를 제공하여</div>
-                                <div className="subDesc split">사용자가 원하는 휴대폰 모델을 선택하고, 선택한 모델들을 한눈에 비교할 수 있도록 합니다.</div>
-                                <div className="subDesc split">각 휴대폰 모델에는 사진, 기술 사양, 가격 등의 정보가 제공되어</div>
-                                <div className="subDesc split">사용자가 원하는 정보를 쉽게 찾을 수 있습니다.</div> */}
                             </div>
                         </div>
                         <div className="transitionOverlay"></div>
@@ -218,9 +213,13 @@ const TrendDevice = () => {
                                 <p>
                                     초기값이 없는 상태의 'a'와 'img' 요소를 조건부 렌더링으로 처리
                                 </p>
-                                <Highlight className="javascript">
+                                <SyntaxHighlighter
+                                    language="javascript"
+                                    style={oneDark}
+                                    showLineNumbers
+                                >
                                     {codeSnippet}
-                                </Highlight>
+                                </SyntaxHighlighter>
                                 <p>
                                     문제는 데이터 로딩 전에 정보를 사용하려고 했던 것이었습니다.<br />
                                     조건부 렌더링을 사용하여 데이터 존재 여부를 확인하고, 데이터가 있는 경우에만 코드를 실행하여 에러를 방지했습니다.

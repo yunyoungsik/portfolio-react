@@ -51,7 +51,7 @@ const Home = () => {
                                     <Link to="#" className="ki subLink split">Kickoff</Link>
                                 </h2>
                                 <h2 className="title">
-                                    <Link to="#" className="bl subLink split">BLOG</Link>
+                                    <Link to="#" className="po subLink split">Portfolio</Link>
                                 </h2>
                             </div>
                         </div>
@@ -67,7 +67,7 @@ const Home = () => {
                                     Vue를 이용하여 작업한 사이트입니다.
                                 </p>
                                 <p className="desc">
-                                    4를 이용하여 작업한 사이트입니다.
+                                    React를 이용하여 작업한 사이트입니다.
                                 </p>
                                 <p className="desc">
                                     5를 이용하여 작업한 사이트입니다.
@@ -90,7 +90,7 @@ const Home = () => {
                                 <Link to="#" className="ki subLink"><img src="https://images.unsplash.com/photo-1690321607822-669326f4e3cc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 04" /></Link>
                             </div>
                             <div className="centerSlider s5 main">
-                                <Link to="#" className="bl subLink"><img src="https://images.unsplash.com/photo-1659469378420-e68c6ee21a28?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 05" /></Link>
+                                <Link to="#" className="po subLink"><img src="https://images.unsplash.com/photo-1692891259833-9832c3ca751e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="main img 05" /></Link>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@ const Home = () => {
                     <Link to="#" className="ki parallax__item subLink">
                         <div className="slider s4"></div>
                     </Link>
-                    <Link to="#" className="bl parallax__item subLink">
+                    <Link to="#" className="po parallax__item subLink">
                         <div className="slider s5"></div>
                     </Link>
                 </div>
