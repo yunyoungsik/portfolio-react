@@ -379,6 +379,7 @@
     overflow-y: scroll;
     position: relative;
 }
+
 /* .section.s3 .comment>div>.repleList::before {
     position: absolute;
     top: 0;
@@ -626,8 +627,13 @@
 
     /* section */
     .subBgSliderWrap {
-        width: 530vw;
+        width: 600vw;
     }
+
+    .subBgSliderWrap section.s3 {
+        width: 400vw;
+    }
+
     .pageSection {
         display: none;
     }
@@ -660,9 +666,11 @@
         width: 100vw;
         padding-left: 5vw;
     }
+
     .section.s3 .trouble pre {
         width: 90vw;
     }
+
     .section.s3 .trouble .trouble__inner h3,
     .section.s3 .trouble .trouble__inner p {
         font-size: 1rem;
@@ -677,7 +685,7 @@
     }
 
     .section.s3 .comment {
-        width: 100vw;
+        width: 90vw;
         border-right: 0;
     }
 

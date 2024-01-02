@@ -121,17 +121,17 @@ const Portfolio = () => {
                 <div className="subBgSliderWrap">
                     <section className='section s1'>
                         <div className="sub__center">
-                          <div className="text">
-                            <div className="titleWrap">
-                              <h5 className="subTitle split">
-                                Portfolio
-                              </h5>
+                            <div className="text">
+                                <div className="titleWrap">
+                                    <h5 className="subTitle split">
+                                        Portfolio
+                                    </h5>
+                                </div>
+                                <div className="subDesc split">
+                                    React를 이용하여 만든 포트폴리오는 웹사이트입니다.<br />
+                                    직접 제작한 웹사이트의 간단한 설명과 링크, 깃허브 링크를 제공하고 있습니다.
+                                </div>
                             </div>
-                            <div className="subDesc split">
-                              React를 이용하여 만든 포트폴리오는 웹사이트입니다.<br />
-                              직접 제작한 웹사이트의 간단한 설명과 링크, 깃허브 링크를 제공하고 있습니다.
-                            </div>
-                          </div>
                         </div>
                         <div className="transitionOverlay"></div>
                     </section>
@@ -180,20 +180,20 @@ const Portfolio = () => {
                         </div>
                         <div className="desc">
                             <div className="desc__inner">
-                              <h2>Description</h2>
-                              <span>메인</span>
-                              <p>
-                                메인
-                                메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse, homeSlider, homeTransition, homeAbout 함수들을 호출하고,<br/>
-                                Link 컴포넌트를 통해 페이지 내에는 다양한 컨텐츠들이 Link 컴포넌트를 통해 연결되어 있습니다.<br/>
-                                페이지의 스크롤 효과와 이미지들도 해당하는 클래스를 이용하여 구성되어 있어요.
-                              </p>
-                              <span>서브</span>
-                              <p>
-                                서브페이지에서는 코드 하이라이팅을 위해 SyntaxHighlighter를 사용하였으며, 이 라이브러리는 코드를 강조하여 보기 좋게 표시해줍니다.<br/>
-                                그리고 GSAP를 활용하여 subIntro, subSlider 등의 함수들을 통해 애니메이션을 초기화하고 실행하고 있습니다.<br/>
-                                부드러운 스크롤을 위해 Lenis를 사용하는 smooth 함수도 구현되어 있고, CommentArea는 페이지에 댓글 기능을 추가하기 위한 컴포넌트입니다.
-                              </p>
+                                <h2>Description</h2>
+                                <span>메인</span>
+                                <p>
+                                    메인
+                                    메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse, homeSlider, homeTransition, homeAbout 함수들을 호출하고,<br />
+                                    Link 컴포넌트를 통해 페이지 내에는 다양한 컨텐츠들이 Link 컴포넌트를 통해 연결되어 있습니다.<br />
+                                    페이지의 스크롤 효과와 이미지들도 해당하는 클래스를 이용하여 구성되어 있어요.
+                                </p>
+                                <span>서브</span>
+                                <p>
+                                    서브페이지에서는 코드 하이라이팅을 위해 SyntaxHighlighter를 사용하였으며, 이 라이브러리는 코드를 강조하여 보기 좋게 표시해줍니다.<br />
+                                    그리고 GSAP를 활용하여 subIntro, subSlider 등의 함수들을 통해 애니메이션을 초기화하고 실행하고 있습니다.<br />
+                                    부드러운 스크롤을 위해 Lenis를 사용하는 smooth 함수도 구현되어 있고, CommentArea는 페이지에 댓글 기능을 추가하기 위한 컴포넌트입니다.
+                                </p>
                             </div>
                         </div>
                         <div className="trouble">
@@ -210,10 +210,10 @@ const Portfolio = () => {
                                     {codeSnippet}
                                 </SyntaxHighlighter>
                                 <p>
-                                    홈 및 서브페이지에서는 ScrollTrigger 및 GSAP 애니메이션이 적용되어 페이지 스크롤에 효과를 주고 있습니다.<br/>
-                                    하지만 About 페이지로 이동 시 해당 효과가 지속되는 문제가 발생하였습니다.<br/>
-                                    이를 해결하기 위해 useEffect 내부에서 ScrollTrigger와 GSAP 애니메이션을 제거하도록 처리했습니다.<br/>
-                                    이로써 About 페이지로 이동할 때 이전 페이지의 스크롤 효과가 중지되어 자연스러운 전환을 보장합니다.<br/>
+                                    홈 및 서브페이지에서는 ScrollTrigger 및 GSAP 애니메이션이 적용되어 페이지 스크롤에 효과를 주고 있습니다.<br />
+                                    하지만 About 페이지로 이동 시 해당 효과가 지속되는 문제가 발생하였습니다.<br />
+                                    이를 해결하기 위해 useEffect 내부에서 ScrollTrigger와 GSAP 애니메이션을 제거하도록 처리했습니다.<br />
+                                    이로써 About 페이지로 이동할 때 이전 페이지의 스크롤 효과가 중지되어 자연스러운 전환을 보장합니다.<br />
                                     위의 코드는 컴포넌트가 unmount될 때 실행되는 cleanup 함수로, ScrollTrigger와 GSAP 애니메이션을 중지시키는 역할을 수행합니다.
                                 </p>
                             </div>
