@@ -43,7 +43,7 @@ export function subNext3() {
                 nextAni.fromTo([".current.sub", ".scrollBar", ".comment"], { y: 0 }, { y: 24, opacity: 0, duration: 0.5, ease: "power1.inOut" })
                 nextAni.to([".close.sub"], { opacity: 0, duration: 0.5, ease: "Power1.easeInOut" }, "<");
                 nextAni.to("transitionOverlay", { opacity: 0.8, duration: 0.7, ease: "Power1.easeInOut" })
-                nextAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(0px)', duration: 0.7, ease: "Power1.easeInOut" }, "<")
+                // nextAni.to(".subBgSliderWrap section.s1", { backdropFilter: 'blur(0px)', duration: 0.7, ease: "Power1.easeInOut" }, "<")
 
                 setTimeout(() => {
                     nextAni.eventCallback("onComplete", () => {

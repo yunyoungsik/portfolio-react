@@ -183,16 +183,20 @@ const Portfolio = () => {
                                 <h2>Description</h2>
                                 <span>메인</span>
                                 <p>
-                                    메인
-                                    메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse, homeSlider, homeTransition, homeAbout 함수들을 호출하고,<br />
+                                    메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse, homeSlider, homeTransition, homeAbout 함수들을 호출합니다.<br />
+                                    Lenis를 이용하여 부드러운 스크롤, GSAP를 이용하여 마우스 이펙트, 슬라이드, 화면전환 효과를 구현하였습니다.
                                     Link 컴포넌트를 통해 페이지 내에는 다양한 컨텐츠들이 Link 컴포넌트를 통해 연결되어 있습니다.<br />
-                                    페이지의 스크롤 효과와 이미지들도 해당하는 클래스를 이용하여 구성되어 있어요.
                                 </p>
                                 <span>서브</span>
                                 <p>
                                     서브페이지에서는 코드 하이라이팅을 위해 SyntaxHighlighter를 사용하였으며, 이 라이브러리는 코드를 강조하여 보기 좋게 표시해줍니다.<br />
                                     그리고 GSAP를 활용하여 subIntro, subSlider 등의 함수들을 통해 애니메이션을 초기화하고 실행하고 있습니다.<br />
                                     부드러운 스크롤을 위해 Lenis를 사용하는 smooth 함수도 구현되어 있고, CommentArea는 페이지에 댓글 기능을 추가하기 위한 컴포넌트입니다.
+                                </p>
+                                <span>어바웃</span>
+                                <p>
+                                    About 페이지는 개발자에 대한 정보를 제공하며 Lenis 및 GSAP와 같은 라이브러리를 활용하여 부드러운 스크롤, 인트로 및 아웃트로 등 애니메이션를 구현했습니다.
+                                    페이지에는 개발자의 간단한 소개, 서비스 및 기술 정보, 소셜 링크 및 이메일 등이 제공되며, Link 컴포넌트를 통해 다른 페이지로 연결되어 있습니다.
                                 </p>
                             </div>
                         </div>

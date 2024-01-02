@@ -77,7 +77,7 @@ const Intro = () => {
         innerAnimation.eventCallback("onComplete", function () {
             setTimeout(function () {
                 window.location.href = "/home";
-            }, 1000);
+            }, 1500);
         });
     }, [])
 

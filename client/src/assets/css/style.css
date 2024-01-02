@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 /* setting */
+@import "_reset.css";
 @import "_font.css";
 @import "_var.css";
-@import "_reset.css";
 @import "_common.css";
 
 /* section */
