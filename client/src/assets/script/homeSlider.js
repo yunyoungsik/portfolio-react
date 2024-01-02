@@ -16,7 +16,7 @@ export function homeSlider() {
             pin: true,
             scrub: 1,
             snap: 1 / (sections.length - 1),
-            end: "+=5500",
+            end: "+=5000",
         }
     });
 

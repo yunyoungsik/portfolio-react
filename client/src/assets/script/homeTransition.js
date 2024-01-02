@@ -22,7 +22,7 @@ export function homeTransition() {
                         window.location.href = "/portfolio";
                     }
                 }
-            });
+            }, 1500);
 
             setTimeout(() => {
                 pageTransition.to(
@@ -118,6 +118,6 @@ export function homeTransition() {
                 );
                 pageTransition.to(".transitionOverlay", { display: "inline-block", duration: 1, ease: "Power1.easeInOut", opacity: 0.8 }, "<")
             });
-        }, 1000);
+        }, 1500);
     });
 }

@@ -122,18 +122,18 @@ const Movie = () => {
                 <div className="subBgSliderWrap">
                     <section className='section s1'>
                         <div className="sub__center">
-                          <div className="text">
-                            <div className="titleWrap">
-                              <h5 className="subTitle split">
-                                Movie
-                              </h5>
+                            <div className="text">
+                                <div className="titleWrap">
+                                    <h5 className="subTitle split">
+                                        Movie
+                                    </h5>
+                                </div>
+                                <div className="subDesc split">
+                                    Vue와 TMDB API를 활용한 이용한 영화 정보 사이트입니다.<br />
+                                    최신 영화 정보와 사용자가 특정 영화 선택하면 상세 정보 볼 수 있습니다.<br />
+                                    포스터, 제목, 개봉일, 평점 등 사용자들이 관심 있는 영화 정보를 쉽게 얻을 수 있습니다.
+                                </div>
                             </div>
-                            <div className="subDesc split">
-                              Vue와 TMDB API를 활용한 이용한 영화 정보 사이트입니다.<br/>
-                              최신 영화 정보와 사용자가 특정 영화 선택하면 상세 정보 볼 수 있습니다.<br/>
-                              포스터, 제목, 개봉일, 평점 등 확인 가능하고 줄거리도 읽을 수 있으며,<br/> 배우들 프로필 사진과 사용자들이 관심 있는 영화 정보를 쉽게 얻을 수 있습니다.
-                            </div>
-                          </div>
                         </div>
                         <div className="transitionOverlay"></div>
                     </section>
@@ -182,19 +182,19 @@ const Movie = () => {
                         </div>
                         <div className="desc">
                             <div className="desc__inner">
-                              <h2>Description</h2>
-                              <span>메인 페이지</span>
-                              <p>
-                                Vue의 Composition API에서 제공하는 &lt;script setup&gt;을 사용하여 컴포넌트 로직을 정의하고 반응형 변수인 movies와 searchTerm을 정의했습니다.<br />
-                                switch문을 사용하여 다양한 영화 카테고리에 따라 API URL을 결정하고 Axios를 통해 해당 URL에 요청을 보냅니다. 그리고 받은 결과를 movies에 할당합니다.<br />
-                                사용자가 입력한 검색어로 영화를 검색하는 함수를 구현했습니다. searchTerm을 쿼리로 사용하여 API를 호출하고 받은 결과를 movies에 할당합니다.
-                              </p>
-                              <span>상세 페이지</span>
-                              <p>
-                                상세페이지에서는 각 섹션을 컴포넌트로 분리해서 사용했습니다. HeaderSection, DetailIntro 등의 컴포넌트를 사용해서 영화 정보를 보여줍니다.<br />
-                                setup함수를 사용하여 데이터와 API 호출을 관리합니다. ref를 사용하여 movieBasic, movieInfo 등을 초기화하고, useRoute를 이용하여 현재 라우트 정보를 가져옵니다.<br />
-                                VITE_API_KEY를 사용하여 환경 변수를 통해 API 키를 가져옵니다. .env 파일에 저장된 변수를 활용하여 API 키를 보호합니다.
-                              </p>
+                                <h2>Description</h2>
+                                <span>메인 페이지</span>
+                                <p>
+                                    Vue의 Composition API에서 제공하는 &lt;script setup&gt;을 사용하여 컴포넌트 로직을 정의하고 반응형 변수인 movies와 searchTerm을 정의했습니다.<br />
+                                    switch문을 사용하여 다양한 영화 카테고리에 따라 API URL을 결정하고 Axios를 통해 해당 URL에 요청을 보냅니다. 그리고 받은 결과를 movies에 할당합니다.<br />
+                                    사용자가 입력한 검색어로 영화를 검색하는 함수를 구현했습니다. searchTerm을 쿼리로 사용하여 API를 호출하고 받은 결과를 movies에 할당합니다.
+                                </p>
+                                <span>상세 페이지</span>
+                                <p>
+                                    상세페이지에서는 각 섹션을 컴포넌트로 분리해서 사용했습니다. HeaderSection, DetailIntro 등의 컴포넌트를 사용해서 영화 정보를 보여줍니다.<br />
+                                    setup함수를 사용하여 데이터와 API 호출을 관리합니다. ref를 사용하여 movieBasic, movieInfo 등을 초기화하고, useRoute를 이용하여 현재 라우트 정보를 가져옵니다.<br />
+                                    VITE_API_KEY를 사용하여 환경 변수를 통해 API 키를 가져옵니다. .env 파일에 저장된 변수를 활용하여 API 키를 보호합니다.
+                                </p>
                             </div>
                         </div>
                         <div className="trouble">
@@ -211,9 +211,9 @@ const Movie = () => {
                                     {codeSnippet}
                                 </SyntaxHighlighter>
                                 <p>
-                                  기존 코드에서 ref가 객체를 반환하도록 설정되었다면 API 응답을 받은 후 .value를 사용하지 않고 객체 자체를 변경하여 값을 할당할 수 있습니다<br />
-                                  ref가 객체를 반환하도록 설정하고, API 응답을 받은 후 .value가 아닌 객체를 직접 변경하여 ref 값을 업데이트하는 방식입니다.<br />
-                                  이렇게 하면 .value를 사용하지 않고도 ref의 값을 변경할 수 있습니다.
+                                    기존 코드에서 ref가 객체를 반환하도록 설정되었다면 API 응답을 받은 후 .value를 사용하지 않고 객체 자체를 변경하여 값을 할당할 수 있습니다<br />
+                                    ref가 객체를 반환하도록 설정하고, API 응답을 받은 후 .value가 아닌 객체를 직접 변경하여 ref 값을 업데이트하는 방식입니다.<br />
+                                    이렇게 하면 .value를 사용하지 않고도 ref의 값을 변경할 수 있습니다.
                                 </p>
                             </div>
                         </div>
