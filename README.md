@@ -9,7 +9,6 @@ npm install react-router-dom
 npm install @gsap/react   
 npm install gsap   
 npm i @studio-freight/lenis  
-<!-- npm install react-highlight --save   -->
 npm install react-syntax-highlighter   
 npm install axios   
 npm install http-proxy-middleware --save   
@@ -38,7 +37,7 @@ Link 컴포넌트를 통해 페이지 내에는 다양한 컨텐츠들이 Link �
 About 페이지는 개발자에 대한 정보를 제공하며 Lenis 및 GSAP와 같은 라이브러리를 활용하여 부드러운 스크롤, 인트로 및 아웃트로 등 애니메이션를 구현했습니다.<br />
 페이지에는 개발자의 간단한 소개, 서비스 및 기술 정보, 소셜 링크 및 이메일 등이 제공되며, Link 컴포넌트를 통해 다른 페이지로 연결되어 있습니다.<br />
       
-## 트러블슈팅
+## 트러블슈팅01
 [문제]   
 Home, sub 페이지에서 About페이지로 넘어가도 Scroll 효과가 남아있음   
    
@@ -54,7 +53,7 @@ return () => {
     animation.kill();
 };
 ```
-
+## 트러블슈팅02
 [문제]   
 배포한 페이지에 접속하고 나서 첫 페이지까지는 잘 렌더링이 되었으나, 페이지를 이동 한 후 새로고침 시 page not found 404라는 창이 뜨는 문제가 발생했다.   
    
@@ -75,3 +74,25 @@ to = "/index.html"
 status = 200
 ```
 그 후 위와 같이 코드를 작성해 저장 후 push해 주어 404 문제를 해결할 수 있었다.
+
+## 스택
+<div disflay="flex" flex-direction:column; align-items:flex-start;>
+  <p><strong>Environment</strong></p>
+  <div>
+    <img src="https://img.shields.io/badge/VisualStudioCode-007ACC?style=flat-square&logo=VisualStudioCode&logoColor=white">
+    <img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white"> 
+    <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=Git&logoColor=white">
+  </div>
+  <p><strong>Development</strong></p>
+  <div>
+    <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> 
+    <img src="https://img.shields.io/badge/css-1572B6?style=flat-square&logo=css3&logoColor=white">
+    <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white">
+    <img src="https://img.shields.io/badge/greensock-88CE02?style=flat-square&logo=greensock&logoColor=white">
+  </div>
+  <p><strong>Communication</strong></p>
+  <div>
+    <img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=Slack&logoColor=white">
+    <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=Notion&logoColor=white">
+  </div>
+</div>
