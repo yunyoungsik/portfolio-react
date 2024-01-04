@@ -39,9 +39,45 @@ const About = () => {
                     </div>
                     <div className="aboutDesc">
                         <p>
-                            다양한 기술을 활용하여 창의적이고 사용자 친화적인 솔루션을 제공하는 프론트엔드개발자입니다.<br/>
+                            다양한 기술을 활용하여 창의적이고 사용자 친화적인 솔루션을 제공하는 프론트엔드개발자입니다.<br />
                             문제 해결에 즐거움을 느끼며 지속적인 성장을 추구합니다.
                         </p>
+                    </div>
+                    <div className="aboutInfor">
+                        <div className="aboutInfor__left">
+                            <h2>문제 해결에 즐거움을 느끼며 지속적인 성장을 추구합니다.</h2>
+                            <div className="aboutInfor__img">
+                                {/* <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1hbnxlbnwwfHwwfHx8MA%3D%3D" alt="임시" /> */}
+                            </div>
+                            <p className='birth'>
+                                Aug 29, 1991
+                            </p>
+                            <p className='desc'>
+                                다양한 기술을 활용하여 창의적이고 사용자 친화적인 솔루션을 제공하는 프론트엔드개발자입니다. 문제 해결에 즐거움을 느끼며 지속적인 성장을 추구합니다.
+                            </p>
+                        </div>
+                        <div className="aboutInfor__right">
+                            <ul>
+                                <li>
+                                    <p>신화공영 관리부 대리</p> <span>2020-2023</span>
+                                </li>
+                                <li>
+                                    <p>신화공영 온라인사업부 사원</p><span>2018-2020</span>
+                                </li>
+                                <li>
+                                    <p>이랜드리테일 농산 사원</p><span>2015-2016</span>
+                                </li>
+                                <li>
+                                    <p>안산대학교 디자인과 졸업</p><span>2010-2014</span>
+                                </li>
+                                <li>
+                                    <p>안산공업고등학교 디자인과 졸업</p><span>2007-2010</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="aboutInfor__bottom">
+
+                        </div>
                     </div>
                     <div className="aboutText">
                         <div className="aboutService">

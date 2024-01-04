@@ -3,7 +3,7 @@ import gsap from "gsap";
 export function aboutIntro() {
     const aboutIntro = gsap.timeline();
 
-    aboutIntro.to("#about #header .logo", { opacity: 1, duration: 0.5, ease: "power1.inOut", delay: 1 })
+    aboutIntro.to("#about #header .logo", { opacity: 1, duration: 0.5, ease: "power1.inOut", delay: 0.5 })
     aboutIntro.to(["#about #header .logo span", "#about #header .aboutClose"], { opacity: 1, duration: 0.5, ease: "power1.inOut" })
     aboutIntro.to(".aboutCenter h2 ", { opacity: 1 }, "<")
 

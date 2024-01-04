@@ -415,7 +415,7 @@
 
 .section.s3 .repleList li .modifyForm input[name="modifyCont"] {
     outline: 0;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 .section.s3 .repleList li .modifyForm .modfiyBottom {
