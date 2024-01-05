@@ -45,7 +45,7 @@ const About = () => {
                     </div>
                     <div className="aboutInfor">
                         <div className="aboutInfor__left">
-                            <h2>문제 해결에 즐거움을 느끼며 지속적인 성장을 추구합니다.</h2>
+                            <h2>Frontend Developer</h2>
                             <div className="aboutInfor__img">
                                 {/* <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1hbnxlbnwwfHwwfHx8MA%3D%3D" alt="임시" /> */}
                             </div>
@@ -89,8 +89,8 @@ const About = () => {
                                     <div className="markup">
                                         <h2>Markup Languae</h2>
                                         <p>
-                                            HTML5, CSS<br />
-                                            Javascript, PHP
+                                            HTML5, CSS, Javascript,<br />
+                                            React, Vite, Vue, PHP
                                         </p>
                                     </div>
                                     <div className="tool">

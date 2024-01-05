@@ -303,7 +303,8 @@
 .aboutInfor__left h2 {
     width: 90%;
     font-size: 1.5rem;
-    font-family: var(--font-noto);
+    font-weight: 500;
+    font-family: var(--font-gmarket);
     color: var(--white);
 }
 
@@ -346,7 +347,9 @@
 
 .aboutInfor__right li {
     padding: 20px;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    font-family: var(--font-gmarket);
+    font-weight: 300;
     color: var(--white);
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     border-right: 1px solid rgba(255, 255, 255, 0.15);
