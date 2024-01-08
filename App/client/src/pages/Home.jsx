@@ -21,8 +21,12 @@ const Home = () => {
     // script
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('scroll', handleClickOutside);
+        document.addEventListener("touchstart", handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            document.addEventListener('scroll', handleClickOutside);
+            document.addEventListener("touchstart", handleClickOutside);
         };
     }, []);
 

@@ -1,5 +1,5 @@
 # portfolio_react
-<img width="100%" src="https://github.com/yunyoungsik/portfolio-react/blob/main/client/src/assets/img/thumbnail.jpg?raw=true" />
+<img width="100%" src="https://github.com/yunyoungsik/portfolio-react/blob/main/App/client/src/assets/img/thumbnail.jpg?raw=true" />
 React를 이용하여 만든 포트폴리오는 웹사이트입니다.<br />
 직접 제작한 웹사이트의 간단한 설명과 링크, 깃허브 링크를 제공하고 있습니다.<br/>
       
