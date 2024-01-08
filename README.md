@@ -14,6 +14,7 @@ npm install axios
 npm install http-proxy-middleware --save   
 npm install moment   
 npm install split-type   
+npm i framer-motion   
 
 ## server
 npm init -y   

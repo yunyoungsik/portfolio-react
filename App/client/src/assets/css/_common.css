@@ -1,0 +1,153 @@
+#wrap {
+    width: 100%;
+    position: relative;
+}
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+    height: auto;
+}
+
+/* scroll */
+body::-webkit-scrollbar {
+    width: 0;
+    /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 0;
+    /* 스크롤바의 길이 */
+    background: transparent;
+    /* 스크롤바의 색상 */
+    border-radius: 0;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+    /*스크롤바 뒷 배경 색상*/
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* burger */
+.burger {
+    cursor: pointer;
+}
+
+/* about */
+.about {
+    font-family: var(--font-gmarket);
+    font-size: 18px;
+    position: fixed;
+    top: 35px;
+    right: 40px;
+    color: var(--white);
+    z-index: 1000;
+}
+
+.about:hover {
+    color: var(--white);
+}
+
+.underline:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--white);
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.underline:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+/* transitionOverlay */
+.transitionOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.transitionOverlay.main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 800vh;
+    background-color: var(--black);
+    z-index: 1;
+    opacity: 0;
+    display: none;
+}
+
+.subTransitionOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    z-index: 9999;
+    opacity: 0;
+    display: none;
+}
+
+.transitionOverlay.about {
+    height: 100%;
+    background-color: var(--white);
+    z-index: 9999;
+    opacity: 0;
+    display: none;
+}
+
+/* .transitionOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--black);
+    z-index: 1001;
+    opacity: 1;
+}
+.transitionOverlay.main {
+    display: none;
+    opacity: 0;
+} */
+
+/* close */
+.close {
+    position: fixed;
+    top: 35px;
+    left: 40px;
+    z-index: 1000;
+    color: var(--white);
+}
+
+.close:hover {
+    color: var(--white);
+}
+
+.close:hover {
+    color: var(--white);
+}
+
+.close>svg {
+    width: 27px;
+    height: 27px;
+}
