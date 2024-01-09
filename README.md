@@ -76,6 +76,15 @@ status = 200
 ```
 그 후 위와 같이 코드를 작성해 저장 후 push해 주어 404 문제를 해결할 수 있었다.
 
+## 배포
+fly.io
+```
+iwr https://fly.io/install.ps1 -useb | iex
+flyctl auth login
+flyctl launch
+flyctl deploy
+```
+
 ## 스택
 <div disflay="flex" flex-direction:column; align-items:flex-start;>
   <p><strong>Environment</strong></p>
