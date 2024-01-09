@@ -19,11 +19,13 @@ const Intro = () => {
         ScrollTrigger.matchMedia({
             "(min-width: 801px)": function () {
                 ani.fromTo(".intro__popup .titleWrap", { y: 72, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
+                    .to(".intro__popup .center__text", { color: "white", mixBlendMode: "difference" }, "<")
                     .fromTo(".intro__popup .center__img", { scale: 1 }, { scale: 0.5, duration: 1, ease: "power1.inOut" })
                     .to(".intro__popup .center__img", { scale: 0.6, duration: 1.5, ease: "power1.inOut" })
                     .to(".intro__popup .center__img", { width: 250, height: 410, scale: 1, duration: 1.5, ease: "power1.inOut" })
                     .fromTo(".intro__popup .mainSlider", { width: "100%" }, { width: "80%" })
                     .to(".intro__popup .titleWrap h2", { y: -72 })
+                    .to(".intro__popup .center__text", { color: "black", mixBlendMode: "normal" }, "<")
                     .to(".intro__popup .center__text", { xPercent: -200, opacity: 0, duration: 0.5, ease: "power1.inOut" })
                     .to(".intro__popup .center__text", { textAlign: "left", position: "relative", top: "auto", left: "auto", y: 0, x: 0, xPercent: 0, yPercent: 0, })
 

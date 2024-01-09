@@ -210,8 +210,8 @@
 }
 
 .mainSlider__top>.burger>svg {
-    width: 27px;
-    height: 27px;
+    width: 18px;
+    height: 18px;
 }
 
 /* .mainSlider__top>.burger {
@@ -375,6 +375,11 @@
     .mainSlider {
         width: 100%;
         padding: 15px 20px 25px;
+    }
+
+    .mainSlider__top>.burger>svg {
+        width: 18px;
+        height: 18px;
     }
 
     .mainSlider__center {
