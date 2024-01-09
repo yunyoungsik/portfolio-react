@@ -81,17 +81,6 @@ const Intro = () => {
         });
     }, [])
 
-    // preload
-    const preloadFont = (fontURL, fontFamily) => {
-        const font = new FontFace(fontFamily, `url(${fontURL})`);
-        font.load().then(loadedFont => {
-            document.fonts.add(loadedFont);
-        }).catch(error => {
-            console.error('Font preload failed:', error);
-        });
-    };
-    preloadFont('/path/to/font.woff2', 'PartizenoRegular', 'GmarketSans', 'AritaBuri', 'Roboto Mono', 'D2Coding', 'Manrope');
-
     return (
         <main id='main'>
             <div className="intro__popup">
