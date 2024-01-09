@@ -405,4 +405,8 @@
     .mainSlider__menu {
         width: calc(100% - 40px);
     }
+
+    .mainSlider__menu .footer {
+        font-size: 10px;
+    }
 }
