@@ -6,7 +6,6 @@ React를 이용하여 만든 포트폴리오는 웹사이트입니다.<br />
 ## client
 npx create-react-app .   
 npm install react-router-dom   
-npm install @gsap/react   
 npm install gsap   
 npm i @studio-freight/lenis  
 npm install react-syntax-highlighter   
@@ -28,6 +27,7 @@ npm install mongoose --save
 메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse, homeSlider, homeTransition, homeAbout 함수들을 호출합니다.<br />
 Lenis를 이용하여 부드러운 스크롤, GSAP를 이용하여 마우스 이펙트, 슬라이드, 화면전환 효과를 구현하였습니다.<br/>
 Link 컴포넌트를 통해 페이지 내에는 다양한 컨텐츠들이 Link 컴포넌트를 통해 연결되어 있습니다.<br />
+상단에 위치한 메뉴 아이콘 클릭 시, Nav 컴포넌트를 토글하여 메뉴를 활성화하거나 비활성화합니다.<br />
    
 - 서브
 서브페이지에서는 코드 하이라이팅을 위해 SyntaxHighlighter를 사용하였으며, 이 라이브러리는 코드를 강조하여 보기 좋게 표시해줍니다.<br />
