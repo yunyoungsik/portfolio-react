@@ -324,6 +324,10 @@
     transform: translateX(-50%);
 } */
 
+.mainSlider__center>.center__img>.centerSliderWrap>.centerSlider.s4>a>img {
+    transform: translateX(-40%);
+}
+
 .mainSlider__center>.center__img>.centerSliderWrap>.centerSlider>a>img {
     width: 1920px;
     height: 1080px;

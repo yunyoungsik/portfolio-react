@@ -231,7 +231,7 @@ const Movie = () => {
                                 </span>
                                 <h2>
                                     <Link to="#" className='nextPage' prefetch="true">
-                                        <span>Movie</span>
+                                        <span>Kickoff</span>
                                     </Link>
                                     <Link to="#" className='nextPage' prefetch="true">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">

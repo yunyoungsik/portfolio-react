@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -15,26 +15,6 @@ import { background } from '../assets/script/animation';
 
 const Home = () => {
     const [menuActive, setMenuActive] = useState(false);
-
-    const navRef = useRef(null);
-
-    // script
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        document.addEventListener('scroll', handleClickOutside);
-        document.addEventListener("touchstart", handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-            document.addEventListener('scroll', handleClickOutside);
-            document.addEventListener("touchstart", handleClickOutside);
-        };
-    }, []);
-
-    const handleClickOutside = (event) => {
-        if (navRef.current && !navRef.current.contains(event.target)) {
-            setMenuActive(false);
-        }
-    };
 
     // script
     useEffect(() => {
@@ -64,12 +44,11 @@ const Home = () => {
                         </svg>
                     </div>
                 </div>
-                <div className="mainSlider__menu" ref={navRef}>
+                <div className="mainSlider__menu">
                     <AnimatePresence mode='wait'>
                         {menuActive && <Nav />}
                     </AnimatePresence>
                     <motion.div variants={background} initial='initial' animate={menuActive ? "enter" : "exit"} className='menu__background'></motion.div>
-
                 </div>
                 <div className="mainSlider__center">
                     <div className="center__text">
