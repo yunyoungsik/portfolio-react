@@ -24,10 +24,11 @@ npm install mongoose --save
 
 ##
 - 메인
-메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse, homeSlider, homeTransition, homeAbout 함수들을 호출합니다.<br />
+메인 페이지에서는 useEffect를 이용하여 smooth, splint, homeMouse 등 함수들을 호출합니다.<br />
 Lenis를 이용하여 부드러운 스크롤, GSAP를 이용하여 마우스 이펙트, 슬라이드, 화면전환 효과를 구현하였습니다.<br/>
 Link 컴포넌트를 통해 페이지 내에는 다양한 컨텐츠들이 Link 컴포넌트를 통해 연결되어 있습니다.<br />
 상단에 위치한 메뉴 아이콘 클릭 시, Nav 컴포넌트를 토글하여 메뉴를 활성화하거나 비활성화합니다.<br />
+Nav는 Framer-motion을 사용하여 제작되었습니다.<br />
    
 - 서브
 서브페이지에서는 코드 하이라이팅을 위해 SyntaxHighlighter를 사용하였으며, 이 라이브러리는 코드를 강조하여 보기 좋게 표시해줍니다.<br />
@@ -77,7 +78,7 @@ status = 200
 그 후 위와 같이 코드를 작성해 저장 후 push해 주어 404 문제를 해결할 수 있었다.
 
 ## 배포
-fly.io
+fly.io을 통하여 배포를 진행하였습니다.
 ```
 iwr https://fly.io/install.ps1 -useb | iex
 flyctl auth login
