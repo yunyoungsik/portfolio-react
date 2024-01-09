@@ -37,7 +37,7 @@
 .intro__popup .mainSlider__center>.center__img>.centerSliderWrap>.centerSlider.s4.intro {
     transform: translateX(0);
     background-image: url(https://images.unsplash.com/photo-1695883701435-7bd88f796e05?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-position: left top;
+    background-position: center top;
 }
 
 .intro__popup .mainSlider__center>.center__img>.centerSliderWrap>.centerSlider.s5.intro {
