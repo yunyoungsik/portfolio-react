@@ -33,9 +33,9 @@ const Intro = () => {
                     .to(".intro__popup .center__text", { opacity: 1 })
                     .fromTo(".intro__popup .descWrap", { y: 24, opacity: 0, visibility: "hidden" }, { y: 0, opacity: 1, visibility: "visible", duration: 0.5, ease: "power1.inOut" })
 
-                    .fromTo([".intro__popup .burger", ".intro__popup .scroll__arrow"], { xPercent: 100, opacity: 0 }, { xPercent: -100, opacity: 1, ease: "power1.inOut" })
+                    .fromTo([".intro__popup .burger", ".intro__popup .scroll__arrow"], { xPercent: 100, opacity: 0 }, { xPercent: 0, opacity: 1, ease: "power1.inOut" })
                     .fromTo(".intro__popup .logo", { opacity: 0 }, { opacity: 1, ease: "power1.inOut" })
-                    .fromTo([".intro__popup .page", ".intro__popup .scroll__text"], { yPercent: 100, opacity: 0 }, { yPercent: -100, opacity: 1, ease: "power1.inOut" })
+                    .fromTo([".intro__popup .page", ".intro__popup .scroll__text"], { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "power1.inOut" })
             },
             "(max-width: 800px)": function () {
                 ani.fromTo(".intro__popup .titleWrap", { y: 72, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 })
@@ -50,9 +50,9 @@ const Intro = () => {
                     .fromTo(".intro__popup .descWrap", { y: 24, opacity: 0, visibility: "hidden" }, { y: 0, opacity: 1, visibility: "visible", duration: 0.5, ease: "power1.inOut" })
                     .fromTo([".intro__popup .mainSlider__top", ".intro__popup .mainSlider__bottom"], { display: "none" }, { display: "flex" })
                     .to(".intro__popup .mainSlider__center", { height: "60%" })
-                    .fromTo([".intro__popup .burger", ".intro__popup .scroll__arrow"], { xPercent: 100, opacity: 0 }, { xPercent: -100, opacity: 1, ease: "power1.inOut" })
+                    .fromTo([".intro__popup .burger", ".intro__popup .scroll__arrow"], { xPercent: 100, opacity: 0 }, { xPercent: 0, opacity: 1, ease: "power1.inOut" })
                     .fromTo(".intro__popup .logo", { opacity: 0 }, { opacity: 1, ease: "power1.inOut" })
-                    .fromTo([".intro__popup .page", ".intro__popup .scroll__text"], { yPercent: 100, opacity: 0 }, { yPercent: -100, opacity: 1, ease: "power1.inOut" })
+                    .fromTo([".intro__popup .page", ".intro__popup .scroll__text"], { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "power1.inOut" })
             }
         });
 

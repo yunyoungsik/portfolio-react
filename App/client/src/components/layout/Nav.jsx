@@ -31,6 +31,10 @@ const Nav = () => {
             title: "Portfolio",
             href: '/portfolio'
         },
+        {
+            title: "About",
+            href: '/about'
+        },
     ];
 
     const [selectedLink, setSelectedLink] = useState({ isActive: false, index: 0 })

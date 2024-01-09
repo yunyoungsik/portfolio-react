@@ -11,7 +11,7 @@
 .intro__popup .centerSlider.intro {
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size: 1920px 1080px;
     background-position: center;
     background-repeat: no-repeat;
 }
