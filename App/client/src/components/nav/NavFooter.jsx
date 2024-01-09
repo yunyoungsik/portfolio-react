@@ -21,7 +21,7 @@ const NavFooter = () => {
                     variants={translate} initial="initial"
                     animate="enter"
                     exit="exit">
-                    <span>E-mail:</span> <Link to="mailto:yunyoungsik91@gmail.com">yunyoungsik91@gmail.com</Link>
+                    <span>E-mail:</span> <Link to="mailto:yunyoungsik@kakao.com">yunyoungsik@kakao.com</Link>
                 </motion.li>
             </ul>
             <ul>
