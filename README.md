@@ -77,7 +77,7 @@ status = 200
 그 후 위와 같이 코드를 작성해 저장 후 push해 주어 404 문제를 해결할 수 있었다.
 
 ## 배포
-fly.io
+fly.io를 통하여 배포를 진행했습니다.
 ```
 iwr https://fly.io/install.ps1 -useb | iex
 flyctl auth login
