@@ -239,7 +239,7 @@ const Kickoff = () => {
                                     </Link>
                                 </h2>
                                 <span>
-                                    <Link to="https://github.com/audgns722/kickoff" target='_blank' className="underline" prefetch="true">(main)</Link>
+                                    <Link to="https://github.com/audgns722/kickoff" target='_blank' className="underline" prefetch="true">(github)</Link>
                                 </span>
                             </div>
                         </div>
