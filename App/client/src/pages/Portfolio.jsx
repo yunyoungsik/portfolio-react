@@ -159,7 +159,7 @@ const Portfolio = () => {
                                 </div>
                                 <div className="link">
                                     <div className="link1">
-                                        <Link to="#" target="_blank" className="underline">
+                                        <Link to="#https://yunyoungsik-portfolio.fly.dev/" target="_blank" className="underline">
                                             <i>Link</i>
                                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
                                                 data-v-50e346e1="">
@@ -232,7 +232,7 @@ const Portfolio = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="#" className="underline goMain" prefetch="true">(next)</Link>
+                                    <Link to="https://yunyoungsik-portfolio.fly.dev/" target='_blank' className="underline" prefetch="true">(link)</Link>
                                 </span>
                                 <h2>
                                     <Link to="#" className='goMain' prefetch="true">
@@ -246,7 +246,7 @@ const Portfolio = () => {
                                     </Link>
                                 </h2>
                                 <span>
-                                    <Link to="/home" className="goMain underline" prefetch="true">(main)</Link>
+                                    <Link to="https://github.com/yunyoungsik/portfolio-react" className="underline" prefetch="true">(github)</Link>
                                 </span>
                             </div>
                         </div>

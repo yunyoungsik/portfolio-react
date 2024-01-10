@@ -236,13 +236,13 @@ const TrendDevice = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="#" className="underline nextPage" prefetch="true">(next)</Link>
+                                    <Link to="http://trenddevice2023.dothome.co.kr/TDsite/php/main/main.php" target='_blank' className="underline" prefetch="true">(link)</Link>
                                 </span>
                                 <h2>
                                     <Link to="#" className='nextPage' prefetch="true">
                                         <span>YouTube</span>
                                     </Link>
-                                    <Link to="#" className='nextPage' prefetch="true">
+                                    <Link to="#" prefetch="true">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
                                             <path d="m17.5 5.999-.707.707 5.293 5.293H1v1h21.086l-5.294 5.295.707.707L24 12.499l-6.5-6.5z"
                                                 data-name="Right" />
@@ -250,7 +250,7 @@ const TrendDevice = () => {
                                     </Link>
                                 </h2>
                                 <span>
-                                    <Link to="/home" className="goMain underline" prefetch="true">(main)</Link>
+                                    <Link to="https://github.com/yunyoungsik/Trend-Device" target='_blank' className="underline" prefetch="true">(github)</Link>
                                 </span>
                             </div>
                         </div>

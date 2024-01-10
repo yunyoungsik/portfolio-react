@@ -225,7 +225,7 @@ const Kickoff = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="#" className="underline nextPage" prefetch="true">(next)</Link>
+                                    <Link to="#" target='_blank' className="underline" prefetch="true">(link)</Link>
                                 </span>
                                 <h2>
                                     <Link to="#" className='nextPage' prefetch="true">
@@ -239,7 +239,7 @@ const Kickoff = () => {
                                     </Link>
                                 </h2>
                                 <span>
-                                    <Link to="/home" className="goMain underline" prefetch="true">(main)</Link>
+                                    <Link to="https://github.com/audgns722/kickoff" target='_blank' className="underline" prefetch="true">(main)</Link>
                                 </span>
                             </div>
                         </div>

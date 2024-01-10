@@ -22,7 +22,7 @@ export function subIntro() {
             subAni.fromTo(char,
                 {
 
-                    y: 30,
+                    y: 15,
                     opacity: 0,
                     display: "inline-block"
                 },

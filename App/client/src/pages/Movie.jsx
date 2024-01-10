@@ -227,7 +227,7 @@ const Movie = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="#" className="underline nextPage" prefetch="true">(next)</Link>
+                                    <Link to="https://movieproject2023.netlify.app/" target='_blank' className="underline" prefetch="true">(link)</Link>
                                 </span>
                                 <h2>
                                     <Link to="#" className='nextPage' prefetch="true">
@@ -241,7 +241,7 @@ const Movie = () => {
                                     </Link>
                                 </h2>
                                 <span>
-                                    <Link to="/home" className="goMain underline" prefetch="true">(main)</Link>
+                                    <Link to="https://github.com/yunyoungsik/movie-project" target='_blank' className="underline" prefetch="true">(github)</Link>
                                 </span>
                             </div>
                         </div>
