@@ -85,6 +85,18 @@ flyctl auth login
 flyctl launch
 flyctl deploy
 ```
+```
+.dockerignore셋팅
+server\config\dev.js
+node_modules
+
+client\node_modules
+```
+```
+추가셋팅
+flyctl scale count 1 --app yunyoungsik-portfolio
+fly machine update 6e824525f25138 --vm-memory 256 --app yunyoungsik-portfolio
+```
 
 ## 스택
 <div disflay="flex" flex-direction:column; align-items:flex-start;>
