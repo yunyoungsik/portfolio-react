@@ -19,9 +19,26 @@ import CommentArea from '../components/comment/CommentArea';
 const Kickoff = () => {
 
     // hightlight
-    const codeSnippet = `추가예정
-     추가예정
-     추가예정
+    const codeSnippet = `const SubmitHandler = (e) => {
+        e.preventDefault();
+        if (!reple) {
+            return alert("댓글 내용을 채워주세요.");
+        } else if (user.uid === '') {
+            return alert("로그인을 해주세요.");
+        }
+        let body = {
+            reple: reple,
+            uid: user.uid,
+            leagueId: props.leagueId,  // 리그 ID 추가
+            matchId: props.matchId      // 매치 ID 추가
+        };
+        axios.post("/api/playreple/submit", body).then((response) => {
+            if (response.data.success) {
+                alert("댓글 작성이 성공하였습니다.");
+            } else {
+                alert("댓글 작성이 실패했습니다.");
+            }
+        });
     }`;
     // script
     useEffect(() => {
@@ -205,7 +222,7 @@ const Kickoff = () => {
                             <div className="trouble__inner">
                                 <h2>Trouble Shooting</h2>
                                 <h3>문제</h3>
-                                <p>추가예정</p>
+                                <p>댓글 작성 기능을 구현할 때, 다른 조원이 리그 ID와 매치 ID를 제대로 전달하지 못해 특정 경기나 리그에 대한 댓글 기능이 작동하지 않는 문제가 발생했습니다.</p>
                                 <h3>해결</h3>
                                 <SyntaxHighlighter
                                     language="javascript"
@@ -215,7 +232,7 @@ const Kickoff = () => {
                                     {codeSnippet}
                                 </SyntaxHighlighter>
                                 <p>
-                                    추가예정
+                                    문제를 해결하기 위해 댓글 작성 요청에 필요한 leagueId와 matchId를 명확히 추가했습니다. 댓글 작성 시, 리그와 경기 정보를 정확하게 전달하도록 코드에 수정했습니다. body 객체에 leagueId와 matchId 속성을 추가하여 서버에 요청을 보낼 때 올바른 데이터가 전달되도록 했습니다. 이로 인해 서버가 각 댓글을 특정 리그 및 경기와 올바르게 연동할 수 있었으며, 댓글 작성 기능이 정상적으로 동작하게 되었습니다.
                                 </p>
                             </div>
                         </div>
@@ -225,7 +242,7 @@ const Kickoff = () => {
                         <div className="subNext">
                             <div className="subNext__inner">
                                 <span>
-                                    <Link to="#" target='_blank' className="underline" prefetch="true">(link)</Link>
+                                    <Link to="https://kickoffproject.fly.dev/" target='_blank' className="underline" prefetch="true">(link)</Link>
                                 </span>
                                 <h2>
                                     <Link to="#" className='nextPage' prefetch="true">

@@ -163,7 +163,7 @@ const TrendDevice = () => {
                                 </div>
                                 <div className="link">
                                     <div className="link1">
-                                        <Link to="http://trenddevice2023.dothome.co.kr/TDsite/php/main/main.php" target="_blank"
+                                        <Link to="http://yunyoungsik92.dothome.co.kr/TDsite/php/main/main.php" target="_blank"
                                             className="underline">
                                             <i>Link</i>
                                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"
